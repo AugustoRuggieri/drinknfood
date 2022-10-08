@@ -4,3 +4,8 @@
     width: 70%;
     margin: 0 auto;
 }
+
+.page {
+    height: 100vw;
+    width: 100%;
+}

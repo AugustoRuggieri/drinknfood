@@ -1,29 +1,46 @@
-import { doc, query, where } from 'firebase/firestore'
-import React, { useState, useEffect } from 'react'
+import { collection, doc, getDocs, query, where } from 'firebase/firestore'
+import React, { useState, useEffect, useContext } from 'react'
+import { DrinkNFood } from '../../context/Context'
 import { CryptoState } from '../../context/Context'
 import { db } from '../../firebase'
+import RestaurantCard from './restaurantCard/RestaurantCard'
 import './restaurants.css'
 
 const Restaurants = () => {
+  let { restaurantList, setRestaurantList } = useContext(DrinkNFood)
 
-    /* const { tags } = CryptoState() */
+  const fetchRestaurants = async () => {
 
-    const [restaurantList, setRestaurantList] = useState([])
+    const collectionRef = collection(db, 'restaurants')
 
-    /* const fetchRestaurants = () => {
-        const collectionRef = doc(db, 'restaurants')
+    const q = query(collectionRef, where("name", "!=", ""))
 
-        const q = query(collectionRef, where("tags", "array-contains", tag))
-    }
+    const querySnapshot = await getDocs(q)
 
-    useEffect(() => {
-        fetchRestaurants()
-    }, []) */
-    
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+      setRestaurantList(restaurantList => [...restaurantList, doc.data().name])
+    })
+    console.log("Restaurants : " + restaurantList)
+  }
+
+  useEffect(() => {
+    fetchRestaurants()
+  }, [])
 
   return (
-    <div>
-        Restaurants
+    <div className='restaurant-page'>
+      <h1>Restaurants</h1>
+      <div className='restaurant-list'>
+        {
+          restaurantList.map((restaurant, index) => {
+            return (
+              <RestaurantCard key={index} restaurant={restaurant} />
+            )
+          })
+        }
+      </div>
+
     </div>
   )
 }

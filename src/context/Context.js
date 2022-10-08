@@ -2,15 +2,18 @@ import React, { useContext, useState, useEffect, createContext } from 'react'
 import { collection, doc, getDocs, onSnapshot, query, where } from '@firebase/firestore'
 import { onAuthStateChanged } from '@firebase/auth'
 import { auth, db } from '../firebase'
+import Sidebar from '../components/sidebar/Sidebar'
+import Restaurants from '../components/restaurants/Restaurants'
 
-const DrinkNFood = createContext()
+export const DrinkNFood = createContext()
 
 const Context = ({ children }) => {
 
     const [inputText, setInputText] = useState("")
     const [inputList, setInputList] = useState([])
-    const [tags, setTags] = useState([])
     const [user, setUser] = useState(null)
+    const [restaurantList, setRestaurantList] = useState([])
+    
 
     useEffect(() => {
         if (user) {
@@ -38,13 +41,14 @@ const Context = ({ children }) => {
     }, [])
 
     return (
-        <DrinkNFood.Provider value={{ inputText, inputList, tags, setTags, user }}>
-            {children}
+        <DrinkNFood.Provider value={{ restaurantList, setRestaurantList }}>
+            <Sidebar />
+            <Restaurants />
         </DrinkNFood.Provider>
     )
 }
 
-export default Context
+export const DrinkNFoodProvider = DrinkNFood.Provider
 
 export const CryptoState = () => {
     return useContext(DrinkNFood)

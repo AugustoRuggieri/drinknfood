@@ -1,0 +1,15 @@
+.restaurant-card {
+    background: #fcfcfb;
+    border: 1px solid #f5f5f5;
+    border-radius: 25px;
+    color: #494949;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.restaurant-card h4 {
+    margin-left: 10px;
+    text-transform: capitalize;
+}

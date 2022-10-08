@@ -12,7 +12,7 @@ const SearchField = () => {
     const handleSearch = async (e) => {
         e.preventDefault();
 
-        const restaurantRef = collection(db, "locali");
+        const restaurantRef = collection(db, "restaurants");
 
         // Create a query against the collection.
         const q = query(restaurantRef, where("name", "==", search.toLowerCase()));
@@ -37,7 +37,7 @@ const SearchField = () => {
     const searchRestaurants = async (e) => {
         e.preventDefault();
 
-        const restaurantRef = collection(db, "locali");
+        const restaurantRef = collection(db, "restaurants");
 
         const q1 = query(restaurantRef, where("tags", "array-contains-any", checkedTags));
 

@@ -11,11 +11,11 @@
     width: 90%;
 }
 
-.tah-item:current {
-    background: #414141;
-    color: #fff;
-}
-
 .tag-item p {
     text-transform: capitalize;
+}
+
+.tag-item.active {
+    background: #313131;
+    color: #fff;
 }
