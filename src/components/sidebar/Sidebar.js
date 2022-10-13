@@ -10,9 +10,7 @@ const Sidebar = () => {
 
     const fetchTagsFromDB = async () => {
 
-        console.log("Prima : " + tags)
         setTags(tags => [])
-        console.log("Dopo : " + tags)
         
         const tagsRef = collection(db, "tags");
 
@@ -25,7 +23,6 @@ const Sidebar = () => {
             console.log(doc.id, " => ", doc.data());
             setTags(tags => [...tags, doc.data().name]);
         })
-        console.log("tagList : " + tags)
     }
 
     useEffect(() => {

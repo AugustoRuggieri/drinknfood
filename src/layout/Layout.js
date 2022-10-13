@@ -5,13 +5,18 @@ import Sidebar from '../components/sidebar/Sidebar'
 import Restaurants from '../components/restaurants/Restaurants'
 import { DrinkNFood } from '../context/Context'
 
+/* var selectedTags = 'pippo'
+
+export { selectedTags } */
+
 const Layout = () => {
 
     const [restaurantList, setRestaurantList] = useState([])
+    /* const [selectedTags, setSelectedTags] = useState([]) */
 
     return (
         <div className='layout'>
-            <DrinkNFood.Provider value={{ restaurantList, setRestaurantList }}>
+            <DrinkNFood.Provider value={{ restaurantList, setRestaurantList/* , selectedTags, setSelectedTags */ }}>
                 <Sidebar />
                 <div className='page'>
                 <Restaurants />

@@ -1,21 +1,16 @@
-import React, { useContext, useState, useEffect, createContext } from 'react'
+import React, { useContext, createContext } from 'react'
 import { collection, doc, getDocs, onSnapshot, query, where } from '@firebase/firestore'
 import { onAuthStateChanged } from '@firebase/auth'
 import { auth, db } from '../firebase'
-import Sidebar from '../components/sidebar/Sidebar'
-import Restaurants from '../components/restaurants/Restaurants'
 
 export const DrinkNFood = createContext()
 
-const Context = ({ children }) => {
-
-    const [inputText, setInputText] = useState("")
+    /* const [inputText, setInputText] = useState("")
     const [inputList, setInputList] = useState([])
-    const [user, setUser] = useState(null)
-    const [restaurantList, setRestaurantList] = useState([])
+    const [user, setUser] = useState(null) */
     
 
-    useEffect(() => {
+    /* useEffect(() => {
         if (user) {
             const collectionRef = doc(db, "entries", user.uid)
 
@@ -38,15 +33,7 @@ const Context = ({ children }) => {
             if (user) setUser(user)
             else setUser(null)
         })
-    }, [])
-
-    return (
-        <DrinkNFood.Provider value={{ restaurantList, setRestaurantList }}>
-            <Sidebar />
-            <Restaurants />
-        </DrinkNFood.Provider>
-    )
-}
+    }, []) */
 
 export const DrinkNFoodProvider = DrinkNFood.Provider
 

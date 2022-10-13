@@ -1,35 +1,56 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './TagItem.css'
 import { DrinkNFood } from '../../../context/Context'
-import { db } from '../../../firebase' 
+import { db } from '../../../firebase'
 import { collection, getDocs, query, where } from '@firebase/firestore'
-import { CryptoState } from '../../../context/Context'
+/* import { selectedTags } from '../../../layout/Layout' */
+
+var selectedTags = []
 
 const TagItem = ({ tag }) => {
 
-  let { restaurantList, setRestaurantList } = useContext(DrinkNFood)
-  
-  const [selectedTags, setSelectedTags] = useState([])
+  let { restaurantList, setRestaurantList/* , selectedTags, setSelectedTags */ } = useContext(DrinkNFood)
+
   const [activeBtn, setActiveBtn] = useState(false)
 
   let toggleActiveClass = activeBtn ? 'active' : null
 
   const handleSelect = async (e) => {
+    debugger
 
-    setRestaurantList(restaurantList => [])
-    
     setActiveBtn(activeBtn => !activeBtn)
 
+    if (selectedTags.indexOf(tag) === -1) {
+
+      /* setSelectedTags(selectedTags => [...selectedTags, tag]) */
+
+      /* let newSelectedTags = [...selectedTags, tag] */
+
+      selectedTags = [...selectedTags, tag]
+
+      /* setSelectedTags(selectedTags => newSelectedTags) */
+
+    } else {
+
+      /* setSelectedTags(selectedTags => selectedTags.filter(el => el !== tag)) */
+
+      selectedTags = selectedTags.filter(el => el !== tag)
+
+      /* setSelectedTags(selectedTags => newSelectedTags) */
+    }
+
+    // query
     const collectionRef = collection(db, 'restaurants')
-
-    const q = query(collectionRef, where("tags", "array-contains", tag))
-
+    const q = query(collectionRef, where("tags", "array-contains-any", selectedTags))
     const querySnapshot = await getDocs(q)
+
+    let newRestaurantList = []
 
     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
-      setRestaurantList(restaurantList => [...restaurantList, doc.data().name])
-    }) 
+      newRestaurantList = [...newRestaurantList, doc.data().name]
+    })
+    setRestaurantList(restaurantList => newRestaurantList)
   }
 
   return (
