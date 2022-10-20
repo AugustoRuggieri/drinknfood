@@ -2,31 +2,30 @@ import React, { useState } from 'react'
 import './Layout.css'
 import { Outlet } from 'react-router-dom'
 import Sidebar from '../components/sidebar/Sidebar'
-import Restaurants from '../components/restaurants/Restaurants'
 import { DrinkNFood } from '../context/Context'
-
-/* var selectedTags = 'pippo'
-
-export { selectedTags } */
 
 const Layout = () => {
 
     const [restaurantList, setRestaurantList] = useState([])
-    /* const [selectedTags, setSelectedTags] = useState([]) */
+    const [selectedTagsState, setSelectedTagsState] = useState([])
+    const [selectedFiltersState, setSelectedFiltersState] = useState([])
+
 
     return (
         <div className='layout'>
-            <DrinkNFood.Provider value={{ restaurantList, setRestaurantList/* , selectedTags, setSelectedTags */ }}>
+            <DrinkNFood.Provider value={{
+                restaurantList,
+                setRestaurantList,
+                selectedTagsState,
+                setSelectedTagsState,
+                selectedFiltersState,
+                setSelectedFiltersState
+            }}>
                 <Sidebar />
                 <div className='page'>
-                <Restaurants />
+                    <Outlet />
                 </div>
             </DrinkNFood.Provider>
-            {/* {            
-
-                <Outlet />
-
-            } */}
         </div>
     )
 }

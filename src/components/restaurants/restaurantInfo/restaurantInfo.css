@@ -1,0 +1,7 @@
+.restaurant-info {
+    text-align: center;
+}
+
+.restaurant-info h2 {
+    text-transform: capitalize;
+}
