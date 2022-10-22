@@ -11,60 +11,23 @@ const Restaurants = () => {
 
   const fetchRestaurants = async () => {
 
+    // query
+    var queryWhere = where("name", "!=", "")
+
+    if (selectedTagsState.length !== 0) {
+      queryWhere = where("tags", "array-contains-any", selectedTagsState)
+    }
+
     const collectionRef = collection(db, 'restaurants')
-    const q = query(collectionRef, where("name", "!=", ""))
+    const q = query(collectionRef, queryWhere)
     const querySnapshot = await getDocs(q)
 
     let newRestaurantList = []
 
+    // filter
     querySnapshot.forEach((doc) => {
-      newRestaurantList = [...newRestaurantList, doc.data().name]
-    })
-    setRestaurantList(newRestaurantList)
-  }
-
-  const fetchRestaurantsByTags = async () => {
-
-    const collectionRef = collection(db, 'restaurants')
-    const q = query(collectionRef, where("tags", "array-contains-any", selectedTagsState))
-    const querySnapshot = await getDocs(q)
-
-    let newRestaurantList = []
-
-    querySnapshot.forEach((doc) => {
-
       if (selectedFiltersState.length > 0) {
-        if (doc.data().filters.some(elem => selectedFiltersState.includes(elem))) {
-          newRestaurantList = [...newRestaurantList, doc.data().name]
-        }
-      } else {
-        newRestaurantList = [...newRestaurantList, doc.data().name]
-      }
-      // aggiungere funzione qui
-      /* if (checkRestaurant(doc.data().tags, selectedTags_or, selectedTags_and)) {
-        newRestaurantList = [...newRestaurantList, doc.data().name]
-      }  */
-
-      /* newRestaurantList = [...newRestaurantList, doc.data().name] */
-    })
-    setRestaurantList(newRestaurantList)
-    if (newRestaurantList.length === 0) {
-      alert('Nessun risultato')
-    }
-  }
-
-  const fetchRestaurantsByFilters = async () => {
-
-    const collectionRef = collection(db, 'restaurants')
-    const q = query(collectionRef, where("filters", "array-contains-any", selectedFiltersState))
-    const querySnapshot = await getDocs(q)
-
-    let newRestaurantList = []
-
-    querySnapshot.forEach((doc) => {
-
-      if (selectedTagsState.length > 0) {
-        if (doc.data().tags.some(elem => selectedTagsState.includes(elem))) {
+        if (selectedFiltersState.every(el => doc.data().filters.includes(el))) {
           newRestaurantList = [...newRestaurantList, doc.data().name]
         }
       } else {
@@ -72,19 +35,14 @@ const Restaurants = () => {
       }
     })
     setRestaurantList(newRestaurantList)
-    if (newRestaurantList.length === 0) {
-      alert('Nessun risultato')
-    }
   }
 
   useEffect(() => {
-    if (selectedTagsState.length > 0) {
-      fetchRestaurantsByTags()
-    } else if (selectedFiltersState.length > 0) {
-      fetchRestaurantsByFilters()
-    } else {
-      fetchRestaurants()
-    }
+    fetchRestaurants()
+  }, [])
+
+  useEffect(() => {
+    fetchRestaurants()
   }, [selectedTagsState, selectedFiltersState])
 
   return (
