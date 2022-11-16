@@ -1,0 +1,1650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Bere Bologna e altro</name>
+    <description/>
+    <Style id="icon-1517-0097A7-labelson">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-6.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-1517-0097A7-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-6.png</href>
+        </Icon>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1534-0F9D58-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-3.png</href>
+        </Icon>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1587-097138-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-2.png</href>
+        </Icon>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1613-FF5252-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-5.png</href>
+        </Icon>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1651-C2185B-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-4.png</href>
+        </Icon>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1700-FFD600-nodesc-normal">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-8.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1700-FFD600-nodesc-highlight">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-8.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1700-FFD600-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1700-FFD600-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1700-FFD600-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1743-795548-labelson">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-1.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-1743-795548-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-1.png</href>
+        </Icon>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1879-F9A825-labelson">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-7.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-1879-F9A825-labelson-nodesc">
+      <IconStyle>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-7.png</href>
+        </Icon>
+      </IconStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Folder>
+      <name>Etnico</name>
+      <Placemark>
+        <name>Naama Dolci</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3417393,44.4935039,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Naama Cafè</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3463467,44.497752,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Mexicana</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.348225,44.4870482,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Piedra del Sol</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3455744,44.4967278,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ristorante India</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.339212,44.496699,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sentaku Ramen Bar</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3359557,44.498351,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ristorante Higashi</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3361805,44.4984763,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Singapore Asian Fusion</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3453486,44.4973242,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Yoshi Ramen</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3363326,44.4961338,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sentaku Gyoza Bar</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.338651,44.4909628,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Yoma</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.343923,44.4953201,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Yuzuya</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.342311,44.507738,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sushi Corner Bologna (Mercato delle Erbe)</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.338024,44.495746,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Atene Ristorante Greco</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3311706,44.5017431,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Delogo cucina Greca</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3599427,44.4961058,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kabulàgna</name>
+        <description>IMPORTANTE: Al posto di un piatto unico vegetariano, prendere vari antipasti vegetariani</description>
+        <styleUrl>#icon-1743-795548-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3213008,44.501469,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Nippon Ramen</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3480012,44.494599,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Guero</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3446555,44.4967696,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Seta Sushi Lab</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3485803,44.4929046,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Vegano e altro</name>
+      <Placemark>
+        <name><![CDATA[Bio's Kitchen Bologna]]></name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3420948,44.4974891,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Botanica Lab Cucina</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3413207,44.4933727,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fram Bistrot Bioveg - Bologna</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3492167,44.4884235,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zenzero Bologna</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3379517,44.5037422,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cinque Sapori Cucina e Bottega</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3278338,44.4944701,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>AlchemillaBio Bologna</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3509879,44.500479,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ling’s Ravioleria Migrante</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.366605,44.4851536,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Drogheria delle Api</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3698795,44.4773714,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fermento</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3455079,44.5096195,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>La Svolta - Cucina di Ragione</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3351159,44.4919149,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>RapaRossa GastroBistronomia</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3479876,44.4875853,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Canapè Incontro</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3310526,44.4943129,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Basilico Food Bologna</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3612935,44.4931917,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Uno Caffé Olistico</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3462072,44.4974458,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Jukebox Cafe</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3475646,44.4972505,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Lestofante - Bologna</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3520177,44.4900014,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ristorante Pizzeria Pepperoni</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.343086,44.4759677,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Il Rovescio</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3309875,44.4955577,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Berberè - Petroni</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3518944,44.4949195,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>PUMMÀ Bologna</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3355636,44.4933879,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ranzani 13</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3577483,44.5009072,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fra Diavolo Pizzeria</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.346845,44.4933292,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Porta Pazienza</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3890095,44.5122731,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Papeo - Pizzeria, ristorante</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3181322,44.5140868,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA['O Fiore Mio Pizze di Strada]]></name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3366421,44.4941422,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zapap Bologna</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.333033,44.4955902,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Borgo Mameli</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3267357,44.4990915,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Banco Del Vino</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3439926,44.4969284,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Il Cameo</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3346902,44.5023073,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Pappare' Bologna]]></name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.346525,44.494757,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>La Buàt Bologna</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3717442,44.5038347,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>a Casa Mia Bistrot</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3335646,44.5029873,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tricheco Osteria</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3489731,44.4882347,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[L'Ora d'Aria]]></name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3391358,44.4982892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Welldone Burger</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3456913,44.4937203,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Hamerica's - Zamboni]]></name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3529244,44.4972331,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Wolf</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3665071,44.4927334,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Osteria La Frasca</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3273845,44.4946266,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ristorante Libra Antiaging Italian Food</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3376868,44.4945418,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Caffè Ristretto</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3398432,44.4956178,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Il Punto</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3305994,44.4972635,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>BrewDog Bar</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3298628,44.4964547,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kabulàgna</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3213008,44.501469,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Delogo - Taverna Greca</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3599238,44.4961856,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Atene</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3311706,44.5017431,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Yuzuya</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3423803,44.507986,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sentaku Ramen Bar</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3357234,44.4983343,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Yoshi Ramen</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3363326,44.4961338,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ristorante Singapore Asian Fusion</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3453486,44.4973242,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>India</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3392563,44.4966526,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Piedra del Sol</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3455744,44.4967278,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Naama Cafè</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3463467,44.497752,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Habesha Restaurant</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3521205,44.512625,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ristorante Africano Adal</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3508864,44.5145,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ristorante Senafe</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3433371,44.5131018,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ristorante Pars</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3538445,44.5091484,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Guero</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3446555,44.4967696,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>La Frasca al Vicolo</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3444393,44.4938741,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Ca' Shin]]></name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3033984,44.4440608,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dulcamara</name>
+        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.460126,44.403562,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Brunch e Colazioni</name>
+      <Placemark>
+        <name>Pappare</name>
+        <styleUrl>#icon-1534-0F9D58-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3465249999999,44.494757,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Caffè Letterario - Sebastiano Caridi</name>
+        <styleUrl>#icon-1534-0F9D58-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3423527,44.4963716,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>La Borbonica</name>
+        <styleUrl>#icon-1534-0F9D58-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3402586,44.4990062,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Il Cameo</name>
+        <styleUrl>#icon-1534-0F9D58-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.334671,44.5023548,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Guero</name>
+        <styleUrl>#icon-1534-0F9D58-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3446555,44.4967696,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Pizza al taglio</name>
+      <Placemark>
+        <name>Pistamentuccia - Pizza al taglio Romana</name>
+        <styleUrl>#icon-1651-C2185B-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3410623,44.4988893,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>PizzArtist - Via Marsala</name>
+        <styleUrl>#icon-1651-C2185B-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.347479,44.496723,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ranzanino</name>
+        <styleUrl>#icon-1651-C2185B-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3384407999999,44.4963138,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA['O Fiore Mio Pizze di Strada]]></name>
+        <styleUrl>#icon-1651-C2185B-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3366761,44.4941738,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Serata</name>
+      <Placemark>
+        <name>I Conoscenti</name>
+        <styleUrl>#icon-1613-FF5252-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3416667,44.4963889,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Re Sole Bistrot</name>
+        <styleUrl>#icon-1613-FF5252-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3395879,44.4851089,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fourghetti</name>
+        <styleUrl>#icon-1613-FF5252-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3612014,44.4812752,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>La Bottega di Franco</name>
+        <styleUrl>#icon-1613-FF5252-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3106059,44.5184779,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Cocktail</name>
+      <Placemark>
+        <name>Casa Minghetti</name>
+        <description><![CDATA[Gourmet<br>Aperto]]></description>
+        <styleUrl>#icon-1517-0097A7-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3449596,44.4918235,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>I Conoscenti</name>
+        <description>Gourmet</description>
+        <styleUrl>#icon-1517-0097A7-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3417589000001,44.4964892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Camera con Vista Bistrot</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3477708,44.492687,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NU Lounge Bar</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.344488,44.493046,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[L'ora d'aria]]></name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.339086,44.498295,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Caffè Zanarini</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3432387,44.4914547,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Le Stanze</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3477849999999,44.4980749,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fourghetti</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3612014,44.4812752,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Boavista Snc Di Bonazza Alessandro</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.338698,44.494572,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Macondo - Cocktail Bar</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3344509,44.495524,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dal Sarto</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3450863,44.4989035,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Re Sole Bistrot</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3395071,44.4849207,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Borgo Mameli</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3264993,44.4991548,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sartoria Gastronomica</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3520953,44.4939186,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fior di Sale</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3442642,44.4952546,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Emporio 1920</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3456388,44.4903854,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bar Volare</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3376842,44.4963869,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Guero</name>
+        <styleUrl>#icon-1517-0097A7-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3446555,44.4967696,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Birra artigianale</name>
+      <Placemark>
+        <name>Birra Cerqua</name>
+        <description><![CDATA[Birra artigianale<br>Brew pub]]></description>
+        <styleUrl>#icon-1879-F9A825-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3545887,44.4917894,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tana del luppolo</name>
+        <description>Birra artigianale</description>
+        <styleUrl>#icon-1879-F9A825-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3332928,44.4996503,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ranzani13, Bologna</name>
+        <description>Pizza</description>
+        <styleUrl>#icon-1879-F9A825-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3578363,44.5009413,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Astral Beers Pub</name>
+        <description>Birra artigianale</description>
+        <styleUrl>#icon-1879-F9A825-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3464549,44.491029,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>LOrtica</name>
+        <description>Birra artigianale</description>
+        <styleUrl>#icon-1879-F9A825-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3495624,44.4989275,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Baladin Bologna</name>
+        <description>Birra artigianale</description>
+        <styleUrl>#icon-1879-F9A825-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.344936,44.493388,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Il Punto</name>
+        <description>Birra artigianale</description>
+        <styleUrl>#icon-1879-F9A825-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3306081000001,44.4972343,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>BrewDog Bar Bologna</name>
+        <description>Birra artigianale</description>
+        <styleUrl>#icon-1879-F9A825-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3298628,44.4964547,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zapap Pratello</name>
+        <description><![CDATA[Birra artigianale<br>Brew pub]]></description>
+        <styleUrl>#icon-1879-F9A825-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.333033,44.4955902,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Birreria Popolare</name>
+        <description>Birra artigianale</description>
+        <styleUrl>#icon-1879-F9A825-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3474944,44.4935305,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>MADAMA Beerstrò San Vitale 31</name>
+        <styleUrl>#icon-1879-F9A825-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.35162,44.494179,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Borgo Mameli</name>
+        <styleUrl>#icon-1879-F9A825-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3264993,44.4991548,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fermento</name>
+        <styleUrl>#icon-1879-F9A825-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3455079,44.5096195,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name><![CDATA[All'aperto]]></name>
+      <Placemark>
+        <name>La Bottega di Franco</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3106059,44.5184779,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>I Conoscenti - cocktail e cucina</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3417031,44.4963978,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Il Cameo</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3346902,44.5023073,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Caffè Letterario, Pasticceria, Bistrot, Bar, Torte, Eventi - Sebastiano Caridi</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3424429,44.4963844,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Botanica Lab Cucina</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3412641,44.4933943,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Cinque Sapori Cucina e Bottega</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3279932,44.4945922,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Casa Minghetti</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3449615,44.4918234,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Camera con Vista Bistrot</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3478024,44.4926961,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Camera A Sud</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3471516,44.4963594,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NU Lounge Bar</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.344512,44.493062,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[L'Ora d'Aria]]></name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3391358,44.4982892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Macondo - Cocktail Bar</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3344954,44.4954801,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dal Sarto</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3450385,44.4991408,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Borgo Mameli</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3267357,44.4990915,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Sartoria Gastronomica</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3520953,44.4939186,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bar Volare</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3376842,44.4963869,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Birra Cerqua</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3546156,44.4917471,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Il Punto</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3305994,44.4972635,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zapap Bologna</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.333033,44.4955902,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Birreria Popolare</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3474943,44.4935305,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Madama Beerstrò - Bologna</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3514616,44.4941966,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fra Diavolo Pizzeria</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.346845,44.4933292,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Banco Del Vino</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3439926,44.4969284,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ruggine</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3479748,44.4930618,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Moustache</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3493482,44.498184,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Twinside</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3433054,44.4989803,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pane e Panelle</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.35538,44.4939909,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Tricheco Osteria</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3489731,44.4882347,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Il Piatto Rotto</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3456745,44.4989823,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Osteria Bartolini</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3365249,44.4937324,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>La Montanarina Bistrò</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.345497,44.4987162,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Enoteca Storica Faccioli</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3443619,44.4952147,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>La Taglieria</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3339711,44.5009626,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vineria Favalli</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3471804,44.4930074,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ein Prosit</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3392199,44.5027627,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pescaria</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3390936,44.4965178,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Guero</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3446555,44.4967696,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Ca' Shin]]></name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3033984,44.4440608,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dulcamara</name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.460126,44.403562,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Cantinella | Ristoro all'Arena del Sole]]></name>
+        <styleUrl>#icon-1700-FFD600-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.343528,44.4996796,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

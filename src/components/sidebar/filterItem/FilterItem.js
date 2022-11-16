@@ -2,11 +2,9 @@ import React, { useContext, useState } from 'react'
 import { DrinkNFood } from '../../../context/Context'
 import './filterItem.css'
 
-var selectedFilters = []
-
 const FilterItem = ({ filter }) => {
 
-  let { setSelectedFiltersState } = useContext(DrinkNFood)
+  let { selectedFiltersState, setSelectedFiltersState } = useContext(DrinkNFood)
 
   const [activeBtn, setActiveBtn] = useState(false)
 
@@ -16,12 +14,11 @@ const FilterItem = ({ filter }) => {
     
     setActiveBtn(activeBtn => !activeBtn)
 
-    if (selectedFilters.indexOf(filter) === -1) {
-      selectedFilters = [...selectedFilters, filter]
+    if (selectedFiltersState.indexOf(filter) === -1) {
+      setSelectedFiltersState(selectedFiltersState => [...selectedFiltersState, filter]) 
     } else {
-      selectedFilters = selectedFilters.filter(el => el !== filter)
+      setSelectedFiltersState(selectedFiltersState => selectedFiltersState.filter(el => el !== filter))
     }
-    setSelectedFiltersState(selectedFilters)
   }
 
   return (

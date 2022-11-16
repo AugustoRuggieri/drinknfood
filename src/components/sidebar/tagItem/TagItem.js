@@ -2,11 +2,9 @@ import React, { useState, useEffect, useContext } from 'react'
 import './TagItem.css'
 import { DrinkNFood } from '../../../context/Context'
 
-var selectedTags = []
-
 const TagItem = ({ tag }) => {
 
-  let { setSelectedTagsState } = useContext(DrinkNFood)
+  let { selectedTagsState, setSelectedTagsState } = useContext(DrinkNFood)
 
   const [activeBtn, setActiveBtn] = useState(false)
 
@@ -16,12 +14,11 @@ const TagItem = ({ tag }) => {
 
     setActiveBtn(activeBtn => !activeBtn)
 
-    if (selectedTags.indexOf(tag) === -1) {
-      selectedTags = [...selectedTags, tag]
+    if (selectedTagsState.indexOf(tag) === -1) {
+      setSelectedTagsState(selectedTagsState => [...selectedTagsState, tag]) 
     } else {
-      selectedTags = selectedTags.filter(el => el !== tag)
+      setSelectedTagsState(selectedTagsState => selectedTagsState.filter(el => el !== tag))
     }
-    setSelectedTagsState(selectedTags)
   }
 
   return (
