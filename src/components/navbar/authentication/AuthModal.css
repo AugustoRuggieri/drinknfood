@@ -1,0 +1,39 @@
+#auth-modal {
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 20% auto;
+    padding: 2rem;
+    width: 20%;
+}
+
+.login-container, .signup-container {
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    table-layout: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+table tr {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab {
+    cursor: pointer;
+    padding: .2rem 1.4rem .2rem 1.4rem;
+    width: 50%;
+}

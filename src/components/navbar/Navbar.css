@@ -1,0 +1,21 @@
+.navbar {
+    background: #696969;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+    width: 70%;
+    margin: 0 auto;
+    top: 0;
+}
+
+.logo {
+    margin-left: 1.5rem;
+}
+
+.user-icon {
+    font-size: 1.4rem;
+    margin-right: 1.5rem;
+    cursor: pointer;
+}

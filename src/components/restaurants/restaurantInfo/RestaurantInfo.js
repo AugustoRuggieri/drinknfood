@@ -36,7 +36,7 @@ const RestaurantInfo = () => {
   useEffect(() => {
     fetchCoordinates()
   }, [])
-  
+
 
   return (
     <div className='restaurant-info'>

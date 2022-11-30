@@ -26,7 +26,7 @@ const Sidebar = () => {
     }
 
     const fetchFiltersFromDB = async () => {
-        
+
         setFilters(filters => [])
 
         const filtersRef = collection(db, "filters");
@@ -48,13 +48,15 @@ const Sidebar = () => {
     return (
         <div className='sidebar'>
             <div className='tags-container'>
+                <h6>Seleziona il tipo di cucina</h6>
                 {tags.map((tag, index) => <TagItem key={index} tag={tag} />)}
             </div>
 
             <hr />
 
             <div className='filters-container'>
-                {filters.map((filter, index) => <FilterItem key={index} filter={filter} />)}  
+                <h6>Filtri</h6>
+                {filters.map((filter, index) => <FilterItem key={index} filter={filter} />)}
             </div>
         </div>
     )
