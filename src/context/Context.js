@@ -6,9 +6,7 @@ import { auth, db } from '../firebase'
 export const DrinkNFood = createContext()
 
     /* const [inputText, setInputText] = useState("")
-    const [inputList, setInputList] = useState([])
-    const [user, setUser] = useState(null) */
-    
+    const [inputList, setInputList] = useState([])*/
 
     /* useEffect(() => {
         if (user) {
@@ -26,14 +24,7 @@ export const DrinkNFood = createContext()
                 unsubscribe()
             }
         }
-    }, [user])
-
-    useEffect(() => {
-        onAuthStateChanged(auth, user => {
-            if (user) setUser(user)
-            else setUser(null)
-        })
-    }, []) */
+    }, [user])*/
 
 export const DrinkNFoodProvider = DrinkNFood.Provider
 

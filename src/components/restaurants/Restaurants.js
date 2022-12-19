@@ -1,5 +1,5 @@
 import { collection, getDocs, query, where } from 'firebase/firestore'
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useRef, useCallback } from 'react'
 import { DrinkNFood } from '../../context/Context'
 import { db } from '../../firebase'
 import RestaurantCard from './restaurantCard/RestaurantCard'
@@ -8,6 +8,11 @@ import './restaurants.css'
 const Restaurants = () => {
 
   let { restaurantList, setRestaurantList, selectedTagsState, selectedFiltersState } = useContext(DrinkNFood)
+
+  /* const observer = useRef()
+  const lastRestaurantRef = useCallback(node => {
+    console.log(node)
+  }) */
 
   const fetchRestaurants = async () => {
 
@@ -18,7 +23,7 @@ const Restaurants = () => {
       queryWhere = where("tags", "array-contains-any", selectedTagsState)
     }
 
-    const collectionRef = collection(db, 'restaurants')
+    const collectionRef = collection(db, 'imported-restaurants')
     const q = query(collectionRef, queryWhere)
     const querySnapshot = await getDocs(q)
 
@@ -49,9 +54,14 @@ const Restaurants = () => {
     <div className='restaurant-page'>
       <div className='restaurant-list'>
         {restaurantList.map((restaurant, index) => {
-          return (
-            <RestaurantCard key={index} restaurant={restaurant} />
-          )
+          if (restaurantList.length === index + 1) {
+            console.log(index + " => " + restaurant)
+            return <RestaurantCard key={index} restaurant={restaurant} />
+          } else {
+            return (
+              <RestaurantCard key={index} restaurant={restaurant} />
+            )
+          }
         })}
       </div>
     </div>

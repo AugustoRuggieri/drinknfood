@@ -21,8 +21,12 @@ const AuthModal = () => {
   useEffect(() => {
     if (tabValue == 1) {
       setModalContent(<SignUp />)
+      document.getElementById('login-tab').classList.remove('selected')
+      document.getElementById('signup-tab').classList.add('selected')
     } else {
       setModalContent(<Login />)
+      document.getElementById('signup-tab').classList.remove('selected')
+      document.getElementById('login-tab').classList.add('selected')
     }
   }, [tabValue])
 
@@ -34,13 +38,13 @@ const AuthModal = () => {
           <table>
             <thead>
               <tr>
-                <th className='tab' onClick={() => setTabValue(0)}>Log in</th>
-                <th className='tab' onClick={() => setTabValue(1)}>Sign up</th>
+                <th className='tab' id='login-tab' onClick={() => setTabValue(0)}>Log in</th>
+                <th className='tab' id='signup-tab' onClick={() => setTabValue(1)}>Sign up</th>
               </tr>
             </thead>
           </table>
         </header>
-        <div>
+        <div className='modal-body'>
           {modalContent}
         </div>
       </div>

@@ -1,27 +1,22 @@
 import React from 'react'
 import { db } from '../firebase'
-import { doc, setDoc } from 'firebase/firestore'
+import { arrayRemove, doc, updateDoc } from 'firebase/firestore'
 
-const SingleEntry = ({ input, inputList, user }) => {
+const SingleEntry = ({ restaurantID, tag, tags, setTags }) => {
 
-  const removeItemFromList = async (input) => {
-    const collectionRef = doc(db, "entries", user.uid)
+  const removeItemFromTagList = async (tag) => {
 
-    try {
-      await setDoc(collectionRef,
-        { entries: inputList.filter((entry) => entry !== input) },
-        { merge: true }
-      )
-      alert("Oggetto rimosso correttamente")
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
+    const restaurantRef = doc(db, "imported-restaurants", restaurantID)
+    await updateDoc(restaurantRef, { 
+      tags: arrayRemove(...tag)
+    })
+    setTags(tags => tags.filter((el) => el !== tag))
+  }  
 
   return (
     <div className='single-entry'>
-      {input}
-      <div onClick={() => removeItemFromList(input)}>x</div>
+      {tag}
+      <div className='deleteTag-btn' onClick={() => removeItemFromTagList(tag)}>x</div>
     </div>
   )
 }

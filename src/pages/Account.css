@@ -1,0 +1,18 @@
+.account-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-title {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.select, button {
+    width: 30%;
+}
+
+.import-btn {
+    margin-top: 2.5rem;
+}

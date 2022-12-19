@@ -12,10 +12,16 @@
 
 .logo {
     margin-left: 1.5rem;
+    cursor: pointer;
+}
+
+.auth-btn {
+    display: flex;
 }
 
 .user-icon {
     font-size: 1.4rem;
+    margin-left: 1.4rem;
     margin-right: 1.5rem;
     cursor: pointer;
 }

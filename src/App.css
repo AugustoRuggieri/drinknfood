@@ -34,26 +34,3 @@ input {
     margin-top: 15px;
     padding: 10px 20px
 }
-
-.entries-list {
-    background-color: #494949;
-    display: flex;
-    margin-top: 15px;
-}
-
-.single-entry {
-    background-color: #646;
-    border-radius: 50px;
-    color: #fff;
-    display: flex;
-    align-items: start;
-    margin: 5px;
-    padding: 5px 15px 9px 15px
-}
-
-.single-entry div {
-    background-color: transparent;
-    border-style: none;
-    cursor: pointer;
-    margin-left: 15px;
-}
