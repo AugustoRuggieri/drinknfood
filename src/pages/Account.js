@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { arrayUnion, collection, doc, addDoc, GeoPoint, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import { collection, doc, addDoc, GeoPoint, getDocs, query, updateDoc, where } from 'firebase/firestore'
 import { db } from '../firebase'
 import './Account.css'
 
@@ -34,32 +34,9 @@ const Account = () => {
             tagXmlNode.children[2].children[0].textContent.toString().split(',')[1]],
             tags: tagXmlNode.parentNode.children[0].textContent.toLowerCase()
           })
-
-          /* const ref = collection(db, 'imported-restaurants')
-          const q = query(ref, where('name', '==', tagXmlNode.children[0].textContent.toLowerCase()))
-          const snapshot = await getDocs(q)
-
-          // Check if restaurants already exists in the db
-          if (snapshot.size > 0) {
-            snapshot.forEach(async (restaurant) => {
-              const restRef = doc(db, 'imported-restaurants', where('name', '==', restaurant))
-              await updateDoc(restRef, {
-                tags: arrayUnion(tagXmlNode.parentNode.children[0].textContent.toLowerCase())
-              })
-            })
-          } else {
-            // If not, add a new document with a generated id
-            await addDoc(collection(db, 'imported-restaurants'), {
-              name: tagXmlNode.children[0].textContent.toLowerCase(),
-              coordinates: new GeoPoint(+tagXmlNode.children[2].children[0].textContent.toString().split(',')[0],
-                +tagXmlNode.children[2].children[0].textContent.toString().split(',')[1]),
-              tags: new Array(tagXmlNode.parentNode.children[0].textContent.toLowerCase())
-            })
-          } */
-
         })
 
-        // Trova doppioni nell'array in base alla property name
+        // Find duplicates checking name property
         const result = []
         restaurants.forEach((object) => {
           const existing = result.filter((item) => item.name === object.name)

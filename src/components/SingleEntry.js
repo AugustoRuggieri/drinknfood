@@ -8,7 +8,7 @@ const SingleEntry = ({ restaurantID, tag, tags, setTags }) => {
 
     const restaurantRef = doc(db, "imported-restaurants", restaurantID)
     await updateDoc(restaurantRef, { 
-      tags: arrayRemove(...tag)
+      tags: arrayRemove(tag)
     })
     setTags(tags => tags.filter((el) => el !== tag))
   }  

@@ -6,11 +6,15 @@
     text-transform: capitalize;
 }
 
+.tags-section {
+    margin: 0 auto;
+    width: 35%;
+}
+
 .tags-container {
     margin: 0 auto;
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
-    width: 35%;
 }
 
 .single-entry {
@@ -29,4 +33,9 @@
     border-style: none;
     cursor: pointer;
     font-size: 1.4rem;
+}
+
+.tags-select {
+    display: flex;
+    flex-direction: column;
 }
