@@ -38,8 +38,8 @@ const AuthModal = () => {
           <table>
             <thead>
               <tr>
-                <th className='tab' id='login-tab' onClick={() => setTabValue(0)}>Log in</th>
-                <th className='tab' id='signup-tab' onClick={() => setTabValue(1)}>Sign up</th>
+                <th className='tab' id='login-tab' onClick={() => setTabValue(0)}>Accedi</th>
+                <th className='tab' id='signup-tab' onClick={() => setTabValue(1)}>Registrati</th>
               </tr>
             </thead>
           </table>

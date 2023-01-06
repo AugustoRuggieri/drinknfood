@@ -7,6 +7,7 @@ import Navbar from '../components/navbar/Navbar'
 import AuthModal from '../components/navbar/authentication/AuthModal'
 import { auth } from '../firebase'
 import { onAuthStateChanged } from "@firebase/auth"
+import Footer from '../components/footer/Footer'
 
 const Layout = () => {
 
@@ -46,8 +47,8 @@ const Layout = () => {
                     <div className='page'>
                         <Outlet />
                     </div>
-
                 </div>
+                <Footer />
             </DrinkNFood.Provider>
         </>
     )

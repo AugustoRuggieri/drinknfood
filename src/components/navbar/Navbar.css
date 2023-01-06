@@ -1,13 +1,17 @@
 .navbar {
-    background: #696969;
+    background: rgba(51, 126, 163, 0.6);
     color: #fff;
+    height: 5rem;
+    top: 0;
+}
+
+.navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 5rem;
+    height: 100%;
     width: 70%;
     margin: 0 auto;
-    top: 0;
 }
 
 .logo {

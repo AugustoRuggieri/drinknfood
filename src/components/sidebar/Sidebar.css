@@ -1,7 +1,7 @@
 .sidebar {
     background: #fcfcfb;
     padding-top: 25px;
-    height: 100%;
+    height: fit-content;
     width: 20%;
 }
 
@@ -16,6 +16,6 @@ hr {
     width: 80%;
 }
 
-.filters-container {
+.filters-list {
     padding-top: 15px;
 }

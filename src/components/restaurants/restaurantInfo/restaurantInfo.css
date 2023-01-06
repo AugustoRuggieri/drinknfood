@@ -6,26 +6,42 @@
     text-transform: capitalize;
 }
 
-.tags-section {
+.container-row {
     margin: 0 auto;
-    width: 35%;
+    width: auto;
+    display: flex;
 }
 
-.tags-container {
+.half-row-section {
+    width: 50%;
+}
+
+.list-container {
     margin: 0 auto;
     margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 4.5rem;
+    width: 50%;
 }
 
 .single-entry {
-    background-color: #646;
-    border-radius: 50px;
     color: #fff;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-radius: 50px;
     display: flex;
     align-items:center;
     justify-content: space-between;
     margin: 5px;
-    padding: 5px 15px 9px 15px
+    padding: 15px;
+    text-transform: capitalize;
+}
+
+#tags-container .single-entry {
+    background: rgba(57, 41, 107, 0.6);
+}
+
+#filters-container .single-entry {
+    background-color: rgba(86, 122, 37, 0.6);
 }
 
 .deleteTag-btn {
@@ -35,7 +51,29 @@
     font-size: 1.4rem;
 }
 
+.user-entry {
+    margin-top: 2.5rem;
+}
+
+.input-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .tags-select {
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.tags-select h4 {
+    margin-bottom: 1.4rem;
+}
+
+.btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 6rem;
 }

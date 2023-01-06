@@ -1,5 +1,7 @@
 .filter-item {
-    background: #fff;
+    background: rgba(86, 122, 37, 0.6);
+    color: #fff;
+    font-weight: bold;
     border: 1px solid #f5f5f5;
     border-radius: 25px;
     text-align: center;

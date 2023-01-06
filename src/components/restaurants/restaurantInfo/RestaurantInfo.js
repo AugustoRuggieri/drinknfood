@@ -3,16 +3,20 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { DrinkNFood } from '../../../context/Context'
 import './restaurantInfo.css'
 import MapComponent from './mapComponent/MapComponent'
-import { collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import { addDoc, collection, doc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import SingleEntry from '../../SingleEntry'
 
 const RestaurantInfo = () => {
 
+  const [restaurantID, setRestaurantID] = useState('')
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null })
   const [tags, setTags] = useState([])
-  const [restaurantID, setRestaurantID] = useState('')
+  const [filters, setFilters] = useState([])
   const [tagsArr, setTagsArr] = useState([])
+  const [filtersArr, setFiltersArr] = useState([])
+  const [newTagEntry, setNewTagEntry] = useState('')
+  const [newFilterEntry, setNewFilterEntry] = useState('')
 
   let { selectedTagsState } = useContext(DrinkNFood)
 
@@ -32,8 +36,9 @@ const RestaurantInfo = () => {
       })
       if (doc.data().tags.length !== 0) {
         setTags([...doc.data().tags])
-      } else {
-        return
+      }
+      if (doc.data().filters.length !== 0) {
+        setFilters([...doc.data().filters])
       }
     })
   }
@@ -42,25 +47,83 @@ const RestaurantInfo = () => {
     const tagsRef = collection(db, 'tags')
     const querySnapshot = await getDocs(tagsRef)
     querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data().name)
       setTagsArr(tagsArr => [...tagsArr, doc.data().name])
+    })
+  }
+
+  const fetchFiltersFromDB = async () => {
+    const filtersRef = collection(db, 'filters')
+    const querySnapshot = await getDocs(filtersRef)
+    querySnapshot.forEach((doc) => {
+      setFiltersArr(filtersArr => [...filtersArr, doc.data().name])
+    })
+  }
+
+  // Check to prevent showing tags already associated with the restaurant in the select 
+  const tagsArrFilter = () => {
+    setTagsArr([])
+    tagsArr.forEach((tag) => {
+      if (!tags.includes(tag)) {
+        setTagsArr(tagsArr => [...tagsArr, tag])
+      }
+    })
+  }
+
+  const filtersArrFilter = () => {
+    setFiltersArr([])
+    filtersArr.forEach((filter) => {
+      if (!filters.includes(filter)) {
+        setFiltersArr(filtersArr => [...filtersArr, filter])
+      }
     })
   }
 
   const addTag = async (newTag) => {
     setTags(tags => [...tags, newTag])
-
     const restaurantRef = doc(db, 'imported-restaurants', restaurantID)
     await updateDoc(restaurantRef, {
       tags: [...tags, newTag]
     })
   }
 
+  const addFilter = async (newFilter) => {
+    setFilters(filters => [...filters, newFilter])
+    const restaurantRef = doc(db, 'imported-restaurants', restaurantID)
+    await updateDoc(restaurantRef, {
+      filters: [...filters, newFilter]
+    })
+  }
+
+  const addNewTagEntry = async (tagEntry) => {
+    addTag(tagEntry)
+    await addDoc(collection(db, 'tags'), {
+      name: tagEntry
+    })
+    setNewTagEntry('')
+  }
+
+  const addNewFilterEntry = async (filterEntry) => {
+    addFilter(filterEntry)
+    await addDoc(collection(db, 'filters'), {
+      name: filterEntry
+    })
+    setNewFilterEntry('')
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0)
     fetchCoordinates()
     fetchTagsFromDB()
+    fetchFiltersFromDB()
   }, [])
+
+  useEffect(() => {
+    tagsArrFilter()
+  }, [tags])
+
+  useEffect(() => {
+    filtersArrFilter()
+  }, [filters])
 
   return (
     <div className='restaurant-info'>
@@ -68,41 +131,97 @@ const RestaurantInfo = () => {
 
       <MapComponent coordinates={coordinates} />
 
-      <section className='tags-section'>
-        <h4>Tags</h4>
-        <div className='tags-container'>
-          {tags.length !== 0
-            ?
-            tags.map((tag, index) => {
-              return (
-                <SingleEntry
-                  key={index}
-                  tag={tag}
-                  tags={tags}
-                  setTags={setTags}
-                  restaurantID={restaurantID}
-                />
-              )
-            })
-            :
-            null
-          }
-        </div>
+      <div className='tags-and-filters-wrapper'>
+        <div className='container-row'>
+          <div className='half-row-section'>
+            <h3>Tag associate a questo locale: </h3>
+            <div className='list-container' id='tags-container'>
+              {tags.length !== 0
+                ?
+                tags.map((tag, index) => {
+                  return (
+                    <SingleEntry
+                      key={index}
+                      id="tag"
+                      text={tag}
+                      setTags={setTags}
+                      restaurantID={restaurantID}
+                    />
+                  )
+                })
+                :
+                null
+              }
+            </div>
+          </div>
 
-        <div className='tags-select'>
-          <select onChange={(e) => addTag(e.target.value)}>
-            <option></option>
-            {tagsArr.map((tag) => {
-              return (
-                <option>{tag}</option>
-              )
-            })}
-          </select>
-          <button>Aggiungi tag</button>
+          <div className='half-row-section'>
+            <h3>Filtri associati a questo locale: </h3>
+            <div className='list-container' id='filters-container'>
+              {filters.length !== 0
+                ?
+                filters.map((filter, index) => {
+                  return (
+                    <SingleEntry
+                      key={index}
+                      id="filter"
+                      text={filter}
+                      setFilters={setFilters}
+                      restaurantID={restaurantID}
+                    />
+                  )
+                })
+                :
+                null
+              }
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
-      <button onClick={() => navigate(-1)}>Torna ai risultati</button>
+      <div className='select-wrapper'>
+        <div className='container-row'>
+          <div className='half-row-section'>
+            <h4>Seleziona una tag da associare a questo locale: </h4>
+            <select onChange={(e) => addTag(e.target.value)}>
+            <option selected disabled></option>
+              {tagsArr.map((tag, index) => {
+                return (
+                  <option key={index}>{tag}</option>
+                )
+              })}
+            </select>
+            <div className='user-entry'>
+              <h4>Aggiungi una nuova tag</h4>
+              <div className='input-entry'>
+                <input onChange={(e) => setNewTagEntry(e.target.value)} value={newTagEntry} placeholder='Scrivi qualcosa...' />
+                <button onClick={() => addNewTagEntry(newTagEntry)}>Aggiungi tag</button>
+              </div>
+            </div>
+          </div>
+          <div className='half-row-section'>
+            <h4>Seleziona un filtro da associare a questo locale: </h4>
+            <select onChange={(e) => addFilter(e.target.value)}>
+              <option selected disabled></option>
+              {filtersArr.map((filter, index) => {
+                return (
+                  <option key={index}>{filter}</option>
+                )
+              })}
+            </select>
+            <div className='user-entry'>
+              <h4>Aggiungi un nuovo filtro</h4>
+              <div className='input-entry'>
+                <input onChange={(e) => setNewFilterEntry(e.target.value)} value={newFilterEntry} placeholder='Scrivi qualcosa...' />
+                <button onClick={() => addNewFilterEntry(newFilterEntry)}>Aggiungi filtro</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='btn-wrapper'>
+        <button onClick={() => navigate(-1)}>Torna ai risultati</button>
+      </div>
     </div>
   )
 }

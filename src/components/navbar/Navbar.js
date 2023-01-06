@@ -23,10 +23,12 @@ const Navbar = () => {
 
     return (
         <div className='navbar'>
-            <h3 className='logo' onClick={() => navigate('/')}>drink n food</h3>
-            <div className='auth-btn'>
-                <h3>{user ? <span onClick={logOut}>Esci</span> : <span onClick={userAuth}>Accedi / Registrati</span>}</h3>
-                <FontAwesomeIcon icon={faUser} className="user-icon" onClick={() => navigate('/account')} />
+            <div className='navbar-container'>
+                <h3 className='logo' onClick={() => navigate('/')}>drink n food</h3>
+                <div className='auth-btn'>
+                    <h3>{user ? <span onClick={logOut}>Esci</span> : <span onClick={userAuth}>Accedi / Registrati</span>}</h3>
+                    <FontAwesomeIcon icon={faUser} className="user-icon" onClick={() => navigate('/account')} />
+                </div>
             </div>
         </div>
     )

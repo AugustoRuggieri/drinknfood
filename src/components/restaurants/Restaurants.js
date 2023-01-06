@@ -14,8 +14,11 @@ const Restaurants = () => {
     console.log(node)
   }) */
 
-  const fetchRestaurants = async () => {
+  const totalNumOfRestaurants = 0;
+  const increase = 9;
 
+  const fetchRestaurants = async () => {
+    debugger
     // query
     var queryWhere = where("name", "!=", "")
 
@@ -32,7 +35,7 @@ const Restaurants = () => {
     // filter
     querySnapshot.forEach((doc) => {
       if (selectedFiltersState.length > 0) {
-        if (selectedFiltersState.every(el => doc.data().filters.includes(el))) {
+        if (selectedFiltersState.every(el => doc.data().filters?.includes(el))) {
           newRestaurantList = [...newRestaurantList, doc.data().name]
         }
       } else {
@@ -53,7 +56,7 @@ const Restaurants = () => {
   return (
     <div className='restaurant-page'>
       <div className='restaurant-list'>
-        {restaurantList.map((restaurant, index) => {
+        {restaurantList.slice(0, 10).map((restaurant, index) => {
           if (restaurantList.length === index + 1) {
             console.log(index + " => " + restaurant)
             return <RestaurantCard key={index} restaurant={restaurant} />
@@ -63,6 +66,11 @@ const Restaurants = () => {
             )
           }
         })}
+      </div>
+      <div className='show-more-results'>
+        <button id='show-more-btn'>
+          Mostra altri risultati...
+        </button>
       </div>
     </div>
   )

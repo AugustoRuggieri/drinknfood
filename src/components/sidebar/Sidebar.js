@@ -11,30 +11,20 @@ const Sidebar = () => {
     const [filters, setFilters] = useState([])
 
     const fetchTagsFromDB = async () => {
-
         setTags(tags => [])
-
         const tagsRef = collection(db, "tags");
-
         const q = query(tagsRef, where("name", "!=", ""))
-
         const querySnapshot = await getDocs(q);
-
         querySnapshot.forEach((doc) => {
             setTags(tags => [...tags, doc.data().name]);
         })
     }
 
     const fetchFiltersFromDB = async () => {
-
         setFilters(filters => [])
-
         const filtersRef = collection(db, "filters");
-
         const q = query(filtersRef, where("name", "!=", ""))
-
         const querySnapshot = await getDocs(q);
-
         querySnapshot.forEach((doc) => {
             setFilters(filters => [...filters, doc.data().name]);
         })
@@ -47,14 +37,14 @@ const Sidebar = () => {
 
     return (
         <div className='sidebar'>
-            <div className='tags-container'>
-                <h6>Seleziona il tipo di cucina</h6>
+            <div className='tags-list'>
+                <h6>Tipo di cucina</h6>
                 {tags.map((tag, index) => <TagItem key={index} tag={tag} />)}
             </div>
 
             <hr />
 
-            <div className='filters-container'>
+            <div className='filters-list'>
                 <h6>Filtri</h6>
                 {filters.map((filter, index) => <FilterItem key={index} filter={filter} />)}
             </div>
