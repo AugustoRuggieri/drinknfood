@@ -9,6 +9,10 @@
     margin-bottom: 4rem;
 }
 
+label {
+    font-weight: bold;
+}
+
 .select, button {
     width: 30%;
 }

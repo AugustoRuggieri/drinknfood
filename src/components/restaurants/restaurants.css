@@ -5,3 +5,10 @@
 .restaurant-list {
     margin: 15px;
 }
+
+.show-more-results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 5rem;
+}

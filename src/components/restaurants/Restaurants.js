@@ -1,5 +1,5 @@
 import { collection, getDocs, query, where } from 'firebase/firestore'
-import React, { useEffect, useContext, useRef, useCallback } from 'react'
+import React, { useEffect, useContext, useState, useRef, useCallback } from 'react'
 import { DrinkNFood } from '../../context/Context'
 import { db } from '../../firebase'
 import RestaurantCard from './restaurantCard/RestaurantCard'
@@ -14,8 +14,7 @@ const Restaurants = () => {
     console.log(node)
   }) */
 
-  const totalNumOfRestaurants = 0;
-  const increase = 9;
+  const [increase, setIncrease] = useState(10)
 
   const fetchRestaurants = async () => {
     debugger
@@ -45,6 +44,10 @@ const Restaurants = () => {
     setRestaurantList(newRestaurantList)
   }
 
+  const showMoreResults = () => {
+    setIncrease(increase + 10)
+  }
+
   useEffect(() => {
     fetchRestaurants()
   }, [])
@@ -56,7 +59,7 @@ const Restaurants = () => {
   return (
     <div className='restaurant-page'>
       <div className='restaurant-list'>
-        {restaurantList.slice(0, 10).map((restaurant, index) => {
+        {restaurantList.slice(0, increase).map((restaurant, index) => {
           if (restaurantList.length === index + 1) {
             console.log(index + " => " + restaurant)
             return <RestaurantCard key={index} restaurant={restaurant} />
@@ -68,9 +71,13 @@ const Restaurants = () => {
         })}
       </div>
       <div className='show-more-results'>
-        <button id='show-more-btn'>
-          Mostra altri risultati...
-        </button>
+        {
+        restaurantList.length > increase ? 
+        <button id='show-more-btn' onClick={() => showMoreResults()}>
+          Mostra altri {restaurantList.length - increase} risultati...
+        </button> : 
+        null
+        }
       </div>
     </div>
   )

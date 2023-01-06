@@ -38,14 +38,14 @@ const Sidebar = () => {
     return (
         <div className='sidebar'>
             <div className='tags-list'>
-                <h6>Tipo di cucina</h6>
+                <h5>Tipo di cucina:</h5>
                 {tags.map((tag, index) => <TagItem key={index} tag={tag} />)}
             </div>
 
             <hr />
 
             <div className='filters-list'>
-                <h6>Filtri</h6>
+                <h5>Filtri:</h5>
                 {filters.map((filter, index) => <FilterItem key={index} filter={filter} />)}
             </div>
         </div>

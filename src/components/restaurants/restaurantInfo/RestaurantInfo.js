@@ -127,7 +127,9 @@ const RestaurantInfo = () => {
 
   return (
     <div className='restaurant-info'>
-      <h2>{restaurant}</h2>
+      <header>
+        <h2>{restaurant}</h2>
+      </header>
 
       <MapComponent coordinates={coordinates} />
 
@@ -136,21 +138,22 @@ const RestaurantInfo = () => {
           <div className='half-row-section'>
             <h3>Tag associate a questo locale: </h3>
             <div className='list-container' id='tags-container'>
-              {tags.length !== 0
-                ?
-                tags.map((tag, index) => {
-                  return (
-                    <SingleEntry
-                      key={index}
-                      id="tag"
-                      text={tag}
-                      setTags={setTags}
-                      restaurantID={restaurantID}
-                    />
-                  )
-                })
-                :
-                null
+              {
+                tags.length !== 0
+                  ?
+                  tags.map((tag, index) => {
+                    return (
+                      <SingleEntry
+                        key={index}
+                        id="tag"
+                        text={tag}
+                        setTags={setTags}
+                        restaurantID={restaurantID}
+                      />
+                    )
+                  })
+                  :
+                  null
               }
             </div>
           </div>
@@ -158,21 +161,22 @@ const RestaurantInfo = () => {
           <div className='half-row-section'>
             <h3>Filtri associati a questo locale: </h3>
             <div className='list-container' id='filters-container'>
-              {filters.length !== 0
-                ?
-                filters.map((filter, index) => {
-                  return (
-                    <SingleEntry
-                      key={index}
-                      id="filter"
-                      text={filter}
-                      setFilters={setFilters}
-                      restaurantID={restaurantID}
-                    />
-                  )
-                })
-                :
-                null
+              {
+                filters.length !== 0
+                  ?
+                  filters.map((filter, index) => {
+                    return (
+                      <SingleEntry
+                        key={index}
+                        id="filter"
+                        text={filter}
+                        setFilters={setFilters}
+                        restaurantID={restaurantID}
+                      />
+                    )
+                  })
+                  :
+                  null
               }
             </div>
           </div>
@@ -184,7 +188,7 @@ const RestaurantInfo = () => {
           <div className='half-row-section'>
             <h4>Seleziona una tag da associare a questo locale: </h4>
             <select onChange={(e) => addTag(e.target.value)}>
-            <option selected disabled></option>
+              <option selected disabled></option>
               {tagsArr.map((tag, index) => {
                 return (
                   <option key={index}>{tag}</option>
