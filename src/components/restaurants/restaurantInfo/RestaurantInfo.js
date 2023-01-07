@@ -13,15 +13,12 @@ const RestaurantInfo = () => {
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null })
   const [tags, setTags] = useState([])
   const [filters, setFilters] = useState([])
-  const [tagsArr, setTagsArr] = useState([])
-  const [filtersArr, setFiltersArr] = useState([])
   const [newTagEntry, setNewTagEntry] = useState('')
   const [newFilterEntry, setNewFilterEntry] = useState('')
 
-  let { selectedTagsState } = useContext(DrinkNFood)
+  const { tagsArr, setTagsArr, filtersArr, setFiltersArr } = useContext(DrinkNFood)
 
   const { restaurant } = useParams()
-
   const navigate = useNavigate()
 
   const fetchCoordinates = async () => {
@@ -40,22 +37,6 @@ const RestaurantInfo = () => {
       if (doc.data().filters.length !== 0) {
         setFilters([...doc.data().filters])
       }
-    })
-  }
-
-  const fetchTagsFromDB = async () => {
-    const tagsRef = collection(db, 'tags')
-    const querySnapshot = await getDocs(tagsRef)
-    querySnapshot.forEach((doc) => {
-      setTagsArr(tagsArr => [...tagsArr, doc.data().name])
-    })
-  }
-
-  const fetchFiltersFromDB = async () => {
-    const filtersRef = collection(db, 'filters')
-    const querySnapshot = await getDocs(filtersRef)
-    querySnapshot.forEach((doc) => {
-      setFiltersArr(filtersArr => [...filtersArr, doc.data().name])
     })
   }
 
@@ -113,8 +94,6 @@ const RestaurantInfo = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
     fetchCoordinates()
-    fetchTagsFromDB()
-    fetchFiltersFromDB()
   }, [])
 
   useEffect(() => {

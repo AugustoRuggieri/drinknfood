@@ -9,15 +9,10 @@ const Restaurants = () => {
 
   let { restaurantList, setRestaurantList, selectedTagsState, selectedFiltersState } = useContext(DrinkNFood)
 
-  /* const observer = useRef()
-  const lastRestaurantRef = useCallback(node => {
-    console.log(node)
-  }) */
-
   const [increase, setIncrease] = useState(10)
 
   const fetchRestaurants = async () => {
-    debugger
+    
     // query
     var queryWhere = where("name", "!=", "")
 
@@ -60,23 +55,18 @@ const Restaurants = () => {
     <div className='restaurant-page'>
       <div className='restaurant-list'>
         {restaurantList.slice(0, increase).map((restaurant, index) => {
-          if (restaurantList.length === index + 1) {
-            console.log(index + " => " + restaurant)
-            return <RestaurantCard key={index} restaurant={restaurant} />
-          } else {
-            return (
-              <RestaurantCard key={index} restaurant={restaurant} />
-            )
-          }
+          return (
+            <RestaurantCard key={index} restaurant={restaurant} />
+          )
         })}
       </div>
       <div className='show-more-results'>
         {
-        restaurantList.length > increase ? 
-        <button id='show-more-btn' onClick={() => showMoreResults()}>
-          Mostra altri {restaurantList.length - increase} risultati...
-        </button> : 
-        null
+          restaurantList.length > increase ?
+            <button id='show-more-btn' onClick={() => showMoreResults()}>
+              Mostra altri {restaurantList.length - increase} risultati...
+            </button> :
+            null
         }
       </div>
     </div>
