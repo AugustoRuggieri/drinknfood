@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { collection, doc, addDoc, GeoPoint, getDocs, query, updateDoc, where } from 'firebase/firestore'
 import { db } from '../firebase'
 import './Account.css'
+import { DrinkNFood } from '../context/Context'
 
 const Account = () => {
 
-  const [fileName, setFileName] = useState('')
+  const { tagsArr, filtersArr } = useContext(DrinkNFood)
 
+  const [fileName, setFileName] = useState('')
   const [restaurants, setRestaurants] = useState([])
-  const [result, setResult] = useState([])
 
   // Import data from xml files
   const importData = (file) => {
@@ -28,31 +29,28 @@ const Account = () => {
         let restaurantMarkers = xmlDOM.querySelectorAll('Placemark')
 
         restaurantMarkers.forEach(async (tagXmlNode) => {
-          // if !restaurants contains name
-          //     crea ristorante
-          //     crea array vuoto tags e array vuoto filters
-          //     push nuovo ristorante in restaurants
-          // if  placemark è contenuto in tags
-          //     push placemark in tags
-          // if  placemark è contenuto in filters
-          //     push placemark in filters 
-          restaurants.push({
-            name: tagXmlNode.children[0].textContent.toLowerCase(),
-            coordinates: [tagXmlNode.children[2].children[0].textContent.toString().split(',')[0].split(' ').at(-1),
-            tagXmlNode.children[2].children[0].textContent.toString().split(',')[1]],
-            tags: tagXmlNode.parentNode.children[0].textContent.toLowerCase()
-          })
-        })
 
-        // Find duplicates checking name property
-        restaurants.forEach((object) => {
-          const existing = result.filter((item) => item.name === object.name)
-          if (existing.length) {
-            const existingIndex = result.indexOf(existing[0])
-            result[existingIndex].tags = Array.from(new Set(result[existingIndex].tags.concat(object.tags)))
-          } else {
-            if (typeof object.tags == 'string') object.tags = [object.tags]
-            result.push(object)
+          var restaurantName = tagXmlNode.children[0].textContent.toLowerCase()
+          var restaurant = restaurants.find((item) => item.name === restaurantName)
+
+          if (!restaurant) {
+            restaurant = {
+              name: restaurantName,
+              coordinates: [tagXmlNode.children[2].children[0].textContent.toString().split(',')[0].split(' ').at(-1),
+              tagXmlNode.children[2].children[0].textContent.toString().split(',')[1]],
+              tags: [],
+              filters: []
+            }
+            restaurants.push(restaurant)
+          }
+
+          var tag = tagXmlNode.parentNode.children[0].textContent.toLowerCase()
+
+          if (tagsArr.includes(tag)) {
+            restaurant.tags = Array.from(new Set(restaurant.tags.concat(tag)))
+          }
+          if (filtersArr.includes(tag)) {
+            restaurant.filters = Array.from(new Set(restaurant.filters.concat(tag)))
           }
         })
         alert('File importato correttamente')
@@ -61,17 +59,16 @@ const Account = () => {
   }
 
   const saveFilesToDB = () => {
-    if (result.length !== 0) {
-      result.forEach(async (item) => {
+    if (restaurants.length !== 0) {
+      restaurants.forEach(async (item) => {
         await addDoc(collection(db, 'imported-restaurants'), {
           name: item.name,
           coordinates: new GeoPoint(item.coordinates[0], item.coordinates[1]),
           tags: item.tags,
-          filters: []
+          filters: item.filters
         })
       })
       setRestaurants([])
-      setResult([])
       alert('Tutti i dati sono stati salvati nel database')
     } else {
       alert('Nessun dato da salvare')

@@ -110,7 +110,7 @@
       </BalloonStyle>
     </Style>
     <Folder>
-      <name>Pizzeria</name>
+      <name>Pizza</name>
       <Placemark>
         <name>Pepperoni</name>
         <description>Pizzeria</description>
@@ -274,6 +274,15 @@
         <Point>
           <coordinates>
             11.343528,44.4996796,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Fabrik”</name>
+        <styleUrl>#icon-1899-9C27B0-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3463004,44.4987624,0
           </coordinates>
         </Point>
       </Placemark>
@@ -499,6 +508,15 @@
           </coordinates>
         </Point>
       </Placemark>
+      <Placemark>
+        <name>Fabrik”</name>
+        <styleUrl>#icon-1567-9C27B0-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3463004,44.4987624,0
+          </coordinates>
+        </Point>
+      </Placemark>
     </Folder>
     <Folder>
       <name>Trattoria</name>
@@ -658,6 +676,15 @@
           </coordinates>
         </Point>
       </Placemark>
+      <Placemark>
+        <name>Signorvino</name>
+        <styleUrl>#icon-1798-FF5252-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3435512,44.4939938,0
+          </coordinates>
+        </Point>
+      </Placemark>
     </Folder>
     <Folder>
       <name>Pub</name>
@@ -742,6 +769,24 @@
         <Point>
           <coordinates>
             11.3456913,44.4937203,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Il Panino</name>
+        <styleUrl>#icon-1530-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3442475,44.5027267,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[Cotta & Cotta]]></name>
+        <styleUrl>#icon-1530-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.2963257,44.5085252,0
           </coordinates>
         </Point>
       </Placemark>
@@ -866,24 +911,6 @@
         </Point>
       </Placemark>
       <Placemark>
-        <name>Il Baccanale</name>
-        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            11.3429747,44.4977284,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>Signorvino</name>
-        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            11.3435618,44.4941566,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
         <name>Harvest Pub</name>
         <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
         <Point>
@@ -943,15 +970,6 @@
         <Point>
           <coordinates>
             11.3319676,44.5020871,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>Emporio 1920</name>
-        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            11.3491724,44.4969749,0
           </coordinates>
         </Point>
       </Placemark>
@@ -1213,6 +1231,33 @@
         <Point>
           <coordinates>
             11.4108532,44.4692365,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Emporio 1920</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3455894,44.4903736,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Antica Trattoria del Reno</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3107119,44.5293026,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bemabò</name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3061537,44.506972,0
           </coordinates>
         </Point>
       </Placemark>

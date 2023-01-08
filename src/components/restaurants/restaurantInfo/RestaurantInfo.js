@@ -16,7 +16,10 @@ const RestaurantInfo = () => {
   const [newTagEntry, setNewTagEntry] = useState('')
   const [newFilterEntry, setNewFilterEntry] = useState('')
 
-  const { tagsArr, setTagsArr, filtersArr, setFiltersArr } = useContext(DrinkNFood)
+  const [selectTags, setSelectTags] = useState([])
+  const [selectFilters, setSelectFilters] = useState([])
+
+  const { tagsArr, filtersArr } = useContext(DrinkNFood)
 
   const { restaurant } = useParams()
   const navigate = useNavigate()
@@ -41,20 +44,20 @@ const RestaurantInfo = () => {
   }
 
   // Check to prevent showing tags already associated with the restaurant in the select 
-  const tagsArrFilter = () => {
-    setTagsArr([])
+  const filterTagsArrForSelect = () => {
+    setSelectTags([])
     tagsArr.forEach((tag) => {
       if (!tags.includes(tag)) {
-        setTagsArr(tagsArr => [...tagsArr, tag])
+        setSelectTags(selectTags => [...selectTags, tag])
       }
     })
   }
 
-  const filtersArrFilter = () => {
-    setFiltersArr([])
+  const filterFiltersArrForSelect = () => {
+    setSelectFilters([])
     filtersArr.forEach((filter) => {
       if (!filters.includes(filter)) {
-        setFiltersArr(filtersArr => [...filtersArr, filter])
+        setSelectFilters(selectFilters => [...selectFilters, filter])
       }
     })
   }
@@ -97,11 +100,11 @@ const RestaurantInfo = () => {
   }, [])
 
   useEffect(() => {
-    tagsArrFilter()
+    filterTagsArrForSelect()
   }, [tags])
 
   useEffect(() => {
-    filtersArrFilter()
+    filterFiltersArrForSelect()
   }, [filters])
 
   return (
@@ -168,7 +171,7 @@ const RestaurantInfo = () => {
             <h4>Seleziona una tag da associare a questo locale: </h4>
             <select onChange={(e) => addTag(e.target.value)}>
               <option selected disabled></option>
-              {tagsArr.map((tag, index) => {
+              {selectTags.map((tag, index) => {
                 return (
                   <option key={index}>{tag}</option>
                 )
@@ -186,7 +189,7 @@ const RestaurantInfo = () => {
             <h4>Seleziona un filtro da associare a questo locale: </h4>
             <select onChange={(e) => addFilter(e.target.value)}>
               <option selected disabled></option>
-              {filtersArr.map((filter, index) => {
+              {selectFilters.map((filter, index) => {
                 return (
                   <option key={index}>{filter}</option>
                 )
