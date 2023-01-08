@@ -45,10 +45,6 @@ const Restaurants = () => {
 
   useEffect(() => {
     fetchRestaurants()
-  }, [])
-
-  useEffect(() => {
-    fetchRestaurants()
   }, [selectedTagsState, selectedFiltersState])
 
   return (
