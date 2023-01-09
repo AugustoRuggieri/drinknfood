@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { DrinkNFood } from '../../../context/Context'
 import './AuthModal.css'
 import Login from './Login'
 import SignUp from './SignUp'
+import { AppContext } from '../../../App'
 
 const AuthModal = () => {
 
-  const { showModal, setShowModal } = useContext(DrinkNFood)
+  const { showModal, setShowModal } = useContext(AppContext)
 
   const [tabValue, setTabValue] = useState(0)
   const [modalContent, setModalContent] = useState(<Login />)

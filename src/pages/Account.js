@@ -2,11 +2,11 @@ import React, { useState, useContext } from 'react'
 import { collection, doc, addDoc, GeoPoint, getDocs, query, updateDoc, where } from 'firebase/firestore'
 import { db } from '../firebase'
 import './Account.css'
-import { DrinkNFood } from '../context/Context'
+import { AppContext } from '../App'
 
 const Account = () => {
 
-  const { tagsArr, filtersArr } = useContext(DrinkNFood)
+  const { tagsArr, filtersArr } = useContext(AppContext)
 
   const [fileName, setFileName] = useState('')
   const [restaurants, setRestaurants] = useState([])

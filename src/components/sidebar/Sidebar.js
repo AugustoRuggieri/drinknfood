@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import './Sidebar.css'
 import TagItem from './tagItem/TagItem'
 import FilterItem from './filterItem/FilterItem'
-import { DrinkNFood } from '../../context/Context'
+import { AppContext } from '../../App'
 
 const Sidebar = () => {
 
-    const { tagsArr, filtersArr } = useContext(DrinkNFood)
+    const { tagsArr, filtersArr } = useContext(AppContext)
 
     return (
         <div className='sidebar'>

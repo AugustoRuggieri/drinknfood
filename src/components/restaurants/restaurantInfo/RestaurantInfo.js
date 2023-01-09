@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { DrinkNFood } from '../../../context/Context'
 import './restaurantInfo.css'
 import MapComponent from './mapComponent/MapComponent'
 import { addDoc, collection, doc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import SingleEntry from '../../SingleEntry'
+import { AppContext } from '../../../App'
 
 const RestaurantInfo = () => {
 
@@ -15,11 +15,10 @@ const RestaurantInfo = () => {
   const [filters, setFilters] = useState([])
   const [newTagEntry, setNewTagEntry] = useState('')
   const [newFilterEntry, setNewFilterEntry] = useState('')
-
   const [selectTags, setSelectTags] = useState([])
   const [selectFilters, setSelectFilters] = useState([])
 
-  const { tagsArr, filtersArr } = useContext(DrinkNFood)
+  const { tagsArr, filtersArr } = useContext(AppContext)
 
   const { restaurant } = useParams()
   const navigate = useNavigate()
@@ -113,7 +112,9 @@ const RestaurantInfo = () => {
         <h2>{restaurant}</h2>
       </header>
 
-      <MapComponent coordinates={coordinates} />
+      <div className='map-container'>
+        <MapComponent coordinates={coordinates} />
+      </div>
 
       <div className='tags-and-filters-wrapper'>
         <div className='container-row'>
@@ -205,6 +206,7 @@ const RestaurantInfo = () => {
           </div>
         </div>
       </div>
+
       <div className='btn-wrapper'>
         <button onClick={() => navigate(-1)}>Torna ai risultati</button>
       </div>

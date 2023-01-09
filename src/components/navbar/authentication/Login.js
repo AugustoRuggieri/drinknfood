@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebase'
+import { AppContext } from '../../../App'
 
 const Login = () => {
+
+    const { showModal, setShowModal } = useContext(AppContext)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -13,11 +16,11 @@ const Login = () => {
             alert("Riempi tutti i campi!")
             return
         }
-
         try {
             const result = await signInWithEmailAndPassword(auth, email, password)
             console.log(result.user)
             alert(`Bentornat* ${result.user.email}!`)
+            setShowModal(!showModal)
         } catch (error) {
             console.log(error.message)
         }

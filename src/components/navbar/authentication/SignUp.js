@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../firebase'
+import { AppContext } from '../../../App'
 
 const SignUp = () => {
+
+    const { showModal, setShowModal } = useContext(AppContext)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -15,8 +18,8 @@ const SignUp = () => {
         }
         try {
             const result = await createUserWithEmailAndPassword(auth, email, password)
-            console.log(result)
             console.log(`Benvenut* ${result.user.email}!`)
+            setShowModal(!showModal)
         } catch (error) {
             alert(error.message)
         }

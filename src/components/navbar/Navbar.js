@@ -2,14 +2,14 @@ import React, { useContext } from 'react'
 import './Navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { DrinkNFood } from '../../context/Context'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
 import { useNavigate } from 'react-router-dom'
+import { AppContext } from '../../App'
 
 const Navbar = () => {
 
-    const { showModal, setShowModal, user } = useContext(DrinkNFood)
+    const { showModal, setShowModal, user } = useContext(AppContext)
 
     const navigate = useNavigate()
 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
 import './TagItem.css'
-import { DrinkNFood } from '../../../context/Context'
+import { AppContext } from '../../../App'
 
 const TagItem = ({ tag }) => {
 
-  let { selectedTagsState, setSelectedTagsState } = useContext(DrinkNFood)
+  let { selectedTagsState, setSelectedTagsState } = useContext(AppContext)
 
   const [activeBtn, setActiveBtn] = useState(false)
 

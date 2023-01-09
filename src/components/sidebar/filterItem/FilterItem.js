@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
-import { DrinkNFood } from '../../../context/Context'
 import './filterItem.css'
+import { AppContext } from '../../../App'
 
 const FilterItem = ({ filter }) => {
 
-  let { selectedFiltersState, setSelectedFiltersState } = useContext(DrinkNFood)
+  let { selectedFiltersState, setSelectedFiltersState } = useContext(AppContext)
 
   const [activeBtn, setActiveBtn] = useState(false)
 
