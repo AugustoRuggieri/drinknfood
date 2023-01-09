@@ -28,29 +28,40 @@ const Account = () => {
         let xmlDOM = parser.parseFromString(xmlContent, 'application/xml')
         let restaurantMarkers = xmlDOM.querySelectorAll('Placemark')
 
-        restaurantMarkers.forEach(async (tagXmlNode) => {
+        restaurantMarkers.forEach((tagXmlNode) => {
 
-          var restaurantName = tagXmlNode.children[0].textContent.toLowerCase()
-          var restaurant = restaurants.find((item) => item.name === restaurantName)
+          try {
+            var restaurantName = tagXmlNode.getElementsByTagName('name')[0].textContent.toLowerCase()
+            var restaurant = restaurants.find((item) => item.name === restaurantName)
 
-          if (!restaurant) {
-            restaurant = {
-              name: restaurantName,
-              coordinates: [tagXmlNode.children[2].children[0].textContent.toString().split(',')[0].split(' ').at(-1),
-              tagXmlNode.children[2].children[0].textContent.toString().split(',')[1]],
-              tags: [],
-              filters: []
+            var test = tagXmlNode.children.item('Point')
+            var test1 = tagXmlNode.children.item('Point').children
+            var test2 = tagXmlNode.children.item('Point').children.item('coordinates')
+            /* var test3 = tagXmlNode.children.item('Point').children.item('coordinates').textContent */
+            var test4 = tagXmlNode.children.namedItem('Point')
+
+            if (!restaurant) {
+              var restaurantPoint = tagXmlNode.getElementsByTagName('Point')[0].getElementsByTagName('coordinates')[0].textContent.toString().split(',')
+              restaurant = {
+                name: restaurantName,
+                coordinates: [restaurantPoint[0].split(' ').at(-1), restaurantPoint[1]],
+                tags: [],
+                filters: []
+              }
+              restaurants.push(restaurant)
             }
-            restaurants.push(restaurant)
-          }
 
-          var tag = tagXmlNode.parentNode.children[0].textContent.toLowerCase()
+            var tag = tagXmlNode.parentNode.children[0].textContent.toLowerCase()
 
-          if (tagsArr.includes(tag)) {
-            restaurant.tags = Array.from(new Set(restaurant.tags.concat(tag)))
+            if (tagsArr.includes(tag)) {
+              restaurant.tags = Array.from(new Set(restaurant.tags.concat(tag)))
+            }
+            if (filtersArr.includes(tag)) {
+              restaurant.filters = Array.from(new Set(restaurant.filters.concat(tag)))
+            }
           }
-          if (filtersArr.includes(tag)) {
-            restaurant.filters = Array.from(new Set(restaurant.filters.concat(tag)))
+          catch (error) {
+            console.error(error)
           }
         })
         alert('File importato correttamente')
@@ -61,6 +72,10 @@ const Account = () => {
   const saveFilesToDB = () => {
     if (restaurants.length !== 0) {
       restaurants.forEach(async (item) => {
+        /* const collectionRef = collection(db, 'imported-restaurants');
+        const q = query(collectionRef, where("name", "==", item.name))
+
+        const querySnapshot = await getDocs(q); */
         await addDoc(collection(db, 'imported-restaurants'), {
           name: item.name,
           coordinates: new GeoPoint(item.coordinates[0], item.coordinates[1]),
@@ -68,7 +83,6 @@ const Account = () => {
           filters: item.filters
         })
       })
-      setRestaurants([])
       alert('Tutti i dati sono stati salvati nel database')
     } else {
       alert('Nessun dato da salvare')
