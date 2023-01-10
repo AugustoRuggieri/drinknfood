@@ -9,10 +9,10 @@ const Restaurants = () => {
 
   let { restaurantList } = useContext(AppContext)
 
-  const [increase, setIncrease] = useState(5)
+  const [increase, setIncrease] = useState(10)
 
   const showMoreResults = () => {
-    setIncrease(increase + 5)
+    setIncrease(increase + 10)
   }
 
   return (

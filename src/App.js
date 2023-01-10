@@ -32,7 +32,7 @@ function App() {
     }
 
     const collectionRef = collection(db, 'imported-restaurants')
-    const q = query(collectionRef, queryWhere, limit(10))
+    const q = query(collectionRef, queryWhere, limit(20))
     const querySnapshot = await getDocs(q)
 
     let newRestaurantList = []
@@ -72,7 +72,7 @@ function App() {
 
   useEffect(() => {
     isInitialMount.current = false;
-    fetchRestaurants()
+    //fetchRestaurants()
     fetchTagsFromDB()
     fetchFiltersFromDB()
     onAuthStateChanged(auth, user => {
