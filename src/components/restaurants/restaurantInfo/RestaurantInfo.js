@@ -78,6 +78,7 @@ const RestaurantInfo = () => {
   }
 
   const addNewTagEntry = async (tagEntry) => {
+    tagEntry = tagEntry.toLowerCase()
     addTag(tagEntry)
     await addDoc(collection(db, 'tags'), {
       name: tagEntry
@@ -86,6 +87,7 @@ const RestaurantInfo = () => {
   }
 
   const addNewFilterEntry = async (filterEntry) => {
+    filterEntry = filterEntry.toLowerCase()
     addFilter(filterEntry)
     await addDoc(collection(db, 'filters'), {
       name: filterEntry
