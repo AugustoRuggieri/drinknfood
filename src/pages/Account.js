@@ -34,12 +34,6 @@ const Account = () => {
             var restaurantName = tagXmlNode.getElementsByTagName('name')[0].textContent.toLowerCase()
             var restaurant = restaurants.find((item) => item.name === restaurantName)
 
-            var test = tagXmlNode.children.item('Point')
-            var test1 = tagXmlNode.children.item('Point').children
-            var test2 = tagXmlNode.children.item('Point').children.item('coordinates')
-            /* var test3 = tagXmlNode.children.item('Point').children.item('coordinates').textContent */
-            var test4 = tagXmlNode.children.namedItem('Point')
-
             if (!restaurant) {
               var restaurantPoint = tagXmlNode.getElementsByTagName('Point')[0].getElementsByTagName('coordinates')[0].textContent.toString().split(',')
               restaurant = {
@@ -69,25 +63,55 @@ const Account = () => {
     })
   }
 
-  const saveFilesToDB = () => {
-    if (restaurants.length !== 0) {
-      restaurants.forEach(async (item) => {
-        /* const collectionRef = collection(db, 'imported-restaurants');
-        const q = query(collectionRef, where("name", "==", item.name))
+  const saveSingleRestaurantToDB = async (restaurant) => {
+    try {
+      const collectionRef = collection(db, 'imported-restaurants');
+      const q = query(collectionRef, where("name", "==", restaurant.name))
+      const querySnapshot = await getDocs(q);
 
-        const querySnapshot = await getDocs(q); */
+      if (querySnapshot.empty) {
+        // Aggiungo il ristorante
         await addDoc(collection(db, 'imported-restaurants'), {
-          name: item.name,
-          coordinates: new GeoPoint(item.coordinates[0], item.coordinates[1]),
-          tags: item.tags,
-          filters: item.filters
+          name: restaurant.name,
+          coordinates: new GeoPoint(restaurant.coordinates[0], restaurant.coordinates[1]),
+          tags: restaurant.tags,
+          filters: restaurant.filters
         })
+        return
+      }
+      // Aggiungo tag e filtri a un ristorante già presente
+      restaurant.tags.forEach(async (tag) => {
+        var docTags = querySnapshot.docs[0].data().tags
+        if (!docTags.includes(tag)) {
+          await updateDoc(querySnapshot.docs[0].ref, {
+            tags: [...docTags, tag]
+          })
+        }
       })
-      alert('Tutti i dati sono stati salvati nel database')
-    } else {
-      alert('Nessun dato da salvare')
+      restaurant.filters.forEach(async (filter) => {
+        var docFilters = querySnapshot.docs[0].data().filters
+        if (!docFilters.includes(filter)) {
+          await updateDoc(querySnapshot.docs[0].ref, {
+            filters: [...docFilters, filter]
+          })
+        }
+      })
+    } catch (error) {
+      console.log(error.message)
     }
   }
+
+  const saveRestaurantsToDB = () => {
+    if (restaurants.length === 0) {
+      alert('Nessun dato da salvare')
+      return
+    }
+    restaurants.forEach((item) => {
+      saveSingleRestaurantToDB(item)
+    })
+    alert('Tutti i dati sono stati salvati nel database')
+  }
+
 
   return (
     <div className='account-page'>
@@ -102,7 +126,7 @@ const Account = () => {
 
       <button className='import-btn' onClick={() => importData(fileName)}>Importa dati</button>
 
-      <button className='import-btn' onClick={() => saveFilesToDB()}>Salva nel database</button>
+      <button className='import-btn' onClick={() => saveRestaurantsToDB()}>Salva nel database</button>
     </div>
   )
 }
