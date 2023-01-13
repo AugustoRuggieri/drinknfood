@@ -1,5 +1,7 @@
 .restaurant-info {
     text-align: center;
+    width: 70%;
+    margin: 0 auto;
 }
 
 header {
@@ -88,4 +90,27 @@ header {
     align-items: center;
     justify-content: center;
     min-height: 6rem;
+}
+
+#go-back-btn {
+    background-color: #393939;
+    color: #fff;
+    width: 60%;
+}
+
+/* ----- MEDIA QUERIES ----- */
+
+@media screen and (max-width: 992px) {
+    .container-row {
+        flex-direction: column;
+    }
+    .half-row-section {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .restaurant-info {
+        width: 100%;
+    }
 }

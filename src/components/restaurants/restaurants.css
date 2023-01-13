@@ -1,5 +1,6 @@
 .restaurant-page {
     text-align: center;
+    width: 80%;
 }
 
 .restaurant-list {
@@ -12,4 +13,15 @@
     justify-content: center;
     min-height: 5rem;
     margin-bottom: 15px;
+}
+
+#show-more-btn {
+    background-color: #393939;
+    color: #fff;
+}
+
+@media screen and (max-width: 992px) {
+    #show-more-btn {
+        width: 80%;
+    }
 }

@@ -17,11 +17,8 @@ const Layout = () => {
                 showModal ? <AuthModal /> : null
             }
             <Navbar />
-            <div className='layout'>
-                <Sidebar />
-                <div className='page'>
-                    <Outlet />
-                </div>
+            <div className='page'>
+                <Outlet />
             </div>
             <Footer />
         </>

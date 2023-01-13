@@ -210,7 +210,7 @@ const RestaurantInfo = () => {
       </div>
 
       <div className='btn-wrapper'>
-        <button onClick={() => navigate(-1)}>Torna ai risultati</button>
+        <button id='go-back-btn' onClick={() => navigate(-1)}>Torna ai risultati</button>
       </div>
     </div>
   )

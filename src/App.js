@@ -9,6 +9,7 @@ import { createContext } from 'react'
 import { auth, db } from './firebase'
 import { collection, getDocs, limit, query, where } from 'firebase/firestore'
 import { onAuthStateChanged } from "@firebase/auth"
+import Sidebar from './components/sidebar/Sidebar'
 
 export const AppContext = createContext()
 
@@ -32,7 +33,7 @@ function App() {
     }
 
     const collectionRef = collection(db, 'imported-restaurants')
-    const q = query(collectionRef, queryWhere, limit(20))
+    const q = query(collectionRef, queryWhere/* , limit(20) */)
     const querySnapshot = await getDocs(q)
 
     let newRestaurantList = []
@@ -107,7 +108,13 @@ function App() {
     }}>
       <Routes>
         <Route path='/' element={<Layout />} >
-          <Route index element={<Restaurants />} />
+          <Route index element={(
+            <>
+              <Sidebar />
+              <Restaurants />
+            </>
+          )}
+          />
           <Route path='restaurants/:restaurant' element={<RestaurantInfo />} />
           <Route path='account' element={<Account />} />
         </Route>
