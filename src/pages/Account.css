@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: calc(100vh - 10rem);
+    width: 70%;
+    margin: 0 auto;
 }
 
 .page-title {
@@ -19,4 +22,19 @@ label {
 
 .import-btn {
     margin-top: 2.5rem;
+}
+
+/* ----- MEDIA QUERIES ----- */
+
+@media screen and (max-width: 600px) {
+
+    .account-page {
+
+        width: 100%;
+    }
+
+    .select, button {
+        width: 60%;
+    }
+    
 }

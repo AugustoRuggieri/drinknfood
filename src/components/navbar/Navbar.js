@@ -24,7 +24,7 @@ const Navbar = () => {
     return (
         <div className='navbar'>
             <div className='navbar-container'>
-                <h3 className='logo' onClick={() => navigate('/')}>drink n food</h3>
+                <h3 className='logo' onClick={() => navigate('/')}>aperitiBO</h3>
                 <div className='auth-btn'>
                     <h3>{user ? <span onClick={logOut}>Esci</span> : <span onClick={userAuth}>Accedi / Registrati</span>}</h3>
                     <FontAwesomeIcon icon={faUser} className="user-icon" onClick={() => navigate('/account')} />

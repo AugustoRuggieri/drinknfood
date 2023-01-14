@@ -22,6 +22,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [tagsArr, setTagsArr] = useState([])
   const [filtersArr, setFiltersArr] = useState([])
+  const [searchedRestaurants, setSearchedRestaurants] = useState([])
 
   const fetchRestaurants = async () => {
 
@@ -104,7 +105,9 @@ function App() {
       tagsArr,
       setTagsArr,
       filtersArr,
-      setFiltersArr
+      setFiltersArr,
+      searchedRestaurants,
+      setSearchedRestaurants
     }}>
       <Routes>
         <Route path='/' element={<Layout />} >

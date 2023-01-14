@@ -5,7 +5,9 @@ const Footer = () => {
   return (
     <div className='footer'>
       <div className='footer-container'>
-        &copy;2023
+        <div>
+          &copy;2023
+        </div>
       </div>
     </div>
   )

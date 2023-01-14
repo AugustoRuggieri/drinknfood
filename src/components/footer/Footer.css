@@ -12,3 +12,13 @@
     width: 70%;
     margin: 0 auto;
 }
+
+.footer-container div {
+    margin-left: 1.5rem;
+}
+
+@media screen and (max-width: 600px) {
+    .footer-container {
+        width: 95%;
+    }
+}

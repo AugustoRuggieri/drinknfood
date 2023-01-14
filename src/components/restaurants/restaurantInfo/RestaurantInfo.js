@@ -110,13 +110,24 @@ const RestaurantInfo = () => {
 
   return (
     <div className='restaurant-info'>
-      <header>
-        <h2>{restaurant}</h2>
+      <header className='restaurant-header'>
+        <div className='info-section half-row-section'>
+          <div className='restaurant-name'>
+            <h2>{restaurant}</h2>
+          </div>
+          <section className='user-notes-section'>
+            <h4>Note:</h4>
+            {/* <div className='user-notes'>
+              { }
+            </div>
+            <button>Aggiungi note</button>
+            <textarea /> */}
+          </section>
+        </div>
+        <div className='map-container half-row-section'>
+          <MapComponent coordinates={coordinates} />
+        </div>
       </header>
-
-      <div className='map-container'>
-        <MapComponent coordinates={coordinates} />
-      </div>
 
       <div className='tags-and-filters-wrapper'>
         <div className='container-row'>

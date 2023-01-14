@@ -1,0 +1,17 @@
+.search-section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    margin-top: 0;
+    border: 2px solid #393939;
+    border-radius: 25px;
+    width: 50%;
+}
+
+.search-icon {
+    position: relative;
+    right: 2rem;
+    cursor: pointer;
+}
