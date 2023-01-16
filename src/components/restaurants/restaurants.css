@@ -1,5 +1,6 @@
 .restaurant-page {
     text-align: center;
+    min-height: calc(100vh - 10rem);
     width: 80%;
 }
 
@@ -21,8 +22,12 @@
 }
 
 @media screen and (max-width: 992px) {
+
     .restaurant-page {
         width: 100%;
+    }
+    #show-more-btn {
+        width: 60%;
     }
 }
 
