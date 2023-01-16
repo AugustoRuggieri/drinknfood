@@ -24,6 +24,12 @@ function App() {
   const [filtersArr, setFiltersArr] = useState([])
   const [searchedRestaurants, setSearchedRestaurants] = useState([])
 
+  const [onMobile, setOnMobile] = useState(false)
+
+  const checkWindowWidth = () => {
+    if (window.innerWidth < 600) setOnMobile(true)
+  }
+
   const fetchRestaurants = async () => {
 
     // query
@@ -77,6 +83,7 @@ function App() {
     //fetchRestaurants()
     fetchTagsFromDB()
     fetchFiltersFromDB()
+    checkWindowWidth()
     onAuthStateChanged(auth, user => {
       if (user) setUser(user)
       else setUser(null)
@@ -113,7 +120,7 @@ function App() {
         <Route path='/' element={<Layout />} >
           <Route index element={(
             <>
-              <Sidebar />
+            {!onMobile && <Sidebar />}
               <Restaurants />
             </>
           )}

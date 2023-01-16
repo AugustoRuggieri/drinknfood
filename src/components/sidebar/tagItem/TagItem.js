@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import './TagItem.css'
 import { AppContext } from '../../../App'
 
@@ -10,7 +10,7 @@ const TagItem = ({ tag }) => {
 
   let toggleActiveClass = activeBtn ? 'active' : null
 
-  const handleSelect = async (e) => {
+  const handleSelect = () => {
 
     setActiveBtn(activeBtn => !activeBtn)
 
@@ -21,8 +21,18 @@ const TagItem = ({ tag }) => {
     }
   }
 
+  const checkIfSelected = () => {
+    if (selectedTagsState.indexOf(tag) !== -1) {
+      setActiveBtn(true)
+    }
+  }
+
+  useEffect(() => {
+    checkIfSelected()
+  }, [])
+
   return (
-    <div className={`tag-item ${toggleActiveClass}`} onClick={(e) => handleSelect(e)}>
+    <div className={`tag-item ${toggleActiveClass}`} onClick={() => handleSelect()}>
       <p>{tag}</p>
     </div>
   )

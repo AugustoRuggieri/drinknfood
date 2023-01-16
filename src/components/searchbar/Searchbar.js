@@ -16,6 +16,7 @@ const Searchbar = () => {
     }
 
     const handleSearch = () => {
+        setSearch("")
         if (search.length > 0) {
             let newSearchedRestaurants = []
             newSearchedRestaurants = restaurantList.filter(el => el.includes(search.toLowerCase()))

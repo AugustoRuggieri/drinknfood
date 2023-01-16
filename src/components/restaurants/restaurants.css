@@ -21,6 +21,12 @@
 }
 
 @media screen and (max-width: 992px) {
+    .restaurant-page {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
     #show-more-btn {
         width: 80%;
     }

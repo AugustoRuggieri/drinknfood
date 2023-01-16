@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import './filterItem.css'
 import { AppContext } from '../../../App'
 
@@ -10,7 +10,7 @@ const FilterItem = ({ filter }) => {
 
   let toggleActiveClass = activeBtn ? 'active' : null
 
-  const handleSelect = async () => {
+  const handleSelect = () => {
     
     setActiveBtn(activeBtn => !activeBtn)
 
@@ -21,8 +21,18 @@ const FilterItem = ({ filter }) => {
     }
   }
 
+  const checkIfSelected = () => {
+    if (selectedFiltersState.indexOf(filter) !== -1) {
+      setActiveBtn(true)
+    }
+  }
+
+  useEffect(() => {
+    checkIfSelected()
+  }, [])
+
   return (
-    <div className={`filter-item ${toggleActiveClass}`} onClick={(e) => handleSelect(e)}>
+    <div className={`filter-item ${toggleActiveClass}`} onClick={() => handleSelect()}>
       <p>{filter}</p>
     </div>
   )
