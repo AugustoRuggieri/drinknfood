@@ -65,9 +65,9 @@ const Account = () => {
 
   const saveSingleRestaurantToDB = async (restaurant) => {
     try {
-      const collectionRef = collection(db, 'imported-restaurants');
+      const collectionRef = collection(db, 'imported-restaurants')
       const q = query(collectionRef, where("name", "==", restaurant.name))
-      const querySnapshot = await getDocs(q);
+      const querySnapshot = await getDocs(q)
 
       if (querySnapshot.empty) {
         // Aggiungo il ristorante
@@ -112,6 +112,24 @@ const Account = () => {
     alert('Tutti i dati sono stati salvati nel database')
   }
 
+  const exportData = async () => {
+
+    const collectionRef = collection(db, 'imported-restaurants')
+    const q = query(collectionRef, where("name", "!=", ""))
+    const querySnapshot = await getDocs(q)
+    querySnapshot.forEach((doc) => {
+      restaurants.push(JSON.stringify(doc.data()))
+    })
+
+    var blob = new Blob([restaurants], { type: 'application/json' })
+    const fileUrl = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.download = 'exported-restaurants-data'
+    link.href = fileUrl
+    link.click()
+
+    setRestaurants([])
+  }
 
   return (
     <div className='account-page'>
@@ -125,8 +143,8 @@ const Account = () => {
       </select>
 
       <button className='import-btn' onClick={() => importData(fileName)}>Importa dati</button>
-
       <button className='import-btn' onClick={() => saveRestaurantsToDB()}>Salva nel database</button>
+      <button className='import-btn' onClick={() => exportData()}>Esporta database</button>
     </div>
   )
 }
