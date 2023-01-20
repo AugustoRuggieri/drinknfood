@@ -33,3 +33,39 @@ input {
     margin-top: 15px;
     padding: 10px 20px
 }
+
+#sidebar {
+    background-color: rgba(252, 252, 251, 1);
+    padding-top: 25px;
+    height: max-content;
+    width: 20%;
+}
+
+/* ----- MEDIA QUERIES ----- */
+
+@media screen and (max-width: 992px) {
+    #sidebar {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    #sidebar {
+        height: calc(100vh - 5rem);
+        /* max-height: calc(100vh - 5rem); */
+        min-width: 70%;
+        overflow-y: scroll;
+        position: absolute;
+        top: 5rem;
+        right: 0;
+        z-index: 9999;
+        
+        transform: translateX(100%);
+        transition: transform 250ms ease-in-out;
+    }
+
+    #sidebar.active {
+        transform: translateX(0);
+    }
+}

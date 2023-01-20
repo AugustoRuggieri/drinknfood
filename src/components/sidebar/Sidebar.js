@@ -9,7 +9,7 @@ const Sidebar = () => {
     const { tagsArr, filtersArr } = useContext(AppContext)
 
     return (
-        <div className='sidebar'>
+        <div id='sidebar'>
             <div className='tags-list'>
                 <h5>Tipo di cucina:</h5>
                 {tagsArr.map((tag, index) => <TagItem key={index} tag={tag} />)}
