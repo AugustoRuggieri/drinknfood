@@ -132,7 +132,8 @@ const Account = () => {
   } */
 
   const exportData = async () => {
-    var restaurantsJSON = await readCollectionAsJSONArray(db, 'imported-restaurants', where("name", "!=", ""))
+    var restaurants = await readCollection(db, 'imported-restaurants', where("name", "!=", ""))
+    var restaurantsJSON = convertToJSON(restaurants)
     saveOnFile(restaurantsJSON, 'exported-restaurants-data')
   }
 
@@ -145,16 +146,25 @@ const Account = () => {
     link.click()
   }
 
-  const readCollectionAsJSONArray = async (database, collectionName, queryConstraint) => {
-    var restaurantsJSON = []
+  const readCollection = async (database, collectionName, queryConstraint) => {
+    var documents = []
     const collectionRef = collection(database, collectionName)
     const q = query(collectionRef, queryConstraint)
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
-      restaurantsJSON.push(JSON.stringify(doc.data()))
+      documents.push(doc.data())
     })
-    return restaurantsJSON
+    return documents
   }
+
+  const convertToJSON = (arrayToBeConverted) => {
+    var documentsJSON = []
+    arrayToBeConverted.forEach((doc) => {
+      documentsJSON.push(JSON.stringify(doc))
+    })
+    return documentsJSON
+  }
+
 
   return (
     <div className='account-page'>
