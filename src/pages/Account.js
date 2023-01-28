@@ -132,7 +132,7 @@ const Account = () => {
   } */
 
   const exportData = async () => {
-    var restaurantsJSON = await readRestaurantsAsJSONArray()
+    var restaurantsJSON = await readCollectionAsJSONArray(db, 'imported-restaurants', where("name", "!=", ""))
     saveOnFile(restaurantsJSON, 'exported-restaurants-data')
   }
 
@@ -145,10 +145,10 @@ const Account = () => {
     link.click()
   }
 
-  const readRestaurantsAsJSONArray = async () => {
+  const readCollectionAsJSONArray = async (database, collectionName, queryConstraint) => {
     var restaurantsJSON = []
-    const collectionRef = collection(db, 'imported-restaurants')
-    const q = query(collectionRef, where("name", "!=", ""))
+    const collectionRef = collection(database, collectionName)
+    const q = query(collectionRef, queryConstraint)
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
       restaurantsJSON.push(JSON.stringify(doc.data()))
