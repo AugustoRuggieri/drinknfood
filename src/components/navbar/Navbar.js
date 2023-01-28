@@ -30,7 +30,7 @@ const Navbar = () => {
     return (
         <div className='navbar'>
             <div className='navbar-container'>
-                <h3 className='logo' onClick={() => navigate('/')}>aperitiBO</h3>
+                <h3 className='logo' onClick={() => navigate('home')}>aperitiBO</h3>
                 <a href='#' className='toggle-btn' onClick={() => showTagsAndFiltersList()}>
                     <span className='bar'></span>
                     <span className='bar'></span>

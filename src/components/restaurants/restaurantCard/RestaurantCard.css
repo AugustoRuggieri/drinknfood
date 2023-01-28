@@ -6,6 +6,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 70px;
     margin-bottom: 15px;
 }
@@ -13,4 +14,8 @@
 .restaurant-card h4 {
     margin-left: 30px;
     text-transform: capitalize;
+}
+
+.restaurant-card p {
+    margin-right: 30px;
 }

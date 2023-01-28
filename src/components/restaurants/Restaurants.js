@@ -26,13 +26,21 @@ const Restaurants = () => {
           ?
           searchedRestaurants.map((restaurant, index) => {
             return (
-              <RestaurantCard key={index} restaurant={restaurant} />
+              <RestaurantCard
+                key={index}
+                restaurant={restaurant.name}
+                coordinates={restaurant.coordinates}
+              />
             )
           })
           :
           restaurantList.slice(0, increase).map((restaurant, index) => {
             return (
-              <RestaurantCard key={index} restaurant={restaurant} />
+              <RestaurantCard
+                key={index}
+                restaurant={restaurant.name}
+                coordinates={restaurant.coordinates}
+              />
             )
           })}
       </div>

@@ -10,6 +10,7 @@ import { auth, db } from './firebase'
 import { collection, getDocs, limit, query, where } from 'firebase/firestore'
 import { onAuthStateChanged } from "@firebase/auth"
 import Sidebar from './components/sidebar/Sidebar'
+import Welcome from './pages/Welcome'
 
 export const AppContext = createContext()
 
@@ -23,6 +24,7 @@ function App() {
   const [tagsArr, setTagsArr] = useState([])
   const [filtersArr, setFiltersArr] = useState([])
   const [searchedRestaurants, setSearchedRestaurants] = useState([])
+  const [userPosition, setUserPosition] = useState(null)
 
   const fetchRestaurants = async () => {
 
@@ -43,10 +45,16 @@ function App() {
     querySnapshot.forEach((doc) => {
       if (selectedFiltersState.length > 0) {
         if (selectedFiltersState.every(el => doc.data().filters?.includes(el))) {
-          newRestaurantList = [...newRestaurantList, doc.data().name]
+          newRestaurantList = [...newRestaurantList, {
+            name: doc.data().name,
+            coordinates: doc.data().coordinates
+          }]
         }
       } else {
-        newRestaurantList = [...newRestaurantList, doc.data().name]
+        newRestaurantList = [...newRestaurantList, {
+          name: doc.data().name,
+          coordinates: doc.data().coordinates
+        }]
       }
     })
     setRestaurantList(newRestaurantList)
@@ -70,6 +78,21 @@ function App() {
     fetchFromDB('filters', filtersArr, setFiltersArr)
   }
 
+  const getUserPosition = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition)
+    } else {
+      alert("La geolocalizzazione non è supportata da questo browser.")
+    }
+  }
+
+  const showPosition = (position) => {
+    setUserPosition({
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude
+    })
+  }
+
   const isInitialMount = useRef(true);
 
   useEffect(() => {
@@ -77,6 +100,7 @@ function App() {
     //fetchRestaurants()
     fetchTagsFromDB()
     fetchFiltersFromDB()
+    getUserPosition()
     onAuthStateChanged(auth, user => {
       if (user) setUser(user)
       else setUser(null)
@@ -107,11 +131,13 @@ function App() {
       filtersArr,
       setFiltersArr,
       searchedRestaurants,
-      setSearchedRestaurants
+      setSearchedRestaurants,
+      userPosition
     }}>
       <Routes>
         <Route path='/' element={<Layout />} >
-          <Route index element={(
+          <Route index element={<Welcome />} />
+          <Route path='home' element={(
             <>
               <Sidebar />
               <Restaurants />

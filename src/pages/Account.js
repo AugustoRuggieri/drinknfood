@@ -112,7 +112,7 @@ const Account = () => {
     alert('Tutti i dati sono stati salvati nel database')
   }
 
-  const exportData = async () => {
+  /* const exportData = async () => {
 
     const collectionRef = collection(db, 'imported-restaurants')
     const q = query(collectionRef, where("name", "!=", ""))
@@ -129,6 +129,31 @@ const Account = () => {
     link.click()
 
     setRestaurants([])
+  } */
+
+  const exportData = async () => {
+    var restaurantsJSON = await readRestaurantsAsJSONArray()
+    saveOnFile(restaurantsJSON, 'exported-restaurants-data')
+  }
+
+  const saveOnFile = (objectToBeSaved, fileName) => {
+    var blob = new Blob([objectToBeSaved], { type: 'application/json' })
+    const fileUrl = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.download = fileName
+    link.href = fileUrl
+    link.click()
+  }
+
+  const readRestaurantsAsJSONArray = async () => {
+    var restaurantsJSON = []
+    const collectionRef = collection(db, 'imported-restaurants')
+    const q = query(collectionRef, where("name", "!=", ""))
+    const querySnapshot = await getDocs(q)
+    querySnapshot.forEach((doc) => {
+      restaurantsJSON.push(JSON.stringify(doc.data()))
+    })
+    return restaurantsJSON
   }
 
   return (
