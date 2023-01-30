@@ -24,14 +24,14 @@ const RestaurantInfo = () => {
   const navigate = useNavigate()
 
   const fetchCoordinates = async () => {
-    const restaurantRef = collection(db, 'imported-restaurants')
+    const restaurantRef = collection(db, 'restaurants')
     const q = query(restaurantRef, where('name', '==', restaurant))
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
       setRestaurantID(doc.id)
       setCoordinates({
-        lat: doc.data().coordinates._long,
-        lng: doc.data().coordinates._lat
+        lat: doc.data().coordinates._lat,
+        lng: doc.data().coordinates._long
       })
       if (doc.data().tags.length !== 0) {
         setTags([...doc.data().tags])
@@ -63,7 +63,7 @@ const RestaurantInfo = () => {
 
   const addTag = async (newTag) => {
     setTags(tags => [...tags, newTag])
-    const restaurantRef = doc(db, 'imported-restaurants', restaurantID)
+    const restaurantRef = doc(db, 'restaurants', restaurantID)
     await updateDoc(restaurantRef, {
       tags: [...tags, newTag]
     })
@@ -71,7 +71,7 @@ const RestaurantInfo = () => {
 
   const addFilter = async (newFilter) => {
     setFilters(filters => [...filters, newFilter])
-    const restaurantRef = doc(db, 'imported-restaurants', restaurantID)
+    const restaurantRef = doc(db, 'restaurants', restaurantID)
     await updateDoc(restaurantRef, {
       filters: [...filters, newFilter]
     })

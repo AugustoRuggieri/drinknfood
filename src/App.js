@@ -35,7 +35,7 @@ function App() {
       queryWhere = where("tags", "array-contains-any", selectedTagsState)
     }
 
-    const collectionRef = collection(db, 'imported-restaurants')
+    const collectionRef = collection(db, 'restaurants')
     const q = query(collectionRef, queryWhere/* , limit(20) */)
     const querySnapshot = await getDocs(q)
 

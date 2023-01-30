@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { collection, doc, addDoc, GeoPoint, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import { where } from 'firebase/firestore'
 import { db } from '../firebase'
 import './Account.css'
 import { AppContext } from '../App'
@@ -39,7 +39,7 @@ const Account = () => {
               var restaurantPoint = tagXmlNode.getElementsByTagName('Point')[0].getElementsByTagName('coordinates')[0].textContent.toString().split(',')
               restaurant = {
                 name: restaurantName,
-                coordinates: [restaurantPoint[0].split(' ').at(-1), restaurantPoint[1]],
+                coordinates: [restaurantPoint[1], restaurantPoint[0].split(' ').at(-1)],
                 tags: [],
                 filters: []
               }
@@ -76,7 +76,7 @@ const Account = () => {
   }
 
   const exportData = async () => {
-    var restaurants = await readCollection(db, 'imported-restaurants', where("name", "!=", ""))
+    var restaurants = await readCollection(db, 'restaurants', where("name", "!=", ""))
     var restaurantsJSON = convertToJSON(restaurants)
     saveOnFile(restaurantsJSON, 'exported-restaurants-data')
   }

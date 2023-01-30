@@ -3,13 +3,13 @@ import { db } from './firebase'
 
 export const saveSingleRestaurantToDB = async (restaurant) => {
     try {
-        const collectionRef = collection(db, 'imported-restaurants')
+        const collectionRef = collection(db, 'restaurants')
         const q = query(collectionRef, where("name", "==", restaurant.name))
         const querySnapshot = await getDocs(q)
 
         if (querySnapshot.empty) {
             // Aggiungo il ristorante
-            await addDoc(collection(db, 'imported-restaurants'), {
+            await addDoc(collection(db, 'restaurants'), {
                 name: restaurant.name,
                 coordinates: new GeoPoint(restaurant.coordinates[0], restaurant.coordinates[1]),
                 tags: restaurant.tags,
