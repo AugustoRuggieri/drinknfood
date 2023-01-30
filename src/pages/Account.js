@@ -3,6 +3,7 @@ import { collection, doc, addDoc, GeoPoint, getDocs, query, updateDoc, where } f
 import { db } from '../firebase'
 import './Account.css'
 import { AppContext } from '../App'
+import { saveSingleRestaurantToDB, saveOnFile, readCollection, convertToJSON } from '../utils'
 
 const Account = () => {
 
@@ -63,44 +64,6 @@ const Account = () => {
     })
   }
 
-  const saveSingleRestaurantToDB = async (restaurant) => {
-    try {
-      const collectionRef = collection(db, 'imported-restaurants')
-      const q = query(collectionRef, where("name", "==", restaurant.name))
-      const querySnapshot = await getDocs(q)
-
-      if (querySnapshot.empty) {
-        // Aggiungo il ristorante
-        await addDoc(collection(db, 'imported-restaurants'), {
-          name: restaurant.name,
-          coordinates: new GeoPoint(restaurant.coordinates[0], restaurant.coordinates[1]),
-          tags: restaurant.tags,
-          filters: restaurant.filters
-        })
-        return
-      }
-      // Aggiungo tag e filtri a un ristorante già presente
-      restaurant.tags.forEach(async (tag) => {
-        var docTags = querySnapshot.docs[0].data().tags
-        if (!docTags.includes(tag)) {
-          await updateDoc(querySnapshot.docs[0].ref, {
-            tags: [...docTags, tag]
-          })
-        }
-      })
-      restaurant.filters.forEach(async (filter) => {
-        var docFilters = querySnapshot.docs[0].data().filters
-        if (!docFilters.includes(filter)) {
-          await updateDoc(querySnapshot.docs[0].ref, {
-            filters: [...docFilters, filter]
-          })
-        }
-      })
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
   const saveRestaurantsToDB = () => {
     if (restaurants.length === 0) {
       alert('Nessun dato da salvare')
@@ -112,59 +75,11 @@ const Account = () => {
     alert('Tutti i dati sono stati salvati nel database')
   }
 
-  /* const exportData = async () => {
-
-    const collectionRef = collection(db, 'imported-restaurants')
-    const q = query(collectionRef, where("name", "!=", ""))
-    const querySnapshot = await getDocs(q)
-    querySnapshot.forEach((doc) => {
-      restaurants.push(JSON.stringify(doc.data()))
-    })
-
-    var blob = new Blob([restaurants], { type: 'application/json' })
-    const fileUrl = URL.createObjectURL(blob)
-    const link = document.createElement('a')
-    link.download = 'exported-restaurants-data'
-    link.href = fileUrl
-    link.click()
-
-    setRestaurants([])
-  } */
-
   const exportData = async () => {
     var restaurants = await readCollection(db, 'imported-restaurants', where("name", "!=", ""))
     var restaurantsJSON = convertToJSON(restaurants)
     saveOnFile(restaurantsJSON, 'exported-restaurants-data')
   }
-
-  const saveOnFile = (objectToBeSaved, fileName) => {
-    var blob = new Blob([objectToBeSaved], { type: 'application/json' })
-    const fileUrl = URL.createObjectURL(blob)
-    const link = document.createElement('a')
-    link.download = fileName
-    link.href = fileUrl
-    link.click()
-  }
-
-  const readCollection = async (database, collectionName, queryConstraint) => {
-    var documents = []
-    const collectionRef = collection(database, collectionName)
-    const q = query(collectionRef, queryConstraint)
-    const querySnapshot = await getDocs(q)
-    querySnapshot.forEach((doc) => {
-      documents.push(doc.data())
-    })
-    return documents
-  }
-
-  const convertToJSON = (arrayToBeConverted) => {
-    var documentsJSON = []
-    arrayToBeConverted.forEach((doc) => {
-      documentsJSON.push(JSON.stringify(doc))
-    })
-    return documentsJSON
-  }
-
 
   return (
     <div className='account-page'>
