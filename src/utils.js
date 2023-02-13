@@ -18,6 +18,10 @@ export const saveSingleRestaurantToDB = async (restaurant) => {
             return
         }
         // Aggiungo tag e filtri a un ristorante già presente
+        if (restaurant.tags === undefined) {
+            alert('Tags indefinito per il ristorante ' + restaurant.name)
+            return
+        }
         restaurant.tags.forEach(async (tag) => {
             var docTags = querySnapshot.docs[0].data().tags
             if (!docTags.includes(tag)) {
@@ -26,6 +30,10 @@ export const saveSingleRestaurantToDB = async (restaurant) => {
                 })
             }
         })
+        if (restaurant.filters === undefined) {
+            alert('Filters indefinito per il ristorante ' + restaurant.name)
+            return
+        }
         restaurant.filters.forEach(async (filter) => {
             var docFilters = querySnapshot.docs[0].data().filters
             if (!docFilters.includes(filter)) {

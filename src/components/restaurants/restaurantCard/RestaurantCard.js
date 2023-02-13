@@ -7,7 +7,7 @@ const RestaurantCard = ({ restaurant, coordinates }) => {
 
   const navigate = useNavigate()
 
-  let { userPosition } = useContext(AppContext)
+  let { userPosition, selectedTagsState, selectedFiltersState } = useContext(AppContext)
 
   const [distance, setDistance] = useState()
 
@@ -21,19 +21,21 @@ const RestaurantCard = ({ restaurant, coordinates }) => {
   
     distance = ((12742 * Math.asin(Math.sqrt(a))).toFixed(2)) * 1000
     if (distance.toString().length > 3) {
-      distance = (distance / 1000).toFixed(1)
+      distance = (distance / 1000).toFixed(1) + " km"
+    } else {
+      distance = distance + " m"
     }
     setDistance(distance)
   }
 
   useEffect(() => {
     calcDistanceFromUser(userPosition, coordinates)
-  }, [])
+  }, [selectedTagsState, selectedFiltersState])
 
   return (
     <div className='restaurant-card' onClick={() => navigate(`/restaurants/${restaurant}`)}>
       <h4>{restaurant}</h4>
-      <p>Distanza: {distance}</p>
+      <p>Distanza: <b>{distance}</b></p>
     </div>
   )
 }

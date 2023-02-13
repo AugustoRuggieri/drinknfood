@@ -4,13 +4,18 @@ import { db } from '../firebase'
 import './Account.css'
 import { AppContext } from '../App'
 import { saveSingleRestaurantToDB, saveOnFile, readCollection, convertToJSON } from '../utils'
+import { async } from '@firebase/util'
 
 const Account = () => {
 
   const { tagsArr, filtersArr } = useContext(AppContext)
 
   const [fileName, setFileName] = useState('')
-  const [restaurants, setRestaurants] = useState([])
+  /* const [restaurants, setRestaurants] = useState([]) */
+  var restaurants = []
+
+  const [collectionToBeImported, setCollectionToBeImported] = useState('exported-restaurants-data.json')
+  const [importedRestaurants, setImportedRestaurants] = useState([])
 
   // Import data from xml files
   const importData = (file) => {
@@ -77,8 +82,15 @@ const Account = () => {
 
   const exportData = async () => {
     var restaurants = await readCollection(db, 'restaurants', where("name", "!=", ""))
-    var restaurantsJSON = convertToJSON(restaurants)
+    /* var restaurantsJSON = convertToJSON(restaurants) */
+    var restaurantsJSON = JSON.stringify(restaurants)
     saveOnFile(restaurantsJSON, 'exported-restaurants-data')
+  }
+
+  const importCollection = async (file) => {
+    fetch(file)
+      .then(response => response.json())
+      .then(collection => restaurants = collection)
   }
 
   return (
@@ -95,6 +107,8 @@ const Account = () => {
       <button className='import-btn' onClick={() => importData(fileName)}>Importa dati</button>
       <button className='import-btn' onClick={() => saveRestaurantsToDB()}>Salva nel database</button>
       <button className='import-btn' onClick={() => exportData()}>Esporta database</button>
+
+      <button className='import-btn' onClick={() => importCollection(collectionToBeImported)}>Importa l'ultima collection esportata</button>
     </div>
   )
 }

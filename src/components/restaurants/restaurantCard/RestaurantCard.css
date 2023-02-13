@@ -19,3 +19,19 @@
 .restaurant-card p {
     margin-right: 30px;
 }
+
+@media screen and (max-width: 600px) {
+
+    .restaurant-card {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .restaurant-card h4 {
+        margin-left: 0;
+    }
+    
+    .restaurant-card p {
+        margin-right: 0;
+    }
+}

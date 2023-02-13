@@ -5,9 +5,10 @@
     <description/>
     <Style id="icon-1530-795548-labelson-nodesc">
       <IconStyle>
+        <color>ff485579</color>
         <scale>1</scale>
         <Icon>
-          <href>images/icon-7.png</href>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
@@ -16,9 +17,10 @@
     </Style>
     <Style id="icon-1545-0288D1-labelson-nodesc">
       <IconStyle>
+        <color>ffd18802</color>
         <scale>1</scale>
         <Icon>
-          <href>images/icon-4.png</href>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
@@ -27,17 +29,19 @@
     </Style>
     <Style id="icon-1567-9C27B0-labelson">
       <IconStyle>
+        <color>ffb0279c</color>
         <scale>1</scale>
         <Icon>
-          <href>images/icon-3.png</href>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
         </Icon>
       </IconStyle>
     </Style>
     <Style id="icon-1567-9C27B0-labelson-nodesc">
       <IconStyle>
+        <color>ffb0279c</color>
         <scale>1</scale>
         <Icon>
-          <href>images/icon-3.png</href>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
@@ -46,17 +50,19 @@
     </Style>
     <Style id="icon-1651-A52714-labelson">
       <IconStyle>
+        <color>ff1427a5</color>
         <scale>1</scale>
         <Icon>
-          <href>images/icon-1.png</href>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
         </Icon>
       </IconStyle>
     </Style>
     <Style id="icon-1651-A52714-labelson-nodesc">
       <IconStyle>
+        <color>ff1427a5</color>
         <scale>1</scale>
         <Icon>
-          <href>images/icon-1.png</href>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
@@ -65,9 +71,10 @@
     </Style>
     <Style id="icon-1798-FF5252-labelson-nodesc">
       <IconStyle>
+        <color>ff5252ff</color>
         <scale>1</scale>
         <Icon>
-          <href>images/icon-5.png</href>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
@@ -76,9 +83,10 @@
     </Style>
     <Style id="icon-1810-000000-labelson-nodesc">
       <IconStyle>
+        <color>ff000000</color>
         <scale>1</scale>
         <Icon>
-          <href>images/icon-6.png</href>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
@@ -87,9 +95,10 @@
     </Style>
     <Style id="icon-1899-0288D1-labelson-nodesc">
       <IconStyle>
+        <color>ffd18802</color>
         <scale>1</scale>
         <Icon>
-          <href>images/icon-8.png</href>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
         </Icon>
         <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
       </IconStyle>
@@ -99,9 +108,10 @@
     </Style>
     <Style id="icon-1899-9C27B0-labelson-nodesc">
       <IconStyle>
+        <color>ffb0279c</color>
         <scale>1</scale>
         <Icon>
-          <href>images/icon-2.png</href>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
         </Icon>
         <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
       </IconStyle>
@@ -190,6 +200,15 @@
         <Point>
           <coordinates>
             11.3355048,44.4932585,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[The Gallery Pizzart Food & Drink]]></name>
+        <styleUrl>#icon-1651-A52714-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3410924,44.4929762,0
           </coordinates>
         </Point>
       </Placemark>
@@ -514,6 +533,15 @@
         <Point>
           <coordinates>
             11.3463004,44.4987624,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Antica Trattoria del Reno</name>
+        <styleUrl>#icon-1567-9C27B0-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3107105,44.5293003,0
           </coordinates>
         </Point>
       </Placemark>
@@ -1244,20 +1272,20 @@
         </Point>
       </Placemark>
       <Placemark>
-        <name>Antica Trattoria del Reno</name>
-        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            11.3107119,44.5293026,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
         <name>Bemabò</name>
         <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
         <Point>
           <coordinates>
             11.3061537,44.506972,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA[The Gallery Pizzart Food & Drink]]></name>
+        <styleUrl>#icon-1899-0288D1-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3410924,44.4929762,0
           </coordinates>
         </Point>
       </Placemark>

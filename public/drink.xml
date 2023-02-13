@@ -274,15 +274,6 @@
         </Point>
       </Placemark>
       <Placemark>
-        <name>Atene Ristorante Greco</name>
-        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            11.3311706,44.5017431,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
         <name>Delogo cucina Greca</name>
         <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
         <Point>
@@ -325,6 +316,15 @@
         <Point>
           <coordinates>
             11.3485803,44.4929046,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Atene</name>
+        <styleUrl>#icon-1743-795548-labelson-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3311706,44.5017431,0
           </coordinates>
         </Point>
       </Placemark>
@@ -427,15 +427,6 @@
         <Point>
           <coordinates>
             11.3479876,44.4875853,0
-          </coordinates>
-        </Point>
-      </Placemark>
-      <Placemark>
-        <name>Canapè Incontro</name>
-        <styleUrl>#icon-1587-097138-labelson-nodesc</styleUrl>
-        <Point>
-          <coordinates>
-            11.3310526,44.4943129,0
           </coordinates>
         </Point>
       </Placemark>
