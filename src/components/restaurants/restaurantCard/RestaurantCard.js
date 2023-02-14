@@ -28,14 +28,14 @@ const RestaurantCard = ({ restaurant, coordinates }) => {
     setDistance(distance)
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
     calcDistanceFromUser(userPosition, coordinates)
-  }, [selectedTagsState, selectedFiltersState])
+  }, [selectedTagsState, selectedFiltersState]) */
 
   return (
     <div className='restaurant-card' onClick={() => navigate(`/restaurants/${restaurant}`)}>
       <h4>{restaurant}</h4>
-      <p>Distanza: <b>{distance}</b></p>
+      {/* <p>Distanza: <b>{distance}</b></p> */}
     </div>
   )
 }

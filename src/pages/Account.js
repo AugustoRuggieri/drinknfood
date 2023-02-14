@@ -6,15 +6,15 @@ import { AppContext } from '../App'
 import { saveSingleRestaurantToDB, saveOnFile, readCollection, convertToJSON } from '../utils'
 import { async } from '@firebase/util'
 
+
+
 const Account = () => {
 
   const { tagsArr, filtersArr } = useContext(AppContext)
 
   const [fileName, setFileName] = useState('')
-  /* const [restaurants, setRestaurants] = useState([]) */
-  var restaurants = []
-
-  const [collectionToBeImported, setCollectionToBeImported] = useState('exported-restaurants-data.json')
+  
+  const collectionToBeImported = 'exported-restaurants-data.json'
   const [importedRestaurants, setImportedRestaurants] = useState([])
 
   // Import data from xml files
@@ -38,17 +38,23 @@ const Account = () => {
 
           try {
             var restaurantName = tagXmlNode.getElementsByTagName('name')[0].textContent.toLowerCase()
-            var restaurant = restaurants.find((item) => item.name === restaurantName)
+            var restaurant = importedRestaurants.find((item) => item.name === restaurantName)
 
             if (!restaurant) {
               var restaurantPoint = tagXmlNode.getElementsByTagName('Point')[0].getElementsByTagName('coordinates')[0].textContent.toString().split(',')
               restaurant = {
                 name: restaurantName,
-                coordinates: [restaurantPoint[1], restaurantPoint[0].split(' ').at(-1)],
+                coordinates:
+                /* [restaurantPoint[1], restaurantPoint[0].split(' ').at(-1)] */
+                {
+                  latitude: restaurantPoint[1],
+                  longitude: restaurantPoint[0].split(' ').at(-1)
+                }
+                ,
                 tags: [],
                 filters: []
               }
-              restaurants.push(restaurant)
+              importedRestaurants.push(restaurant)
             }
 
             var tag = tagXmlNode.parentNode.children[0].textContent.toLowerCase()
@@ -64,17 +70,17 @@ const Account = () => {
             console.error(error)
           }
         })
-        alert('File importato correttamente')
+        alert('File importato correttamente: ' + importedRestaurants.length + ' ristoranti importati')
       })
     })
   }
 
   const saveRestaurantsToDB = () => {
-    if (restaurants.length === 0) {
+    if (importedRestaurants.length === 0) {
       alert('Nessun dato da salvare')
       return
     }
-    restaurants.forEach((item) => {
+    importedRestaurants.forEach((item) => {
       saveSingleRestaurantToDB(item)
     })
     alert('Tutti i dati sono stati salvati nel database')
@@ -90,7 +96,7 @@ const Account = () => {
   const importCollection = async (file) => {
     fetch(file)
       .then(response => response.json())
-      .then(collection => restaurants = collection)
+      .then(collection => setImportedRestaurants(collection))
   }
 
   return (

@@ -11,7 +11,7 @@ export const saveSingleRestaurantToDB = async (restaurant) => {
             // Aggiungo il ristorante
             await addDoc(collection(db, 'restaurants'), {
                 name: restaurant.name,
-                coordinates: new GeoPoint(restaurant.coordinates[0], restaurant.coordinates[1]),
+                coordinates: new GeoPoint(restaurant.coordinates.latitude, restaurant.coordinates.longitude),
                 tags: restaurant.tags,
                 filters: restaurant.filters
             })
