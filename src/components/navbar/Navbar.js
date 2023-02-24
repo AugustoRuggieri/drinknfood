@@ -6,8 +6,6 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
 import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../../App'
-import TagItem from '../sidebar/tagItem/TagItem'
-import FilterItem from '../sidebar/filterItem/FilterItem'
 
 const Navbar = () => {
 

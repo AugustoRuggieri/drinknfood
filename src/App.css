@@ -52,12 +52,11 @@ input {
 @media screen and (max-width: 600px) {
 
     #sidebar {
-        height: calc(100vh - 5rem);
-        /* max-height: calc(100vh - 5rem); */
+        height: 100vh;
         min-width: 70%;
         overflow-y: scroll;
         position: fixed;
-        top: 5rem;
+        top: 0;
         right: 0;
         z-index: 9999;
         

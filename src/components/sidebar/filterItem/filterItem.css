@@ -13,10 +13,6 @@
     width: 90%;
 }
 
-.filter-item p {
-    text-transform: uppercase;
-}
-
 .filter-item.active {
     background: #313131;
     color: #fff;

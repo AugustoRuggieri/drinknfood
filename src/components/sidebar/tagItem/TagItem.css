@@ -13,10 +13,6 @@
     width: 90%;
 }
 
-.tag-item p {
-    text-transform: uppercase;
-}
-
 .tag-item.active {
     background: #313131;
     color: #fff;

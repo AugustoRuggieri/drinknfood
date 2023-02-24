@@ -124,7 +124,7 @@ const RestaurantInfo = () => {
             <textarea /> */}
           </section>
         </div>
-        <div className='map-container half-row-section'>
+        <div className='half-row-section'>
           <MapComponent coordinates={coordinates} />
         </div>
       </header>

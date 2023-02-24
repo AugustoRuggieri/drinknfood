@@ -28,7 +28,7 @@ const Searchbar = () => {
 
     return (
         <div className='search-section'>
-            <input className='search-input' onChange={handleChange} value={search} placeholder='Cerca un locale...' />
+            <input className='search-input' onChange={handleChange} value={search} placeholder='cerca un locale...' />
             <FontAwesomeIcon icon={faMagnifyingGlass} className='search-icon' onClick={() => handleSearch()} />
         </div>
     )

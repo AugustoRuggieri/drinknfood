@@ -1,12 +1,13 @@
-import React, { useContext, useState, useRef, useCallback } from 'react'
+import React, { useContext, useState } from 'react'
 import RestaurantCard from './restaurantCard/RestaurantCard'
 import './restaurants.css'
 import { AppContext } from '../../App'
 import Searchbar from '../searchbar/Searchbar'
+import UserMap from '../userMap/UserMap'
 
 const Restaurants = () => {
 
-  let { restaurantList, searchedRestaurants, setSearchedRestaurants } = useContext(AppContext)
+  let { restaurantList, searchedRestaurants, setSearchedRestaurants, userPosition } = useContext(AppContext)
 
   const [increase, setIncrease] = useState(10)
 
@@ -20,7 +21,11 @@ const Restaurants = () => {
 
   return (
     <div className='restaurant-page'>
+
+      <UserMap restaurantsCoordinates={restaurantList} userCoordinates={userPosition} />
+
       <Searchbar />
+
       <div className='restaurant-list'>
         {searchedRestaurants.length > 0
           ?
