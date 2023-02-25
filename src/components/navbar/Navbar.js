@@ -29,11 +29,11 @@ const Navbar = () => {
         <div className='navbar'>
             <div className='navbar-container'>
                 <h3 className='logo' onClick={() => navigate('home')}>aperitiBO</h3>
-                <a href='#' className='toggle-btn' onClick={() => showTagsAndFiltersList()}>
+                <div className='toggle-btn' onClick={() => showTagsAndFiltersList()}>
                     <span className='bar'></span>
                     <span className='bar'></span>
                     <span className='bar'></span>
-                </a>
+                </div>
                 <div className='auth-btn'>
                     <h3>{user ? <span onClick={logOut}>Esci</span> : <span className='login-btn' onClick={userAuth}>Accedi / Registrati</span>}</h3>
                     <FontAwesomeIcon icon={faUser} className="user-icon" onClick={() => navigate('/account')} />

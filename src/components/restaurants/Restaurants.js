@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import RestaurantCard from './restaurantCard/RestaurantCard'
 import './restaurants.css'
 import { AppContext } from '../../App'
@@ -18,6 +18,15 @@ const Restaurants = () => {
   const showAllRestaurants = () => {
     setSearchedRestaurants([])
   }
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('increase')
+    if (data !== null) setIncrease(JSON.parse(data))
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('increase', JSON.stringify(increase))
+  }, [increase])
 
   return (
     <div className='restaurant-page'>
