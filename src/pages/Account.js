@@ -108,6 +108,7 @@ const Account = () => {
         <option></option>
         <option value='drink.xml'>Drink</option>
         <option value='food.xml'>Food</option>
+        <option value='nuovi-locali.xml'>Nuovi locali</option>
       </select>
 
       <button className='import-btn' onClick={() => importData(fileName)}>Importa dati</button>

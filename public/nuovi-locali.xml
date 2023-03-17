@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Nuovi locali</name>
+    <description/>
+    <Style id="icon-1899-0288D1-nodesc-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-nodesc-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Vietnamita</name>
+      <Placemark>
+        <name>Fratelli Vietnam</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3555961,44.4933739,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Focaccia romana</name>
+      <Placemark>
+        <name>Maialetto 2</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3476327,44.4981229,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Maialetto focacceria romana</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3370129,44.4962674,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Birra artigianale</name>
+      <Placemark>
+        <name>Doppio Malto</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.357839,44.5132828,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Doppio Malto Bologna Malpighi</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3368362,44.4957223,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vecchia Orsa Moline</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3475707,44.4980263,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Argentino</name>
+      <Placemark>
+        <name>Aires Del Plata</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3341312,44.4971834,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>da provare</name>
+      <Placemark>
+        <name>Fratelli Vietnam</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3555961,44.4933739,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Maialetto focacceria romana</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3370129,44.4962674,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Maialetto 2</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3476327,44.4981229,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vecchia Orsa Moline</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3475707,44.4980263,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Aires Del Plata</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3341312,44.4971834,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Doppio Malto Bologna Malpighi</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3368362,44.4957223,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Doppio Malto</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.357839,44.5132828,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Berberè Porta Saragozza</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3310873,44.4907132,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Amole - Cucina Cinese</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3440334,44.4983842,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rude</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3494454,44.4888215,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Centro Natura</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3450402,44.4956581,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Cinese</name>
+      <Placemark>
+        <name>Amole - Cucina Cinese</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3440334,44.4983842,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Aperitivo</name>
+      <Placemark>
+        <name>Rude</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            11.3494454,44.4888215,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
