@@ -6,24 +6,25 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 70px;
+    justify-content: center;
+    height: 200px;
     margin-bottom: 15px;
 }
 
-.restaurant-card h4 {
+/* .restaurant-card h4 {
     margin-left: 30px;
 }
 
 .restaurant-card p {
     margin-right: 30px;
-}
+} */
 
 @media screen and (max-width: 600px) {
 
     .restaurant-card {
         flex-direction: column;
         justify-content: space-around;
+        height: 70px;
     }
 
     .restaurant-card h4 {

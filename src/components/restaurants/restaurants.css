@@ -6,6 +6,10 @@
 
 .restaurant-list {
     margin: 15px;
+    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 15px;
 }
 
 .show-more-results {
@@ -21,8 +25,16 @@
     color: #fff;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) {
+    .restaurant-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
+@media screen and (max-width: 992px) {
+    .restaurant-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
     .restaurant-page {
         width: 100%;
     }
@@ -32,6 +44,10 @@
 }
 
 @media screen and (max-width: 600px) {
+    .restaurant-list {
+        grid-template-columns: repeat(1, 1fr);
+        column-gap: 0;
+    }
     #show-more-btn {
         width: 80%;
     }
