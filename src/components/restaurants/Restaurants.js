@@ -19,6 +19,30 @@ const Restaurants = () => {
     setSearchedRestaurants([])
   }
 
+  /* const getRestaurantDetails = async (name, address) => {
+    const apiKey = 'AIzaSyCF0qsU8VoJjp30mFr5si410gxg233zxps';
+    const url = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${name}&inputtype=textquery&fields=place_id&key=${apiKey}`
+  
+    try {
+      const response = await fetch(url)
+      const placeId = response.data.candidates[0].place_id
+      const detailsUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=formatted_phone_number,icon&key=${apiKey}`
+    
+      const detailsResponse = await fetch(detailsUrl)
+      const phoneNumber = detailsResponse.data.result.formatted_phone_number
+      const logo = detailsResponse.data.result.icon
+
+      return {
+        phoneNumber,
+        logo
+      }
+    
+    } catch (error) {
+      console.error('Errore durante il recupero dei dettagli del ristorante:', error)
+      return null
+    }
+  } */
+
   useEffect(() => {
     const data = window.localStorage.getItem('increase')
     if (data !== null) setIncrease(JSON.parse(data))

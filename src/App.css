@@ -22,6 +22,10 @@ button {
     text-transform: uppercase;
 }
 
+button:hover {
+    opacity: .9;
+}
+
 form {
     display: flex;
     flex-direction: column;

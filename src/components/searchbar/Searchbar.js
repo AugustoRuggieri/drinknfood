@@ -6,7 +6,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const Searchbar = () => {
 
-    const { restaurantList, searchedRestaurants, setSearchedRestaurants } = useContext(AppContext)
+    const { restaurantList, searchedRestaurants, setSearchedRestaurants, newRestaurantModal, setNewRestaurantModal } = useContext(AppContext)
 
     const [search, setSearch] = useState("")
 
@@ -26,10 +26,16 @@ const Searchbar = () => {
         }
     }
 
+    const showNewRestaurantModal = () => {
+        setNewRestaurantModal(!newRestaurantModal)
+    }
+
     return (
         <div className='search-section'>
             <input className='search-input' onChange={handleChange} value={search} placeholder='cerca un locale...' />
             <FontAwesomeIcon icon={faMagnifyingGlass} className='search-icon' onClick={() => handleSearch()} />
+
+            <button id='add-new-restaurant-btn' onClick={showNewRestaurantModal}>aggiungi nuovo locale</button>
         </div>
     )
 }

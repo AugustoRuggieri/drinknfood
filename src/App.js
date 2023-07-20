@@ -20,6 +20,7 @@ function App() {
   const [selectedTagsState, setSelectedTagsState] = useState([])
   const [selectedFiltersState, setSelectedFiltersState] = useState([])
   const [showModal, setShowModal] = useState(false)
+  const [newRestaurantModal, setNewRestaurantModal] = useState(false)
   const [user, setUser] = useState(null)
   const [tagsArr, setTagsArr] = useState([])
   const [filtersArr, setFiltersArr] = useState([])
@@ -87,6 +88,7 @@ function App() {
   }
 
   const showPosition = (position) => {
+    console.log(position)
     setUserPosition({
       lat: position.coords.latitude,
       lng: position.coords.longitude
@@ -125,6 +127,8 @@ function App() {
       setSelectedFiltersState,
       showModal,
       setShowModal,
+      newRestaurantModal, 
+      setNewRestaurantModal,
       user,
       tagsArr,
       setTagsArr,

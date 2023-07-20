@@ -43,11 +43,14 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .restaurant-list {
         grid-template-columns: repeat(1, 1fr);
         column-gap: 0;
     }
+}
+
+@media screen and (max-width: 600px) {
     #show-more-btn {
         width: 80%;
     }

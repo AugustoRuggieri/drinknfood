@@ -15,3 +15,11 @@
     right: 2rem;
     cursor: pointer;
 }
+
+#add-new-restaurant-btn {
+    background-color: crimson;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-transform: lowercase;
+    width: fit-content;
+}

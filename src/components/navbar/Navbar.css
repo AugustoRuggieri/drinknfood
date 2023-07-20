@@ -19,18 +19,22 @@
     cursor: pointer;
 }
 
-.auth-btn {
+.icons-wrapper {
     display: flex;
 }
 
-.login-btn {
-    cursor: pointer;
+.auth-btn, .settings-btn {
+    display: flex;
+    flex-direction: column;
 }
 
-.user-icon {
+.auth-btn {
+    margin-right: .8rem;
+}
+
+.user-icon, .settings-icon {
     font-size: 1.4rem;
-    margin-left: 1.4rem;
-    margin-right: 1.5rem;
+    margin-bottom: .4rem;
     cursor: pointer;
 }
 
@@ -61,7 +65,7 @@
     .toggle-btn {
         display: flex;
     }
-    .auth-btn {
+    .auth-btn, .settings-btn {
         display: none;
     }
 }

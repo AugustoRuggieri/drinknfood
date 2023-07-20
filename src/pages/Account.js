@@ -101,7 +101,7 @@ const Account = () => {
 
   return (
     <div className='account-page'>
-      <h3 className='page-title'>Account</h3>
+      <h3 className='page-title'>Impostazioni</h3>
 
       <label>Seleziona il file da importare nel database</label>
       <select onChange={(e) => setFileName(e.target.value)} className='select'>

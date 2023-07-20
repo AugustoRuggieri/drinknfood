@@ -1,17 +1,18 @@
-import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './userMap.css'
+import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api'
 
 const UserMap = ({ restaurantsCoordinates, userCoordinates }) => {
 
     const { isLoaded } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyCF0qsU8VoJjp30mFr5si410gxg233zxps'
+        googleMapsApiKey: 'AIzaSyCF0qsU8VoJjp30mFr5si410gxg233zxps',
+        libraries: ['places']
     })
 
     if (!isLoaded) return <div>Loading...</div>
 
     const center = {
-        lat: parseFloat(userCoordinates.lat), 
+        lat: parseFloat(userCoordinates.lat),
         lng: parseFloat(userCoordinates.lng)
     }
 
@@ -21,7 +22,7 @@ const UserMap = ({ restaurantsCoordinates, userCoordinates }) => {
         mapMarkers.push({
             name: restaurant.name,
             position: {
-                lat: restaurant.coordinates._lat, 
+                lat: restaurant.coordinates._lat,
                 lng: restaurant.coordinates._long
             }
         })
@@ -30,16 +31,19 @@ const UserMap = ({ restaurantsCoordinates, userCoordinates }) => {
     return (
         <GoogleMap
             zoom={16}
-            center={ center }
+            center={center}
             mapContainerClassName='user-map'
         >
-            <Marker position={ center } title={"La tua posizione"} />
+            <Marker position={center} title={"La tua posizione"} />
 
             {
                 mapMarkers.map((marker, index) => {
                     return <Marker key={index} position={marker.position} title={marker.name} />
                 })
             }
+            {/* {
+                selected && <Marker position={selected} />
+            } */}
         </GoogleMap>
     )
 }

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import './Navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faGear } from '@fortawesome/free-solid-svg-icons'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
 import { useNavigate } from 'react-router-dom'
@@ -34,9 +35,15 @@ const Navbar = () => {
                     <span className='bar'></span>
                     <span className='bar'></span>
                 </div>
-                <div className='auth-btn'>
-                    <h3>{user ? <span onClick={logOut}>Esci</span> : <span className='login-btn' onClick={userAuth}>Accedi / Registrati</span>}</h3>
-                    <FontAwesomeIcon icon={faUser} className="user-icon" onClick={() => navigate('/account')} />
+                <div className='icons-wrapper'>
+                    <div className='auth-btn'>
+                        <FontAwesomeIcon icon={faUser} className="user-icon" onClick={userAuth} />
+                        <h5 className='btn-text'>{user ? <span onClick={logOut}>Esci</span> : <span className='login-btn'>accedi / registrati</span>}</h5>
+                    </div>
+                    <div className='settings-btn' onClick={() => navigate('/account')} >
+                        <FontAwesomeIcon icon={faGear} className='settings-icon' />
+                        <h5 className='btn-text'>impostazioni</h5>
+                    </div>
                 </div>
             </div>
         </div>
