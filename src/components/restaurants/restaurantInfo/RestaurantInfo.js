@@ -6,6 +6,8 @@ import { addDoc, collection, doc, getDocs, query, updateDoc, where } from 'fireb
 import { db } from '../../../firebase'
 import SingleEntry from '../../SingleEntry'
 import { AppContext } from '../../../App'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 const RestaurantInfo = () => {
 
@@ -18,7 +20,7 @@ const RestaurantInfo = () => {
   const [selectTags, setSelectTags] = useState([])
   const [selectFilters, setSelectFilters] = useState([])
 
-  const { tagsArr, filtersArr } = useContext(AppContext)
+  const { tagsArr, filtersArr, user } = useContext(AppContext)
 
   const { restaurant } = useParams()
   const navigate = useNavigate()
@@ -108,6 +110,15 @@ const RestaurantInfo = () => {
     filterFiltersArrForSelect()
   }, [filters])
 
+  const addToFavorites = () => {
+    if (user) {
+      const userRef = collection(db, 'users')
+      const q = query(userRef, where('uid', '==', user.uid))
+    } else {
+      alert('Esegui l\'accesso per aggiungere questo locale ai preferiti')
+    }
+  }
+
   return (
     <div className='restaurant-info'>
       <header className='restaurant-header'>
@@ -116,12 +127,7 @@ const RestaurantInfo = () => {
             <h2>{restaurant}</h2>
           </div>
           <section className='user-notes-section'>
-            <h4>Note:</h4>
-            {/* <div className='user-notes'>
-              { }
-            </div>
-            <button>Aggiungi note</button>
-            <textarea /> */}
+            <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff", }} className='heart-icon' onClick={addToFavorites} />
           </section>
         </div>
         <div className='half-row-section'>

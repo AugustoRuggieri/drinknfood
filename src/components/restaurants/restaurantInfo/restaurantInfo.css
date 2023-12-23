@@ -27,6 +27,13 @@
     text-transform: capitalize;
 }
 
+.heart-icon {
+    background-color: #393939;
+    border-radius: 4px;
+    padding: 4px;
+    cursor: pointer;
+}
+
 .container-row {
     margin: 0 auto;
     width: auto;

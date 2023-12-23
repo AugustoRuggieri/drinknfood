@@ -38,7 +38,7 @@ const Navbar = () => {
                 <div className='icons-wrapper'>
                     <div className='auth-btn'>
                         <FontAwesomeIcon icon={faUser} className="user-icon" onClick={userAuth} />
-                        <h5 className='btn-text'>{user ? <span onClick={logOut}>Esci</span> : <span className='login-btn'>accedi / registrati</span>}</h5>
+                        <h5 className='btn-text'>{user ? <span onClick={logOut}>logout</span> : <span className='login-btn'>accedi / registrati</span>}</h5>
                     </div>
                     <div className='settings-btn' onClick={() => navigate('/account')} >
                         <FontAwesomeIcon icon={faGear} className='settings-icon' />

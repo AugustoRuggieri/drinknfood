@@ -58,7 +58,7 @@ function Map() {
 
 const PlacesAutocomplete = ({ setSelected }) => {
 
-  const { newRestaurantModal, setNewRestaurantModal, restaurantList, setRestaurantList } = useContext(AppContext)
+  const { newRestaurantModal, setNewRestaurantModal, restaurantList, setRestaurantList, user } = useContext(AppContext)
 
   const [showBtn, setShowBtn] = useState(false)
   const [newRestaurantData, setNewRestaurantData] = useState(null)
@@ -84,18 +84,22 @@ const PlacesAutocomplete = ({ setSelected }) => {
       name: address.split(',')[0].toLowerCase().replace(/'\s+/g, "'"),
       coordinates: new GeoPoint(lat, lng),
       tags: [],
-      filters: [] 
+      filters: []
     })
 
   }
 
   const handleNewRestaurantAdded = () => {
-    setNewRestaurantModal(!newRestaurantModal)
-    saveSingleRestaurantToDB(newRestaurantData)
-    setRestaurantList(restaurantList => [...restaurantList, {
-      name: newRestaurantData.name,
-      coordinates: newRestaurantData.coordinates
-    }])
+    if (user) {
+      setNewRestaurantModal(!newRestaurantModal)
+      saveSingleRestaurantToDB(newRestaurantData)
+      setRestaurantList(restaurantList => [...restaurantList, {
+        name: newRestaurantData.name,
+        coordinates: newRestaurantData.coordinates
+      }])
+    } else {
+      alert('Esegui l\'accesso per aggiungere nuovi locali')
+    }
   }
 
   return (

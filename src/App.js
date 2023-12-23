@@ -115,7 +115,7 @@ function App() {
     } else {
       fetchRestaurants()
     }
-  }, [selectedTagsState, selectedFiltersState]);
+  }, [selectedTagsState, selectedFiltersState])
 
   return (
     <AppContext.Provider value={{

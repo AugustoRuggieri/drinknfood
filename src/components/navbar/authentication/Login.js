@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react'
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../../../firebase'
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { addDoc, collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import { auth, db } from '../../../firebase'
 import { AppContext } from '../../../App'
+import GoogleButton from 'react-google-button'
 
 const Login = () => {
 
@@ -26,13 +28,43 @@ const Login = () => {
         }
     }
 
+    const googleProvider = new GoogleAuthProvider()
+
+    const signInWithGoogle = () => {
+        signInWithPopup(auth, googleProvider).then(async res => {
+            console.log(res.user)
+            alert(res.user.email + ' accesso effettuato')
+            setShowModal(!showModal)
+
+            const userRef = collection(db, 'users')
+            const q = query(userRef, where('uid', '==', res.user.uid))
+            const querySnapshot = await getDocs(q)
+            if (querySnapshot.empty) {
+                await addDoc(collection(db, 'users'), {
+                    name: res.user.displayName,
+                    email: res.user.email,
+                    uid: res.user.uid,
+                    favorites: []
+                })
+                return
+            }
+
+        }).catch(err => {
+            alert(err.message)
+        })
+    }
+
     return (
         <div className='login-container'>
             <input type="email" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
             <input type="password" value={password} placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
-            <button onClick={handleSubmit}>
-                Accedi
+            <button id='login-btn' onClick={handleSubmit}>
+                accedi
             </button>
+            <div className='google-auth-container'>
+                <span>oppure</span>
+                <GoogleButton onClick={signInWithGoogle} />
+            </div>
         </div>
     )
 }

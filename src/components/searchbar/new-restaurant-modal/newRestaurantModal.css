@@ -15,10 +15,11 @@
 
 .modal-content {
     background-color: #fff;
+    border-radius: 15px;
     width: 40%;
     height: 40%;
 
-    padding: 5px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
 }
@@ -47,4 +48,8 @@
 .combobox-option {
     cursor: pointer;
     padding: 5px;
+}
+
+.combo-add-btn {
+    background-color: crimson;
 }
