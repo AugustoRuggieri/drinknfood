@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import './userMap.css'
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api'
 
@@ -34,7 +34,11 @@ const UserMap = ({ restaurantsCoordinates, userCoordinates }) => {
             center={center}
             mapContainerClassName='user-map'
         >
-            <Marker position={center} title={"La tua posizione"} />
+            <Marker
+                position={center} title={"La tua posizione"}
+                icon={{ url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' }}
+                zIndex={9999}
+            />
 
             {
                 mapMarkers.map((marker, index) => {

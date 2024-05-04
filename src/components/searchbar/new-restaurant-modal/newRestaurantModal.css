@@ -31,9 +31,15 @@
 }
 
 .combobox-input {
-    width: 100%;
+    width: 90%;
     padding: 5px;
+    padding-left: 15px;
     margin: 0 auto;
+
+    border-radius: 5px;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .combobox-popover {
@@ -52,4 +58,20 @@
 
 .combo-add-btn {
     background-color: crimson;
+}
+
+@media screen and (max-width: 992px) {
+    .modal-content {
+        width: 60%;
+        height: 40%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .modal-content {
+        border-radius: 5px;
+        width: 90%;
+        height: 40%;
+        padding: 25px 5px 25px 5px;
+    }
 }

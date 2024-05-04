@@ -13,14 +13,14 @@ export default function Places() {
 
   window.onclick = (e) => {
     var modal = document.getElementById('new-restaurant-modal')
-    if (e.target == modal) {
+    if (e.target === modal) {
       setNewRestaurantModal(!newRestaurantModal)
     }
   }
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCF0qsU8VoJjp30mFr5si410gxg233zxps',
-    libraries: ["places"],
+    libraries: ['places']
   })
 
   if (!isLoaded) return <div>Loading...</div>
@@ -36,8 +36,16 @@ export default function Places() {
 }
 
 function Map() {
+
+  const { userPosition } = useContext(AppContext)
+
   const center = { lat: 44.494, lng: 11.342 }
   const [selected, setSelected] = useState(null)
+
+  const user = {
+    lat: parseFloat(userPosition.lat),
+    lng: parseFloat(userPosition.lng)
+  }
 
   return (
     <>
@@ -51,6 +59,9 @@ function Map() {
         mapContainerClassName="map-container"
       >
         {selected && <Marker position={selected} />}
+        <Marker
+          position={user}
+          icon={{ url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' }} />
       </GoogleMap>
     </>
   )
@@ -58,7 +69,7 @@ function Map() {
 
 const PlacesAutocomplete = ({ setSelected }) => {
 
-  const { newRestaurantModal, setNewRestaurantModal, restaurantList, setRestaurantList, user } = useContext(AppContext)
+  const { newRestaurantModal, setNewRestaurantModal, setRestaurantList } = useContext(AppContext)
 
   const [showBtn, setShowBtn] = useState(false)
   const [newRestaurantData, setNewRestaurantData] = useState(null)
@@ -90,7 +101,13 @@ const PlacesAutocomplete = ({ setSelected }) => {
   }
 
   const handleNewRestaurantAdded = () => {
-    if (user) {
+    setNewRestaurantModal(!newRestaurantModal)
+    saveSingleRestaurantToDB(newRestaurantData)
+    setRestaurantList(restaurantList => [...restaurantList, {
+      name: newRestaurantData.name,
+      coordinates: newRestaurantData.coordinates
+    }])
+    /* if (user) {
       setNewRestaurantModal(!newRestaurantModal)
       saveSingleRestaurantToDB(newRestaurantData)
       setRestaurantList(restaurantList => [...restaurantList, {
@@ -99,7 +116,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
       }])
     } else {
       alert('Esegui l\'accesso per aggiungere nuovi locali')
-    }
+    } */
   }
 
   return (
