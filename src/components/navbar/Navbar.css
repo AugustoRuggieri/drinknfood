@@ -21,21 +21,29 @@
 
 .icons-wrapper {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 12%;
 }
 
 .auth-btn, .settings-btn {
     display: flex;
     flex-direction: column;
-}
-
-.auth-btn {
-    margin-right: .8rem;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    cursor: pointer;
 }
 
 .user-icon, .settings-icon {
-    font-size: 1.4rem;
-    margin-bottom: .4rem;
-    cursor: pointer;
+    font-size: 2rem;
+
+}
+
+.profile-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
 }
 
 .toggle-btn {

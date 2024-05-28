@@ -9,7 +9,7 @@
     margin-bottom: 3em;
     min-height: 5rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -21,17 +21,35 @@
 
 .restaurant-name {
     margin-bottom: 1rem;
-}
-
-.restaurant-name h2 {
     text-transform: capitalize;
 }
 
-.heart-icon {
+.user-notes-section {
+    display: flex;
+    gap: 1rem;
+}
+
+.favorites-btn {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: .2rem .2rem .2rem .8rem;
+}
+
+.favorites-btn .icon {
+    margin-left: .2rem;
+}
+
+.icon {
     background-color: #393939;
     border-radius: 4px;
-    padding: 4px;
+    padding: 8px;
     cursor: pointer;
+    transition: transform .3s ease;
+}
+
+.favorites-btn:hover .icon {
+    transform: scale(1.2);
 }
 
 .container-row {
@@ -145,5 +163,11 @@
 
     .list-container {
         width: 70%;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .user-notes-section {
+        flex-direction: column;
     }
 }

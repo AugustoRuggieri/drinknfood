@@ -15,8 +15,10 @@
 
 .modal-content {
     background-color: #fff;
+    border-radius: 1rem;
     margin: 20% auto;
     width: 20%;
+    padding: 1rem;
 }
 
 .modal-content button {

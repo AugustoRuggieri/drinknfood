@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
-import { addDoc, collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore'
-import { auth, db } from '../../../firebase'
+import { auth } from '../../../firebase'
 import { AppContext } from '../../../App'
 import GoogleButton from 'react-google-button'
 
@@ -30,25 +29,10 @@ const Login = () => {
 
     const googleProvider = new GoogleAuthProvider()
 
-    const signInWithGoogle = () => {
+    const signInWithGoogle = async () => {
         signInWithPopup(auth, googleProvider).then(async res => {
-            console.log(res.user)
-            alert(res.user.email + ' accesso effettuato')
-            setShowModal(!showModal)
-
-            const userRef = collection(db, 'users')
-            const q = query(userRef, where('uid', '==', res.user.uid))
-            const querySnapshot = await getDocs(q)
-            if (querySnapshot.empty) {
-                await addDoc(collection(db, 'users'), {
-                    name: res.user.displayName,
-                    email: res.user.email,
-                    uid: res.user.uid,
-                    favorites: []
-                })
-                return
-            }
-
+            alert(res.user.email + ' accesso effettuato');
+            setShowModal(!showModal);
         }).catch(err => {
             alert(err.message)
         })

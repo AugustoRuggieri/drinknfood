@@ -1,12 +1,13 @@
 import React from 'react'
 import './userMap.css'
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api'
+import { mapsLibraries } from '../../config/config'
 
 const UserMap = ({ restaurantsCoordinates, userCoordinates }) => {
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: 'AIzaSyCF0qsU8VoJjp30mFr5si410gxg233zxps',
-        libraries: ['places']
+        libraries: mapsLibraries
     })
 
     if (!isLoaded) return <div>Loading...</div>

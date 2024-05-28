@@ -19,7 +19,11 @@ const Navbar = () => {
     }
 
     const logOut = () => {
-        signOut(auth)
+        try {
+            signOut(auth).then(alert('Hai eseguito il logout. A presto!'))
+        } catch(err) {
+            alert(err.message);
+        }
     }
 
     const showTagsAndFiltersList = () => {
@@ -36,9 +40,11 @@ const Navbar = () => {
                     <span className='bar'></span>
                 </div>
                 <div className='icons-wrapper'>
-                    <div className='auth-btn'>
-                        <FontAwesomeIcon icon={faUser} className="user-icon" onClick={userAuth} />
-                        <h5 className='btn-text'>{user ? <span onClick={logOut}>logout</span> : <span className='login-btn'>accedi / registrati</span>}</h5>
+                    <div className='auth-btn' onClick={user ? logOut : userAuth}>
+                        {
+                            user ? <img src={user.photoURL} className='profile-avatar' /> : <FontAwesomeIcon icon={faUser} className="user-icon" />
+                        }
+                        <h5 className='btn-text'>{user ? <span>logout</span> : <span className='login-btn'>login</span>}</h5>
                     </div>
                     <div className='settings-btn' onClick={() => navigate('/account')} >
                         <FontAwesomeIcon icon={faGear} className='settings-icon' />

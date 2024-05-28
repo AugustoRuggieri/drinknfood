@@ -2,12 +2,12 @@ import React, { useState, useContext, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import './restaurantInfo.css'
 import MapComponent from './mapComponent/MapComponent'
-import { addDoc, collection, doc, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import { addDoc, collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import SingleEntry from '../../SingleEntry'
 import { AppContext } from '../../../App'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faHeartCrack, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const RestaurantInfo = () => {
 
@@ -20,10 +20,13 @@ const RestaurantInfo = () => {
   const [selectTags, setSelectTags] = useState([])
   const [selectFilters, setSelectFilters] = useState([])
 
-  const { tagsArr, filtersArr, user } = useContext(AppContext)
+  const { tagsArr, filtersArr, user, favorites } = useContext(AppContext)
 
   const { restaurant } = useParams()
+
   const navigate = useNavigate()
+
+  const inFavorites = favorites.includes(restaurant);
 
   const fetchCoordinates = async () => {
     const restaurantRef = collection(db, 'restaurants')
@@ -110,12 +113,31 @@ const RestaurantInfo = () => {
     filterFiltersArrForSelect()
   }, [filters])
 
-  const addToFavorites = () => {
-    if (user) {
-      const userRef = collection(db, 'users')
-      const q = query(userRef, where('uid', '==', user.uid))
-    } else {
-      alert('Esegui l\'accesso per aggiungere questo locale ai preferiti')
+  const addToFavorites = async () => {
+    const docRef = doc(db, "favorites", user.uid);
+    try {
+      await setDoc(docRef, {restaurants: favorites ? [...favorites, restaurant] : [restaurant]});
+    } catch(err) {
+      alert(err.message);
+    }
+  }
+
+  const removeFromFavorites = async () => {
+    const docRef = doc(db, "favorites", user.uid);
+    try {
+      await setDoc(docRef, {restaurants: favorites.filter(fav => fav !== restaurant)}, {merge: "true"});
+    } catch(err) {
+      alert(err.message);
+    }
+  }
+
+  const deleteRestaurant = async () => {
+    try {
+      await deleteDoc(db, 'restaurants', where('name', '==', restaurant));
+      alert('Questo locale è stato eliminato dal database');
+      navigate('/home');
+    } catch(error) {
+      console.log(error.message);
     }
   }
 
@@ -123,11 +145,30 @@ const RestaurantInfo = () => {
     <div className='restaurant-info'>
       <header className='restaurant-header'>
         <div className='info-section half-row-section'>
-          <div className='restaurant-name'>
-            <h2>{restaurant}</h2>
-          </div>
+            <h2 className='restaurant-name'>{restaurant}</h2>
           <section className='user-notes-section'>
-            <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff", }} className='heart-icon' onClick={addToFavorites} />
+            {
+              user && <button className='favorites-btn' onClick={inFavorites ? removeFromFavorites : addToFavorites}>
+                {
+                  inFavorites ? 
+                  <>
+                    Rimuovi dai preferiti 
+                    <FontAwesomeIcon icon={faHeartCrack} style={{ color: "#ffffff" }} className='icon' />
+                  </>
+                   :
+                  <>
+                    Aggiungi ai preferiti
+                    <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff" }} className='icon' />
+                  </>
+                }
+              </button>
+            }
+            {
+              user && <button className='favorites-btn'>
+                Rimuovi dalla lista
+                <FontAwesomeIcon icon={faTrash} style={{ color: "#ffffff" }} className='icon' onClick={deleteRestaurant} />
+              </button>
+            }
           </section>
         </div>
         <div className='half-row-section'>

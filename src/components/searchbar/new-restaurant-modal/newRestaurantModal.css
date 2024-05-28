@@ -13,7 +13,7 @@
     align-items: center;
 }
 
-.modal-content {
+.restaurant-modal-content {
     background-color: #fff;
     border-radius: 15px;
     width: 40%;
@@ -61,14 +61,14 @@
 }
 
 @media screen and (max-width: 992px) {
-    .modal-content {
+    .restaurant-modal-content {
         width: 60%;
         height: 40%;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .modal-content {
+    .restaurant-modal-content {
         border-radius: 5px;
         width: 90%;
         height: 40%;

@@ -6,6 +6,7 @@ import { Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover 
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api'
 import { GeoPoint } from 'firebase/firestore'
 import { saveSingleRestaurantToDB } from '../../../utils'
+import { mapsLibraries } from '../../../config/config'
 
 export default function Places() {
 
@@ -20,14 +21,14 @@ export default function Places() {
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCF0qsU8VoJjp30mFr5si410gxg233zxps',
-    libraries: ['places']
+    libraries: mapsLibraries
   })
 
   if (!isLoaded) return <div>Loading...</div>
   return (
     <>
       <div id='new-restaurant-modal'>
-        <div className='modal-content'>
+        <div className='restaurant-modal-content'>
           <Map />
         </div>
       </div>

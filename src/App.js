@@ -7,7 +7,7 @@ import Restaurants from './components/restaurants/Restaurants'
 import Account from './pages/Account'
 import { createContext } from 'react'
 import { auth, db } from './firebase'
-import { collection, getDocs, limit, query, where } from 'firebase/firestore'
+import { collection, doc, getDocs, onSnapshot, query, where } from 'firebase/firestore'
 import { onAuthStateChanged } from "@firebase/auth"
 import Sidebar from './components/sidebar/Sidebar'
 import Welcome from './pages/Welcome'
@@ -26,6 +26,7 @@ function App() {
   const [filtersArr, setFiltersArr] = useState([])
   const [searchedRestaurants, setSearchedRestaurants] = useState([])
   const [userPosition, setUserPosition] = useState(null)
+  const [favorites, setFavorites] = useState([])
 
   const fetchRestaurants = async () => {
 
@@ -88,7 +89,6 @@ function App() {
   }
 
   const showPosition = (position) => {
-    console.log(position)
     setUserPosition({
       lat: position.coords.latitude,
       lng: position.coords.longitude
@@ -103,9 +103,9 @@ function App() {
     fetchTagsFromDB()
     fetchFiltersFromDB()
     getUserPosition()
-    onAuthStateChanged(auth, user => {
-      if (user) setUser(user)
-      else setUser(null)
+    onAuthStateChanged(auth, (user) => {
+      if (user) setUser(user);
+      else setUser(null);
     })
   }, [])
 
@@ -116,6 +116,22 @@ function App() {
       fetchRestaurants()
     }
   }, [selectedTagsState, selectedFiltersState])
+
+  useEffect(() => {
+    if (user) {
+      const docRef = doc(db, "favorites", user.uid);
+      var unsubscribe = onSnapshot(docRef, (doc) => {
+        if (doc.exists()) {
+          setFavorites(doc.data().restaurants);
+        } else {
+          console.log("Nessun locale aggiunto ai preferiti");
+        }
+      })
+      return () => {
+        unsubscribe();
+      }
+    }
+  }, [user])
 
   return (
     <AppContext.Provider value={{
@@ -136,7 +152,9 @@ function App() {
       setFiltersArr,
       searchedRestaurants,
       setSearchedRestaurants,
-      userPosition
+      userPosition,
+      favorites,
+      setFavorites
     }}>
       <Routes>
         <Route path='/' element={<Layout />} >

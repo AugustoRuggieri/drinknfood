@@ -5,6 +5,6 @@ const firebaseConfig = {
   storageBucket: "drinknfood-b70d2.appspot.com",
   messagingSenderId: "283019423418",
   appId: "1:283019423418:web:0a4e40e14b83b38dd01c83"
-}
+};
 
-export default firebaseConfig
+export default firebaseConfig;

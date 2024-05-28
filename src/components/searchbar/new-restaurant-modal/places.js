@@ -12,11 +12,12 @@ import {
     ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
+import { mapsLibraries } from "../../../config/config";
 
 export default function Places() {
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        libraries: ["places"],
+        libraries: mapsLibraries
     });
 
     if (!isLoaded) return <div>Loading...</div>;
