@@ -12,7 +12,6 @@ import { faHeart, faHeartCrack, faTrash } from '@fortawesome/free-solid-svg-icon
 const RestaurantInfo = () => {
 
   const [restaurantID, setRestaurantID] = useState('')
-  const [coordinates, setCoordinates] = useState({ lat: null, lng: null })
   const [tags, setTags] = useState([])
   const [filters, setFilters] = useState([])
   const [newTagEntry, setNewTagEntry] = useState('')
@@ -28,16 +27,12 @@ const RestaurantInfo = () => {
 
   const inFavorites = favorites.includes(restaurant);
 
-  const fetchCoordinates = async () => {
+  const fetchRestaurantInfo = async () => {
     const restaurantRef = collection(db, 'restaurants')
     const q = query(restaurantRef, where('name', '==', restaurant))
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
       setRestaurantID(doc.id)
-      setCoordinates({
-        lat: doc.data().coordinates._lat,
-        lng: doc.data().coordinates._long
-      })
       if (doc.data().tags.length !== 0) {
         setTags([...doc.data().tags])
       }
@@ -102,7 +97,7 @@ const RestaurantInfo = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    fetchCoordinates()
+    fetchRestaurantInfo()
   }, [])
 
   useEffect(() => {
@@ -116,8 +111,8 @@ const RestaurantInfo = () => {
   const addToFavorites = async () => {
     const docRef = doc(db, "favorites", user.uid);
     try {
-      await setDoc(docRef, {restaurants: favorites ? [...favorites, restaurant] : [restaurant]});
-    } catch(err) {
+      await setDoc(docRef, { restaurants: favorites ? [...favorites, restaurant] : [restaurant] });
+    } catch (err) {
       alert(err.message);
     }
   }
@@ -125,8 +120,8 @@ const RestaurantInfo = () => {
   const removeFromFavorites = async () => {
     const docRef = doc(db, "favorites", user.uid);
     try {
-      await setDoc(docRef, {restaurants: favorites.filter(fav => fav !== restaurant)}, {merge: "true"});
-    } catch(err) {
+      await setDoc(docRef, { restaurants: favorites.filter(fav => fav !== restaurant) }, { merge: "true" });
+    } catch (err) {
       alert(err.message);
     }
   }
@@ -136,7 +131,7 @@ const RestaurantInfo = () => {
       await deleteDoc(db, 'restaurants', where('name', '==', restaurant));
       alert('Questo locale è stato eliminato dal database');
       navigate('/home');
-    } catch(error) {
+    } catch (error) {
       console.log(error.message);
     }
   }
@@ -145,21 +140,21 @@ const RestaurantInfo = () => {
     <div className='restaurant-info'>
       <header className='restaurant-header'>
         <div className='info-section half-row-section'>
-            <h2 className='restaurant-name'>{restaurant}</h2>
+          <h2 className='restaurant-name'>{restaurant}</h2>
           <section className='user-notes-section'>
             {
               user && <button className='favorites-btn' onClick={inFavorites ? removeFromFavorites : addToFavorites}>
                 {
-                  inFavorites ? 
-                  <>
-                    Rimuovi dai preferiti 
-                    <FontAwesomeIcon icon={faHeartCrack} style={{ color: "#ffffff" }} className='icon' />
-                  </>
-                   :
-                  <>
-                    Aggiungi ai preferiti
-                    <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff" }} className='icon' />
-                  </>
+                  inFavorites ?
+                    <>
+                      Rimuovi dai preferiti
+                      <FontAwesomeIcon icon={faHeartCrack} style={{ color: "#ffffff" }} className='icon' />
+                    </>
+                    :
+                    <>
+                      Aggiungi ai preferiti
+                      <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff" }} className='icon' />
+                    </>
                 }
               </button>
             }
@@ -172,7 +167,7 @@ const RestaurantInfo = () => {
           </section>
         </div>
         <div className='half-row-section'>
-          <MapComponent coordinates={coordinates} />
+          <MapComponent restaurant={restaurant} />
         </div>
       </header>
 

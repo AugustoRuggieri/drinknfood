@@ -1,55 +1,88 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { APIProvider, AdvancedMarker, InfoWindow, Map, Pin } from '@vis.gl/react-google-maps'
 import './userMap.css'
-import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api'
-import { mapsLibraries } from '../../config/config'
 
-const UserMap = ({ restaurantsCoordinates, userCoordinates }) => {
+const UserMap = ({ restaurantsCoordinates }) => {
 
-    const { isLoaded } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyCF0qsU8VoJjp30mFr5si410gxg233zxps',
-        libraries: mapsLibraries
-    })
+    const [userCoordinates, setUserCoordinates] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [open, setOpen] = useState(false);
+    const [openIndex, setOpenIndex] = useState(null);
 
-    if (!isLoaded) return <div>Loading...</div>
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                setUserCoordinates({
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                });
+                setLoading(false);
+            },
+            (err) => {
+                setError(err.message);
+                setLoading(false);
+            }
+        );
+    }, []);
 
-    const center = {
-        lat: parseFloat(userCoordinates.lat),
-        lng: parseFloat(userCoordinates.lng)
+    if (loading) {
+        return <div>Loading user coordinates...</div>;
     }
 
-    var mapMarkers = []
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
-    restaurantsCoordinates.map((restaurant) => {
+    var mapMarkers = [];
+
+    restaurantsCoordinates.map((restaurant, index) => {
         mapMarkers.push({
             name: restaurant.name,
             position: {
                 lat: restaurant.coordinates._lat,
                 lng: restaurant.coordinates._long
-            }
+            },
+            key: index
         })
-    })
+    });
 
     return (
-        <GoogleMap
-            zoom={16}
-            center={center}
-            mapContainerClassName='user-map'
-        >
-            <Marker
-                position={center} title={"La tua posizione"}
-                icon={{ url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' }}
-                zIndex={9999}
-            />
-
-            {
-                mapMarkers.map((marker, index) => {
-                    return <Marker key={index} position={marker.position} title={marker.name} />
-                })
-            }
-            {/* {
-                selected && <Marker position={selected} />
-            } */}
-        </GoogleMap>
+        <APIProvider apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+            <div className='user-map'>
+                <Map
+                    defaultZoom={16}
+                    defaultCenter={userCoordinates}
+                    mapId={process.env.REACT_APP_GOOGLE_MAPS_USER_MAP_ID}
+                >
+                    <AdvancedMarker position={userCoordinates} onClick={() => setOpen(true)}>
+                        <Pin
+                            background={"#FBBC04"}
+                            borderColor={"#000"}
+                            glyphColor={"#000"}
+                        />
+                    </AdvancedMarker>
+                    {open && <InfoWindow position={userCoordinates} onCloseClick={() => setOpen(false)}><p>La tua posizione</p></InfoWindow>}
+                    {mapMarkers.map((marker, index) => (
+                        <React.Fragment key={index}>
+                            <AdvancedMarker
+                                position={marker.position}
+                                onClick={() => setOpenIndex(index)}
+                            >
+                            </AdvancedMarker>
+                            {openIndex === index && (
+                                <InfoWindow
+                                    position={marker.position}
+                                    onCloseClick={() => setOpenIndex(null)}
+                                >
+                                    <p>{marker.name}</p>
+                                </InfoWindow>
+                            )}
+                        </React.Fragment>
+                    ))}
+                </Map>
+            </div>
+        </APIProvider>
     )
 }
 

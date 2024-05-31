@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react'
-import './newRestaurantModal.css'
 import { AppContext } from '../../../App'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
 import { Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover } from '@reach/combobox'
-import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api'
+/* import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api' */
 import { GeoPoint } from 'firebase/firestore'
 import { saveSingleRestaurantToDB } from '../../../utils'
 import { mapsLibraries } from '../../../config/config'
+import './newRestaurantModal.css'
 
 export default function Places() {
 
@@ -19,12 +19,13 @@ export default function Places() {
     }
   }
 
-  const { isLoaded } = useLoadScript({
+  /* const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCF0qsU8VoJjp30mFr5si410gxg233zxps',
     libraries: mapsLibraries
   })
 
-  if (!isLoaded) return <div>Loading...</div>
+  if (!isLoaded) return <div>Loading...</div> */
+  
   return (
     <>
       <div id='new-restaurant-modal'>
@@ -54,7 +55,7 @@ function Map() {
         <PlacesAutocomplete setSelected={setSelected} />
       </div>
 
-      <GoogleMap
+      {/* <GoogleMap
         zoom={13}
         center={center}
         mapContainerClassName="map-container"
@@ -63,7 +64,7 @@ function Map() {
         <Marker
           position={user}
           icon={{ url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' }} />
-      </GoogleMap>
+      </GoogleMap> */}
     </>
   )
 }
