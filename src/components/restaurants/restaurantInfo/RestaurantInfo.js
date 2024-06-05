@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, memo } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import './restaurantInfo.css'
 import MapComponent from './mapComponent/MapComponent'
@@ -8,23 +8,22 @@ import SingleEntry from '../../SingleEntry'
 import { AppContext } from '../../../App'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faHeartCrack, faTrash } from '@fortawesome/free-solid-svg-icons'
+import Select from 'react-select';
+import { InputField } from '../../InputField'
 
-const RestaurantInfo = () => {
+export const RestaurantInfo = memo(function RestaurantInfo() {
 
   const [restaurantID, setRestaurantID] = useState('')
   const [tags, setTags] = useState([])
   const [filters, setFilters] = useState([])
-  const [newTagEntry, setNewTagEntry] = useState('')
-  const [newFilterEntry, setNewFilterEntry] = useState('')
   const [selectTags, setSelectTags] = useState([])
+  const [addedTags, setAddedTags] = useState([])
   const [selectFilters, setSelectFilters] = useState([])
+  const [addedFilters, setAddedFilters] = useState([])
 
-  const { tagsArr, filtersArr, user, favorites } = useContext(AppContext)
-
-  const { restaurant } = useParams()
-
-  const navigate = useNavigate()
-
+  const { tagsArr, filtersArr, user, favorites } = useContext(AppContext);
+  const { restaurant } = useParams();
+  const navigate = useNavigate();
   const inFavorites = favorites.includes(restaurant);
 
   const fetchRestaurantInfo = async () => {
@@ -47,7 +46,10 @@ const RestaurantInfo = () => {
     setSelectTags([])
     tagsArr.forEach((tag) => {
       if (!tags.includes(tag)) {
-        setSelectTags(selectTags => [...selectTags, tag])
+        setSelectTags(selectTags => [...selectTags, {
+          value: tag,
+          label: tag
+        }])
       }
     })
   }
@@ -56,43 +58,48 @@ const RestaurantInfo = () => {
     setSelectFilters([])
     filtersArr.forEach((filter) => {
       if (!filters.includes(filter)) {
-        setSelectFilters(selectFilters => [...selectFilters, filter])
+        setSelectFilters(selectFilters => [...selectFilters, {
+          value: filter,
+          label: filter
+        }])
       }
     })
   }
 
+  const handleTagsSelectChange = (selectedOptions) => {
+    setAddedTags(selectedOptions);
+  }
+
+  const handleFiltersSelectChange = (selectedOptions) => {
+    setAddedFilters(selectedOptions);
+  }
+
   const addTag = async (newTag) => {
-    setTags(tags => [...tags, newTag])
+    const newTags = Array.isArray(newTag) ? newTag : [newTag];
+    setTags(tags => [...tags, ...newTags])
     const restaurantRef = doc(db, 'restaurants', restaurantID)
     await updateDoc(restaurantRef, {
-      tags: [...tags, newTag]
+      tags: [...tags, ...newTags]
     })
   }
 
   const addFilter = async (newFilter) => {
-    setFilters(filters => [...filters, newFilter])
+    const newFilters = Array.isArray(newFilter) ? newFilter : [newFilter];
+    setFilters(filters => [...filters, ...newFilters])
     const restaurantRef = doc(db, 'restaurants', restaurantID)
     await updateDoc(restaurantRef, {
-      filters: [...filters, newFilter]
+      filters: [...filters, ...newFilters]
     })
   }
 
-  const addNewTagEntry = async (tagEntry) => {
-    tagEntry = tagEntry.toLowerCase()
-    addTag(tagEntry)
-    await addDoc(collection(db, 'tags'), {
-      name: tagEntry
-    })
-    setNewTagEntry('')
+  const handleTagsConfirmClick = () => {
+    const selectedValues = addedTags.map(item => item.value);
+    addTag(selectedValues);
   }
 
-  const addNewFilterEntry = async (filterEntry) => {
-    filterEntry = filterEntry.toLowerCase()
-    addFilter(filterEntry)
-    await addDoc(collection(db, 'filters'), {
-      name: filterEntry
-    })
-    setNewFilterEntry('')
+  const handleFiltersConfirmClick = () => {
+    const selectedValues = addedFilters.map(item => item.value);
+    addFilter(selectedValues);
   }
 
   useEffect(() => {
@@ -136,6 +143,20 @@ const RestaurantInfo = () => {
     }
   }
 
+  const customStyles = {
+    container: (provided) => ({
+      ...provided,
+      flex: 1,
+      textAlign: "left"
+    }),
+    control: (provided) => ({
+      ...provided,
+      borderRadius: "none",
+      border: "2px solid",
+      width: "100%"
+    })
+  }
+
   return (
     <div className='restaurant-info'>
       <header className='restaurant-header'>
@@ -174,7 +195,7 @@ const RestaurantInfo = () => {
       <div className='tags-and-filters-wrapper'>
         <div className='container-row'>
           <div className='half-row-section'>
-            <h3>Tag associate a questo locale: </h3>
+            <h3>Tag associati a questo locale: </h3>
             <div className='list-container' id='tags-container'>
               {
                 tags.length !== 0
@@ -183,7 +204,7 @@ const RestaurantInfo = () => {
                     return (
                       <SingleEntry
                         key={index}
-                        id="tag"
+                        category="tag"
                         text={tag}
                         setTags={setTags}
                         restaurantID={restaurantID}
@@ -206,7 +227,7 @@ const RestaurantInfo = () => {
                     return (
                       <SingleEntry
                         key={index}
-                        id="filter"
+                        category="filter"
                         text={filter}
                         setFilters={setFilters}
                         restaurantID={restaurantID}
@@ -220,43 +241,52 @@ const RestaurantInfo = () => {
           </div>
         </div>
       </div>
-
       <div className='select-wrapper'>
         <div className='container-row'>
           <div className='half-row-section'>
-            <h4>Seleziona una tag da associare a questo locale: </h4>
-            <select onChange={(e) => addTag(e.target.value)}>
-              <option selected disabled></option>
-              {selectTags.map((tag, index) => {
-                return (
-                  <option key={index}>{tag}</option>
-                )
-              })}
-            </select>
+            <div className='select-container'>
+              <Select
+                options={selectTags}
+                isMulti
+                placeholder="Seleziona un tag"
+                onChange={handleTagsSelectChange}
+                styles={customStyles}
+              />
+              <button onClick={handleTagsConfirmClick}>conferma</button>
+            </div>
+            <div className="divider">
+              - oppure -
+            </div>
             <div className='user-entry'>
-              <h4>Aggiungi una nuova tag</h4>
-              <div className='input-entry'>
-                <input onChange={(e) => setNewTagEntry(e.target.value)} value={newTagEntry} placeholder='Scrivi qualcosa...' />
-                <button onClick={() => addNewTagEntry(newTagEntry)}>Aggiungi tag</button>
-              </div>
+              <InputField
+                category="tags"
+                restaurantID={restaurantID}
+                setTags={setTags}
+                setFilters={setFilters}
+              />
             </div>
           </div>
           <div className='half-row-section'>
-            <h4>Seleziona un filtro da associare a questo locale: </h4>
-            <select onChange={(e) => addFilter(e.target.value)}>
-              <option selected disabled></option>
-              {selectFilters.map((filter, index) => {
-                return (
-                  <option key={index}>{filter}</option>
-                )
-              })}
-            </select>
+            <div className='select-container'>
+              <Select
+                options={selectFilters}
+                isMulti
+                onChange={handleFiltersSelectChange}
+                placeholder="Seleziona un filtro"
+                styles={customStyles}
+              />
+              <button onClick={handleFiltersConfirmClick}>conferma</button>
+            </div>
+            <div className="divider">
+              - oppure -
+            </div>
             <div className='user-entry'>
-              <h4>Aggiungi un nuovo filtro</h4>
-              <div className='input-entry'>
-                <input onChange={(e) => setNewFilterEntry(e.target.value)} value={newFilterEntry} placeholder='Scrivi qualcosa...' />
-                <button onClick={() => addNewFilterEntry(newFilterEntry)}>Aggiungi filtro</button>
-              </div>
+              <InputField
+                category="filters"
+                restaurantID={restaurantID}
+                setTags={setTags}
+                setFilters={setFilters}
+              />
             </div>
           </div>
         </div>
@@ -267,6 +297,4 @@ const RestaurantInfo = () => {
       </div>
     </div>
   )
-}
-
-export default RestaurantInfo
+})

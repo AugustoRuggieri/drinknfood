@@ -4,23 +4,25 @@ import { arrayRemove, doc, updateDoc } from 'firebase/firestore'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
-const SingleEntry = ({ restaurantID, text, id, setTags, setFilters }) => {
+const SingleEntry = ({ restaurantID, text, category, setTags, setFilters }) => {
 
   const removeItemFromList = async (text) => {
-
     const restaurantRef = doc(db, "restaurants", restaurantID)
-
-    switch (id) {
+    switch (category) {
       case "tag":
         await updateDoc(restaurantRef, {
           tags: arrayRemove(text)
         })
-        setTags(tags => tags.filter((el) => el !== text))
+        setTags(tags => tags.filter((el) => el !== text));
+        break;
       case "filter":
         await updateDoc(restaurantRef, {
           filters: arrayRemove(text)
         })
-        setFilters(filters => filters.filter((el) => el !== text))
+        setFilters(filters => filters.filter((el) => el !== text));
+        break;
+      default:
+        console.log("default");
     }
   }
 

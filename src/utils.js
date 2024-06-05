@@ -1,4 +1,4 @@
-import { collection, doc, addDoc, GeoPoint, getDocs, query, updateDoc, where } from 'firebase/firestore'
+import { collection, addDoc, GeoPoint, getDocs, query, updateDoc, where } from 'firebase/firestore'
 import { db } from './firebase'
 
 export const saveSingleRestaurantToDB = async (restaurant) => {
@@ -74,3 +74,13 @@ export const convertToJSON = (arrayToBeConverted) => {
     })
     return documentsJSON
 }
+
+export const fetchFromDB = async (collectionName, arrayToFill, setMethod) => {
+    setMethod(arrayToFill => [])
+    const collectionRef = collection(db, collectionName);
+    const q = query(collectionRef, where("name", "!=", ""))
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      setMethod(arrayToFill => [...arrayToFill, doc.data().name]);
+    })
+  }

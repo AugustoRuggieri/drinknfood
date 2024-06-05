@@ -5,6 +5,7 @@
 
 .search-input {
     margin-top: 0;
+    padding: 10px 20px;
     border: 2px solid #393939;
     border-radius: 25px;
     width: 50%;
@@ -16,7 +17,7 @@
     cursor: pointer;
 }
 
-#add-new-restaurant-btn {
+.add-new-restaurant-btn {
     background-color: crimson;
     padding-left: 10px;
     padding-right: 10px;

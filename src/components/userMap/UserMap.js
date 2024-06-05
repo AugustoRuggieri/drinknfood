@@ -55,7 +55,7 @@ const UserMap = ({ restaurantsCoordinates }) => {
                     defaultCenter={userCoordinates}
                     mapId={process.env.REACT_APP_GOOGLE_MAPS_USER_MAP_ID}
                 >
-                    <AdvancedMarker position={userCoordinates} onClick={() => setOpen(true)}>
+                    <AdvancedMarker position={userCoordinates} zIndex={9999} onClick={() => setOpen(true)}>
                         <Pin
                             background={"#FBBC04"}
                             borderColor={"#000"}

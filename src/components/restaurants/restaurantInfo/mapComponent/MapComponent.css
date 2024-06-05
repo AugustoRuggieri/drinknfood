@@ -5,6 +5,10 @@
     width: 100%;
 }
 
+.map-container button {
+    width: auto;
+}
+
 @media screen and (max-width: 600px) {
     .map-container {
         width: 80%;

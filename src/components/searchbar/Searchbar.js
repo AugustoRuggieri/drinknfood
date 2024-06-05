@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import './searchbar.css'
+import styles from './searchbar.module.css'
 import { AppContext } from '../../App'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
@@ -31,11 +31,11 @@ const Searchbar = () => {
     }
 
     return (
-        <div className='search-section'>
-            <input className='search-input' onChange={handleChange} value={search} placeholder='cerca un locale...' />
-            <FontAwesomeIcon icon={faMagnifyingGlass} className='search-icon' onClick={() => handleSearch()} />
+        <div className={styles['search-section']}>
+            <input className={styles['search-input']} onChange={handleChange} value={search} placeholder='cerca un locale...' />
+            <FontAwesomeIcon icon={faMagnifyingGlass} className={styles['search-icon']} onClick={() => handleSearch()} />
 
-            <button id='add-new-restaurant-btn' onClick={showNewRestaurantModal}>aggiungi nuovo locale</button>
+            <button className={styles['add-new-restaurant-btn']} onClick={showNewRestaurantModal}>aggiungi nuovo locale</button>
         </div>
     )
 }

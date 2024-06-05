@@ -32,18 +32,6 @@ button:hover {
     opacity: .9;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 25px;
-}
-
-input {
-    margin-top: 15px;
-    padding: 10px 20px
-}
-
 #sidebar {
     background-color: rgba(252, 252, 251, 1);
     padding-top: 25px;

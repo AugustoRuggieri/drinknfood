@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './layout/Layout'
-import RestaurantInfo from './components/restaurants/restaurantInfo/RestaurantInfo'
+import { RestaurantInfo } from './components/restaurants/restaurantInfo/RestaurantInfo'
 import Restaurants from './components/restaurants/Restaurants'
 import Account from './pages/Account'
 import { createContext } from 'react'
@@ -11,6 +11,7 @@ import { collection, doc, getDocs, onSnapshot, query, where } from 'firebase/fir
 import { onAuthStateChanged } from "@firebase/auth"
 import Sidebar from './components/sidebar/Sidebar'
 import Welcome from './pages/Welcome'
+import { fetchFromDB } from './utils'
 
 export const AppContext = createContext()
 
@@ -60,16 +61,6 @@ function App() {
       }
     })
     setRestaurantList(newRestaurantList)
-  }
-
-  const fetchFromDB = async (collectionName, arrayToFill, setMethod) => {
-    setMethod(arrayToFill => [])
-    const collectionRef = collection(db, collectionName);
-    const q = query(collectionRef, where("name", "!=", ""))
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      setMethod(arrayToFill => [...arrayToFill, doc.data().name]);
-    })
   }
 
   const fetchTagsFromDB = async () => {
@@ -143,7 +134,7 @@ function App() {
       setSelectedFiltersState,
       showModal,
       setShowModal,
-      newRestaurantModal, 
+      newRestaurantModal,
       setNewRestaurantModal,
       user,
       tagsArr,

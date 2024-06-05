@@ -52,6 +52,10 @@
     transform: scale(1.2);
 }
 
+.select-wrapper {
+    margin-bottom: 5rem;
+}
+
 .container-row {
     margin: 0 auto;
     width: auto;
@@ -70,6 +74,17 @@
     padding: 0 2rem;
     display: flex;
     flex-wrap: wrap;
+}
+
+.select-container {
+    display: flex;
+    gap: .8rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.select-container select {
+    border-radius: none;
 }
 
 .single-entry {
@@ -99,6 +114,10 @@
     cursor: pointer;
     font-size: 1.4rem;
     margin-left: 1rem;
+}
+
+.divider {
+    margin-top: 2.5rem;
 }
 
 .user-entry {

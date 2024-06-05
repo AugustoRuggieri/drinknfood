@@ -1,40 +1,58 @@
-import { doc, setDoc } from 'firebase/firestore'
-import { db } from '../firebase'
-import React from 'react'
+import { addDoc, collection, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { db } from '../firebase';
+import React, { useContext, useState } from 'react';
+import styles from './input-field.module.css';
+import { AppContext } from '../App';
+import { fetchFromDB } from '../utils';
 
-const InputField = ({ inputText, setInputText, inputList, setInputList, user }) => {
+export const InputField = ({ category, restaurantID, setTags, setFilters }) => {
+
+    const { tagsArr, setTagsArr, filtersArr, setFiltersArr } = useContext(AppContext);
+
+    const [newEntry, setNewEntry] = useState('');
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        const collectionRef = doc(db, "entries", user.uid)
-
-        if (inputText === "") {
+        e.preventDefault();
+        if (newEntry === "") {
             alert("Scrivi qualcosa prima di confermare!")
         } else {
-            setInputList([...inputList, inputText])
             try {
-                await setDoc(collectionRef, {
-                    entries: inputList ? [...inputList, inputText] : [inputText]
+                await addDoc(collection(db, category), {
+                    name: newEntry
+                });
+                const restaurantRef = doc(db, 'restaurants', restaurantID);
+                const restaurantSnap = await getDoc(restaurantRef);
+                const restaurantData = restaurantSnap.data();
+                const currentValues = restaurantData[category] || [];
+                const updatedValues = [...currentValues, newEntry];
+                await updateDoc(restaurantRef, {
+                    [category]: updatedValues
                 })
-            } catch (error) {
-                alert(error.message)
+                if (category === "tags") {
+                    setTags(updatedValues);
+                    fetchFromDB('tags', tagsArr, setTagsArr);
+                } else if (category === "filters") {
+                    setFilters(updatedValues);
+                    fetchFromDB('filters', filtersArr, setFiltersArr);
+                }
+                setNewEntry('');
+            } catch (err) {
+                alert("Error: " + err.message);
             }
-            setInputText("")
         }
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles["form-container"]}>
             <input
-                value={inputText}
-                placeholder='Scrivi qualcosa...'
-                onChange={(e) => setInputText(e.target.value)}
+                value={newEntry}
+                className={styles["text-input"]}
+                placeholder='Aggiungine uno nuovo'
+                onChange={(e) => setNewEntry(e.target.value)}
             />
             <button type='submit'>
-                Aggiungi alla lista
+                Conferma
             </button>
         </form>
     )
-}
-
-export default InputField
+};
