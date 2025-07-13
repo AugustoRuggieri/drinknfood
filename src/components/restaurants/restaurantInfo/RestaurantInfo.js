@@ -169,22 +169,20 @@ export const RestaurantInfo = memo(function RestaurantInfo() {
                   inFavorites ?
                     <>
                       Rimuovi dai preferiti
-                      <FontAwesomeIcon icon={faHeartCrack} style={{ color: "#ffffff" }} className='icon' />
+                      <FontAwesomeIcon icon={faHeartCrack} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
                     </>
                     :
                     <>
                       Aggiungi ai preferiti
-                      <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff" }} className='icon' />
+                      <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
                     </>
                 }
               </button>
             }
-            {
-              user && <button className='favorites-btn'>
-                Rimuovi dalla lista
-                <FontAwesomeIcon icon={faTrash} style={{ color: "#ffffff" }} className='icon' onClick={deleteRestaurant} />
-              </button>
-            }
+            <button className='favorites-btn'>
+              <FontAwesomeIcon icon={faTrash} style={{ color: "#ffffff" }} className='restaurant-info-icon' /* onClick={deleteRestaurant} */ />
+              Rimuovi dalla lista
+            </button>
           </section>
         </div>
         <div className='half-row-section'>
