@@ -33,22 +33,21 @@
     display: flex;
     align-items: center;
     width: fit-content;
-    padding: .2rem .2rem .2rem .8rem;
+    gap: 15px;
 }
 
-.favorites-btn .icon {
+.favorites-btn .restaurant-info-icon {
     margin-left: .2rem;
 }
 
-.icon {
+.restaurant-info-icon {
     background-color: #393939;
     border-radius: 4px;
-    padding: 8px;
     cursor: pointer;
     transition: transform .3s ease;
 }
 
-.favorites-btn:hover .icon {
+.favorites-btn:hover .restaurant-info-icon {
     transform: scale(1.2);
 }
 

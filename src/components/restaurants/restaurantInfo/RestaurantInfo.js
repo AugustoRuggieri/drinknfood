@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, memo } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import './restaurantInfo.css'
 import MapComponent from './mapComponent/MapComponent'
-import { addDoc, collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
+import { collection, doc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import SingleEntry from '../../SingleEntry'
 import { AppContext } from '../../../App'
@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faHeartCrack, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Select from 'react-select';
 import { InputField } from '../../InputField'
+import DeleteConfirm from '../../modal/modal-components/DeleteConfirm'
+import { ModalContext } from '../../../contexts/ModalContext'
 
 export const RestaurantInfo = memo(function RestaurantInfo() {
 
@@ -21,7 +23,8 @@ export const RestaurantInfo = memo(function RestaurantInfo() {
   const [selectFilters, setSelectFilters] = useState([])
   const [addedFilters, setAddedFilters] = useState([])
 
-  const { tagsArr, filtersArr, user, favorites } = useContext(AppContext);
+  const { tagsArr, filtersArr, user, favorites, fetchRestaurants } = useContext(AppContext);
+  const { openModal } = useContext(ModalContext);
   const { restaurant } = useParams();
   const navigate = useNavigate();
   const inFavorites = favorites.includes(restaurant);
@@ -133,16 +136,6 @@ export const RestaurantInfo = memo(function RestaurantInfo() {
     }
   }
 
-  const deleteRestaurant = async () => {
-    try {
-      await deleteDoc(db, 'restaurants', where('name', '==', restaurant));
-      alert('Questo locale è stato eliminato dal database');
-      navigate('/home');
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
   const customStyles = {
     container: (provided) => ({
       ...provided,
@@ -169,22 +162,20 @@ export const RestaurantInfo = memo(function RestaurantInfo() {
                   inFavorites ?
                     <>
                       Rimuovi dai preferiti
-                      <FontAwesomeIcon icon={faHeartCrack} style={{ color: "#ffffff" }} className='icon' />
+                      <FontAwesomeIcon icon={faHeartCrack} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
                     </>
                     :
                     <>
                       Aggiungi ai preferiti
-                      <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff" }} className='icon' />
+                      <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
                     </>
                 }
               </button>
             }
-            {
-              user && <button className='favorites-btn'>
-                Rimuovi dalla lista
-                <FontAwesomeIcon icon={faTrash} style={{ color: "#ffffff" }} className='icon' onClick={deleteRestaurant} />
-              </button>
-            }
+            <button className='favorites-btn' onClick={() => openModal(<DeleteConfirm restaurantID={restaurantID} />)}>
+              <FontAwesomeIcon icon={faTrash} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
+              Rimuovi dalla lista
+            </button>
           </section>
         </div>
         <div className='half-row-section'>
