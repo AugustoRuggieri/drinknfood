@@ -21,7 +21,7 @@ export const RestaurantInfo = memo(function RestaurantInfo() {
   const [selectFilters, setSelectFilters] = useState([])
   const [addedFilters, setAddedFilters] = useState([])
 
-  const { tagsArr, filtersArr, user, favorites } = useContext(AppContext);
+  const { tagsArr, filtersArr, user, favorites, fetchRestaurants } = useContext(AppContext);
   const { restaurant } = useParams();
   const navigate = useNavigate();
   const inFavorites = favorites.includes(restaurant);
@@ -135,8 +135,9 @@ export const RestaurantInfo = memo(function RestaurantInfo() {
 
   const deleteRestaurant = async () => {
     try {
-      await deleteDoc(db, 'restaurants', where('name', '==', restaurant));
+      await deleteDoc(doc(db, 'restaurants', restaurantID));
       alert('Questo locale è stato eliminato dal database');
+      await fetchRestaurants();
       navigate('/home');
     } catch (error) {
       console.log(error.message);
@@ -179,8 +180,8 @@ export const RestaurantInfo = memo(function RestaurantInfo() {
                 }
               </button>
             }
-            <button className='favorites-btn'>
-              <FontAwesomeIcon icon={faTrash} style={{ color: "#ffffff" }} className='restaurant-info-icon' /* onClick={deleteRestaurant} */ />
+            <button className='favorites-btn' onClick={deleteRestaurant}>
+              <FontAwesomeIcon icon={faTrash} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
               Rimuovi dalla lista
             </button>
           </section>

@@ -145,7 +145,8 @@ function App() {
       setSearchedRestaurants,
       userPosition,
       favorites,
-      setFavorites
+      setFavorites,
+      fetchRestaurants
     }}>
       <Routes>
         <Route path='/' element={<Layout />} >
