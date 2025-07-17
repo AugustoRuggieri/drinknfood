@@ -12,6 +12,7 @@ import { onAuthStateChanged } from "@firebase/auth"
 import Sidebar from './components/sidebar/Sidebar'
 import Welcome from './pages/Welcome'
 import { fetchFromDB } from './utils'
+import { ModalProvider } from './contexts/ModalContext'
 
 export const AppContext = createContext()
 
@@ -148,20 +149,22 @@ function App() {
       setFavorites,
       fetchRestaurants
     }}>
-      <Routes>
-        <Route path='/' element={<Layout />} >
-          <Route index element={<Welcome />} />
-          <Route path='home' element={(
-            <>
-              <Sidebar />
-              <Restaurants />
-            </>
-          )}
-          />
-          <Route path='restaurants/:restaurant' element={<RestaurantInfo />} />
-          <Route path='account' element={<Account />} />
-        </Route>
-      </Routes>
+      <ModalProvider>
+        <Routes>
+          <Route path='/' element={<Layout />} >
+            <Route index element={<Welcome />} />
+            <Route path='home' element={(
+              <>
+                <Sidebar />
+                <Restaurants />
+              </>
+            )}
+            />
+            <Route path='restaurants/:restaurant' element={<RestaurantInfo />} />
+            <Route path='account' element={<Account />} />
+          </Route>
+        </Routes>
+      </ModalProvider>
     </AppContext.Provider>
   )
 }

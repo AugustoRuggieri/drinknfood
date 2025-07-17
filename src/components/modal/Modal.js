@@ -1,6 +1,9 @@
+import { useContext } from "react"
 import "./Modal.css"
+import { ModalContext } from "../../contexts/ModalContext"
 
-const Modal = ({ header, children, isVisible, setIsVisible }) => {
+const Modal = (/* { header, children, isVisible, setIsVisible } */) => {
+    const {isVisible, setIsVisible, modalContent} = useContext(ModalContext)
 
     window.onclick = (e) => {
         var modal = document.getElementById('modal')
@@ -9,16 +12,15 @@ const Modal = ({ header, children, isVisible, setIsVisible }) => {
         }
     }
 
-
     return (
         <div id='modal'>
             <div className='modal-content'>
-                {header &&
+                {/* {header &&
                     <header>
                         {header}
-                    </header>}
+                    </header>} */}
                 <div className='modal-body'>
-                    {children}
+                    {modalContent}
                 </div>
             </div>
         </div>

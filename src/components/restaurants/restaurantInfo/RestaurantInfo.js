@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, memo } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import './restaurantInfo.css'
 import MapComponent from './mapComponent/MapComponent'
-import { addDoc, collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
+import { collection, doc, getDocs, query, setDoc, updateDoc, where } from 'firebase/firestore'
 import { db } from '../../../firebase'
 import SingleEntry from '../../SingleEntry'
 import { AppContext } from '../../../App'
@@ -10,8 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faHeartCrack, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Select from 'react-select';
 import { InputField } from '../../InputField'
-import Modal from '../../modal/Modal'
 import DeleteConfirm from '../../modal/modal-components/DeleteConfirm'
+import { ModalContext } from '../../../contexts/ModalContext'
 
 export const RestaurantInfo = memo(function RestaurantInfo() {
 
@@ -22,9 +22,9 @@ export const RestaurantInfo = memo(function RestaurantInfo() {
   const [addedTags, setAddedTags] = useState([])
   const [selectFilters, setSelectFilters] = useState([])
   const [addedFilters, setAddedFilters] = useState([])
-  const [isModal, setIsModal] = useState(false)
 
   const { tagsArr, filtersArr, user, favorites, fetchRestaurants } = useContext(AppContext);
+  const { openModal } = useContext(ModalContext);
   const { restaurant } = useParams();
   const navigate = useNavigate();
   const inFavorites = favorites.includes(restaurant);
@@ -136,17 +136,6 @@ export const RestaurantInfo = memo(function RestaurantInfo() {
     }
   }
 
-  const deleteRestaurant = async () => {
-    try {
-      await deleteDoc(doc(db, 'restaurants', restaurantID));
-      alert('Questo locale è stato eliminato dal database');
-      await fetchRestaurants();
-      navigate('/home');
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
-
   const customStyles = {
     container: (provided) => ({
       ...provided,
@@ -162,147 +151,141 @@ export const RestaurantInfo = memo(function RestaurantInfo() {
   }
 
   return (
-    <>
-      {isModal &&
-        <Modal isVisible={isModal} setIsVisible={setIsModal}>
-          <DeleteConfirm restaurantID={restaurantID}  isVisible={isModal} setIsVisible={setIsModal} />
-        </Modal>}
-      <div className='restaurant-info'>
-        <header className='restaurant-header'>
-          <div className='info-section half-row-section'>
-            <h2 className='restaurant-name'>{restaurant}</h2>
-            <section className='user-notes-section'>
-              {
-                user && <button className='favorites-btn' onClick={inFavorites ? removeFromFavorites : addToFavorites}>
-                  {
-                    inFavorites ?
-                      <>
-                        Rimuovi dai preferiti
-                        <FontAwesomeIcon icon={faHeartCrack} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
-                      </>
-                      :
-                      <>
-                        Aggiungi ai preferiti
-                        <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
-                      </>
-                  }
-                </button>
-              }
-              <button className='favorites-btn' onClick={() => setIsModal(true)}>
-                <FontAwesomeIcon icon={faTrash} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
-                Rimuovi dalla lista
+    <div className='restaurant-info'>
+      <header className='restaurant-header'>
+        <div className='info-section half-row-section'>
+          <h2 className='restaurant-name'>{restaurant}</h2>
+          <section className='user-notes-section'>
+            {
+              user && <button className='favorites-btn' onClick={inFavorites ? removeFromFavorites : addToFavorites}>
+                {
+                  inFavorites ?
+                    <>
+                      Rimuovi dai preferiti
+                      <FontAwesomeIcon icon={faHeartCrack} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
+                    </>
+                    :
+                    <>
+                      Aggiungi ai preferiti
+                      <FontAwesomeIcon icon={faHeart} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
+                    </>
+                }
               </button>
-            </section>
-          </div>
+            }
+            <button className='favorites-btn' onClick={() => openModal(<DeleteConfirm restaurantID={restaurantID} />)}>
+              <FontAwesomeIcon icon={faTrash} style={{ color: "#ffffff" }} className='restaurant-info-icon' />
+              Rimuovi dalla lista
+            </button>
+          </section>
+        </div>
+        <div className='half-row-section'>
+          <MapComponent restaurant={restaurant} />
+        </div>
+      </header>
+
+      <div className='tags-and-filters-wrapper'>
+        <div className='container-row'>
           <div className='half-row-section'>
-            <MapComponent restaurant={restaurant} />
-          </div>
-        </header>
-
-        <div className='tags-and-filters-wrapper'>
-          <div className='container-row'>
-            <div className='half-row-section'>
-              <h3>Tag associati a questo locale: </h3>
-              <div className='list-container' id='tags-container'>
-                {
-                  tags.length !== 0
-                    ?
-                    tags.map((tag, index) => {
-                      return (
-                        <SingleEntry
-                          key={index}
-                          category="tag"
-                          text={tag}
-                          setTags={setTags}
-                          restaurantID={restaurantID}
-                        />
-                      )
-                    })
-                    :
-                    null
-                }
-              </div>
-            </div>
-
-            <div className='half-row-section'>
-              <h3>Filtri associati a questo locale: </h3>
-              <div className='list-container' id='filters-container'>
-                {
-                  filters.length !== 0
-                    ?
-                    filters.map((filter, index) => {
-                      return (
-                        <SingleEntry
-                          key={index}
-                          category="filter"
-                          text={filter}
-                          setFilters={setFilters}
-                          restaurantID={restaurantID}
-                        />
-                      )
-                    })
-                    :
-                    null
-                }
-              </div>
+            <h3>Tag associati a questo locale: </h3>
+            <div className='list-container' id='tags-container'>
+              {
+                tags.length !== 0
+                  ?
+                  tags.map((tag, index) => {
+                    return (
+                      <SingleEntry
+                        key={index}
+                        category="tag"
+                        text={tag}
+                        setTags={setTags}
+                        restaurantID={restaurantID}
+                      />
+                    )
+                  })
+                  :
+                  null
+              }
             </div>
           </div>
-        </div>
-        <div className='select-wrapper'>
-          <div className='container-row'>
-            <div className='half-row-section'>
-              <div className='select-container'>
-                <Select
-                  options={selectTags}
-                  isMulti
-                  placeholder="Seleziona un tag"
-                  onChange={handleTagsSelectChange}
-                  styles={customStyles}
-                />
-                <button onClick={handleTagsConfirmClick}>conferma</button>
-              </div>
-              <div className="divider">
-                - oppure -
-              </div>
-              <div className='user-entry'>
-                <InputField
-                  category="tags"
-                  restaurantID={restaurantID}
-                  setTags={setTags}
-                  setFilters={setFilters}
-                />
-              </div>
-            </div>
-            <div className='half-row-section'>
-              <div className='select-container'>
-                <Select
-                  options={selectFilters}
-                  isMulti
-                  onChange={handleFiltersSelectChange}
-                  placeholder="Seleziona un filtro"
-                  styles={customStyles}
-                />
-                <button onClick={handleFiltersConfirmClick}>conferma</button>
-              </div>
-              <div className="divider">
-                - oppure -
-              </div>
-              <div className='user-entry'>
-                <InputField
-                  category="filters"
-                  restaurantID={restaurantID}
-                  setTags={setTags}
-                  setFilters={setFilters}
-                />
-              </div>
+
+          <div className='half-row-section'>
+            <h3>Filtri associati a questo locale: </h3>
+            <div className='list-container' id='filters-container'>
+              {
+                filters.length !== 0
+                  ?
+                  filters.map((filter, index) => {
+                    return (
+                      <SingleEntry
+                        key={index}
+                        category="filter"
+                        text={filter}
+                        setFilters={setFilters}
+                        restaurantID={restaurantID}
+                      />
+                    )
+                  })
+                  :
+                  null
+              }
             </div>
           </div>
-        </div>
-
-        <div className='btn-wrapper'>
-          <button id='go-back-btn' onClick={() => navigate(-1)}>Torna ai risultati</button>
         </div>
       </div>
-    </>
+      <div className='select-wrapper'>
+        <div className='container-row'>
+          <div className='half-row-section'>
+            <div className='select-container'>
+              <Select
+                options={selectTags}
+                isMulti
+                placeholder="Seleziona un tag"
+                onChange={handleTagsSelectChange}
+                styles={customStyles}
+              />
+              <button onClick={handleTagsConfirmClick}>conferma</button>
+            </div>
+            <div className="divider">
+              - oppure -
+            </div>
+            <div className='user-entry'>
+              <InputField
+                category="tags"
+                restaurantID={restaurantID}
+                setTags={setTags}
+                setFilters={setFilters}
+              />
+            </div>
+          </div>
+          <div className='half-row-section'>
+            <div className='select-container'>
+              <Select
+                options={selectFilters}
+                isMulti
+                onChange={handleFiltersSelectChange}
+                placeholder="Seleziona un filtro"
+                styles={customStyles}
+              />
+              <button onClick={handleFiltersConfirmClick}>conferma</button>
+            </div>
+            <div className="divider">
+              - oppure -
+            </div>
+            <div className='user-entry'>
+              <InputField
+                category="filters"
+                restaurantID={restaurantID}
+                setTags={setTags}
+                setFilters={setFilters}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className='btn-wrapper'>
+        <button id='go-back-btn' onClick={() => navigate(-1)}>Torna ai risultati</button>
+      </div>
+    </div>
   )
 })
