@@ -4,6 +4,7 @@ import { db } from "../../../firebase"
 import { deleteDoc, doc } from "firebase/firestore"
 import { AppContext } from "../../../App"
 import { useNavigate } from "react-router-dom"
+import "./DeleteConfirm.css"
 
 const DeleteConfirm = ({ restaurantID }) => {
 
@@ -17,6 +18,7 @@ const DeleteConfirm = ({ restaurantID }) => {
             await deleteDoc(doc(db, 'restaurants', restaurantID));
             alert('Questo locale è stato eliminato dal database');
             await fetchRestaurants();
+            setIsVisible(false);
             navigate('/home');
         } catch (error) {
             console.log(error.message);
@@ -24,13 +26,13 @@ const DeleteConfirm = ({ restaurantID }) => {
     }
 
     return (
-        <div>
-            <p>Sei sicuro?</p>
-            <div>
-                <button onClick={() => alert(`stai cancellando il ristorante ${restaurantID}`)}>si</button>
+        <>
+            <h2>Sei sicuro?</h2>
+            <div className="deleteButtons">
+                <button onClick={() => deleteRestaurant()}>si</button>
                 <button onClick={() => setIsVisible(false)}>no</button>
             </div>
-        </div>
+        </>
     )
 }
 

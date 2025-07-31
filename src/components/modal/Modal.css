@@ -21,10 +21,6 @@
     padding: 1rem;
 }
 
-.modal-content button {
-    margin-top: 15px;
-}
-
 table {
     table-layout: auto;
     width: 100%;
@@ -48,6 +44,9 @@ table tr {
 
 .modal-body {
     padding: 0 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .modal-body button {
