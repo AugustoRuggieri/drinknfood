@@ -1,0 +1,60 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+	<defs>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,290,-65,0,241,37)">
+			<stop offset="0" stop-color="#f7d487"/>
+			<stop offset="1" stop-color="#d99a45"/>
+		</linearGradient>
+		<linearGradient id="g2" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,250.358,-104.798,0,289.115,74.295)">
+			<stop offset="0" stop-color="#f7d487"/>
+			<stop offset="1" stop-color="#d99a45"/>
+		</linearGradient>
+		<linearGradient id="g3" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(240.391,160,-146.21,219.673,136.804,262)">
+			<stop offset="0" stop-color="#ffb21a"/>
+			<stop offset="1" stop-color="#ff5a1f"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: #63b32e } 
+		.s1 { fill: #3f9723 } 
+		.s2 { fill: #ffa31a;stroke: #ff7f00;stroke-width: 8 } 
+		.s3 { fill: #ffd24d;stroke: #ffffff;stroke-width: 7 } 
+		.s4 { fill: #000000;stroke: #ffffff;stroke-width: 4 } 
+		.s5 { fill: url(#g1);stroke: #8b4e1e;stroke-width: 4 } 
+		.s6 { fill: #d9a14c;stroke: #8b4e1e;stroke-width: 4 } 
+		.s7 { fill: #8b4e1e } 
+		.s8 { fill: #7a4420 } 
+		.s9 { fill: url(#g2);stroke: #8b4e1e;stroke-width: 4 } 
+		.s10 { fill: #ffffff;stroke: #071836;stroke-width: 8 } 
+		.s11 { fill: url(#g3) } 
+		.s12 { fill: none;stroke: #ffffff;stroke-linecap: round;stroke-width: 12 } 
+	</style>
+	<path fill-rule="evenodd" class="s0" d="m182.98 184.13c-14.04 6.54-35.2-9.23-47.36-35.3-12.15-26.06-10.63-52.41 3.4-58.96 14.04-6.54 35.2 9.23 47.36 35.3 12.15 26.06 10.63 52.41-3.4 58.96z"/>
+	<path fill-rule="evenodd" class="s1" d="m184.4 187.62c-11.71-6.24-11.53-29.43 0.41-51.89 11.94-22.46 31.07-35.58 42.79-29.35 11.71 6.24 11.53 29.43-0.41 51.89-11.94 22.46-31.07 35.58-42.79 29.35z"/>
+	<path fill-rule="evenodd" class="s2" d="m146 249c-34.29 0-62-27.71-62-62 0-34.29 27.71-62 62-62 34.29 0 62 27.71 62 62 0 34.29-27.71 62-62 62z"/>
+	<path fill-rule="evenodd" class="s3" d="m146 235c-26.54 0-48-21.46-48-48 0-26.54 21.46-48 48-48 26.54 0 48 21.46 48 48 0 26.54-21.46 48-48 48z"/>
+	<g>
+		<path fill-rule="evenodd" class="s4" d="m146 139v96"/>
+		<path fill-rule="evenodd" class="s4" d="m98 187h96"/>
+		<path fill-rule="evenodd" class="s4" d="m112 153l68 68"/>
+		<path fill-rule="evenodd" class="s4" d="m112 221l68-68"/>
+	</g>
+	<g>
+		<path fill-rule="evenodd" class="s5" d="m256 37h50l-13 290h-52z"/>
+		<path fill-rule="evenodd" class="s6" d="m251 22h60v24h-60z"/>
+		<path fill-rule="evenodd" class="s7" d="m253 15h10v12h-10z"/>
+		<path fill-rule="evenodd" class="s7" d="m271 15h10v12h-10z"/>
+		<path fill-rule="evenodd" class="s7" d="m289 15h10v12h-10z"/>
+		<path fill-rule="evenodd" class="s8" d="m275 62h2c1.66 0 3 1.34 3 3v16c0 1.66-1.34 3-3 3h-2c-1.66 0-3-1.34-3-3v-16c0-1.66 1.34-3 3-3z"/>
+	</g>
+	<g>
+		<path fill-rule="evenodd" class="s9" d="m352.83 74.29l41.08 8.74-65.67 241.62-39.12-8.31z"/>
+		<path fill-rule="evenodd" class="s6" d="m353.58 61.16l44.99 9.57-3.74 17.6-45-9.56z"/>
+		<path class="s6" d="m357.49 61.99q24.82-25.39 37.17 7.91"/>
+		<path fill-rule="evenodd" class="s7" d="m381.69 39.53c-1.62-0.34-2.66-1.93-2.31-3.55 0.34-1.63 1.93-2.66 3.56-2.31 1.62 0.34 2.65 1.93 2.31 3.55-0.35 1.63-1.94 2.66-3.56 2.31z"/>
+	</g>
+	<path class="s10" d="m166 212h182c11 0 19 8 21 20l18 110c11 65-36 105-130 105-94 0-141-40-130-105l18-110c2-12 10-20 21-20z"/>
+	<path class="s11" d="m153 262h208l15 79c9 52-32 81-119 81-87 0-128-29-119-81z"/>
+	<path class="s12" d="m171 307c-5 25-4 55 20 72"/>
+	<path class="s10" d="m243 447l-7 25h42l-7-25"/>
+	<path fill-rule="evenodd" class="s10" d="m257 489c-39.82 0-72-5.36-72-12 0-6.64 32.18-12 72-12 39.82 0 72 5.36 72 12 0 6.64-32.18 12-72 12z"/>
+</svg>

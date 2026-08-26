@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 512 580">
+  <defs>
+    <linearGradient id="drink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffb21a"/>
+      <stop offset="100%" stop-color="#ff5a1f"/>
+    </linearGradient>
+
+    <linearGradient id="tower" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7d487"/>
+      <stop offset="100%" stop-color="#d99a45"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Foglie -->
+  <ellipse cx="160" cy="160" rx="28" ry="52"
+           fill="#63b32e"
+           transform="rotate(-25 160 160)"/>
+  <ellipse cx="205" cy="170" rx="24" ry="46"
+           fill="#3f9723"
+           transform="rotate(28 205 170)"/>
+
+  <!-- Arancia -->
+  <circle cx="145" cy="210" r="62"
+          fill="#ffa31a"
+          stroke="#ff7f00"
+          stroke-width="8"/>
+
+  <circle cx="145" cy="210" r="48"
+          fill="#ffd24d"
+          stroke="#ffffff"
+          stroke-width="7"/>
+
+  <g stroke="#ffffff" stroke-width="4">
+    <line x1="145" y1="162" x2="145" y2="258"/>
+    <line x1="97" y1="210" x2="193" y2="210"/>
+    <line x1="111" y1="176" x2="179" y2="244"/>
+    <line x1="111" y1="244" x2="179" y2="176"/>
+  </g>
+
+  <!-- Torre Asinelli -->
+  <g transform="translate(0,-10)">
+    <polygon points="255,70 305,70 292,360 240,360"
+             fill="url(#tower)"
+             stroke="#8b4e1e"
+             stroke-width="4"/>
+
+    <rect x="250" y="55" width="60" height="24"
+          fill="#d9a14c"
+          stroke="#8b4e1e"
+          stroke-width="4"/>
+
+    <rect x="252" y="48" width="10" height="12" fill="#8b4e1e"/>
+    <rect x="270" y="48" width="10" height="12" fill="#8b4e1e"/>
+    <rect x="288" y="48" width="10" height="12" fill="#8b4e1e"/>
+
+    <rect x="271" y="95" width="8" height="22" rx="3" fill="#7a4420"/>
+  </g>
+
+  <!-- Torre Garisenda -->
+  <g transform="rotate(12 330 200)">
+    <polygon points="330,95 372,95 358,345 318,345"
+             fill="url(#tower)"
+             stroke="#8b4e1e"
+             stroke-width="4"/>
+
+    <rect x="328" y="82" width="46" height="18"
+          fill="#d9a14c"
+          stroke="#8b4e1e"
+          stroke-width="4"/>
+
+    <path d="M332 82
+             Q351 52 370 82"
+          fill="#d9a14c"
+          stroke="#8b4e1e"
+          stroke-width="4"/>
+
+    <circle cx="351" cy="52" r="3" fill="#8b4e1e"/>
+  </g>
+
+  <!-- Bicchiere -->
+  <path d="M165 235
+           L347 235
+           C358 235 366 243 368 255
+           L386 365
+           C397 430 350 470 256 470
+           C162 470 115 430 126 365
+           L144 255
+           C146 243 154 235 165 235 Z"
+        fill="#ffffff"
+        stroke="#071836"
+        stroke-width="8"/>
+
+  <!-- Liquido -->
+  <path d="M152 285
+           L360 285
+           L375 364
+           C384 416 343 445 256 445
+           C169 445 128 416 137 364 Z"
+        fill="url(#drink)"/>
+
+  <!-- Riflesso -->
+  <path d="M170 330
+           C165 355 166 385 190 402"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="12"
+        stroke-linecap="round"/>
+
+  <!-- Piede -->
+  <path d="M242 470
+           L235 495
+           H277
+           L270 470"
+        fill="#ffffff"
+        stroke="#071836"
+        stroke-width="8"/>
+
+  <ellipse cx="256" cy="500"
+           rx="72" ry="12"
+           fill="#ffffff"
+           stroke="#071836"
+           stroke-width="8"/>
+</svg>
